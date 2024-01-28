@@ -19,5 +19,10 @@ project "Core"
     DepsLIB
   }
 
+  links {
+      "SDL2.lib",
+      "SDL2main.lib"
+  }
+
 
 CoreINC = "$(SolutionDir)/Core/include/"
