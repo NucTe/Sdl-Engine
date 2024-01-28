@@ -1,5 +1,10 @@
-#include "SdlEngine/test.h"
+#include "SdlEngine/window.h"
+#include "src/gameloop.h"
 
 int main() {
-	SdlEngine::print();
+	MyGame myGameLoop;
+	Window gameWindow("GAMAMAMAMAMMAMAE", 800, 600, &myGameLoop);
+	gameWindow.Run();
+
+	return 0;
 }

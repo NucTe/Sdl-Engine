@@ -66,7 +66,11 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\dependencies\lib\SDL2.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\SDL2.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\SDL2.dll $(TargetDir) &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -81,15 +85,23 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
+      <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\dependencies\lib\SDL2.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\SDL2.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\SDL2.dll $(TargetDir) &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\src\game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\src\gameloop.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

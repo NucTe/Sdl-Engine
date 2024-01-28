@@ -15,6 +15,15 @@ project "Game"
     DepsINC
   }
 
+  libdirs {
+    DepsLIB
+  }
+
   links {
-    "Core",
+      "Core"
+  }
+
+
+   postbuildcommands {
+    '{COPY} %{wks.location}/dependencies/lib/SDL2.dll %{cfg.buildtarget.directory}',
   }
