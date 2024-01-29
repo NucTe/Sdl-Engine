@@ -90,12 +90,19 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\SdlEngine\draw.h" />
     <ClInclude Include="include\SdlEngine\gameloop.h" />
+    <ClInclude Include="include\SdlEngine\TextureManager.h" />
     <ClInclude Include="include\SdlEngine\window.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\draw.cpp" />
     <ClCompile Include="src\gameloop.cpp" />
+    <ClCompile Include="src\TextureManager.cpp" />
     <ClCompile Include="src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Todo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -2,7 +2,7 @@
 #include <iostream>
 
 Window::Window(const std::string& title, int width, int height, GameLoop* gameLoop)
-    : gameLoop(gameLoop), window(nullptr)
+    : gameLoop(gameLoop), window(nullptr), renderer(nullptr)
 {
     if (!gameLoop) {
         std::cerr << "Error: GameLoop instance not provided to Window constructor." << std::endl;
@@ -24,17 +24,33 @@ Window::Window(const std::string& title, int width, int height, GameLoop* gameLo
     if (!window) {
         std::cerr << "Unable to create window: " << SDL_GetError() << std::endl;
     }
+    else {
+        std::cout << "Window created successfully." << std::endl;
+    }
+
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if (!renderer) {
+        std::cerr << "Unable to create renderer: " << SDL_GetError() << std::endl;
+    }
+    else {
+        std::cout << "Renderer created successfully." << std::endl;
+    }
 }
 
 
 void Window::Run() {
     if (gameLoop) {
-        gameLoop->Run();
+        gameLoop->Run(renderer);
     }
     else {
         std::cerr << "Error: GameLoop instance not provided to Window." << std::endl;
     }
 }
+
+SDL_Renderer* Window::GetRenderer() {
+    return renderer;
+}
+
 
 Window::~Window() {
     SDL_DestroyWindow(window);

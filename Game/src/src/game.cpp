@@ -1,4 +1,5 @@
 #include "gameloop.h"
+#include "SdlEngine/draw.h"
 
 MyGame::MyGame() {
     // Initialize any game-specific members
@@ -20,8 +21,11 @@ void MyGame::Update() {
     // Implement game update logic
 }
 
-void MyGame::Render() {
-    // Implement rendering logic for your game
+void MyGame::Render(SDL_Renderer* renderer) {
+    Vector2 rectPosition = { 400.0f, 100.0f };
+    Draw::Rectangle(renderer, rectPosition, 50, 50, { 0, 74, 82, 107 }, false);
+
+    SDL_RenderPresent(renderer);
 }
 
 void MyGame::Cleanup() {

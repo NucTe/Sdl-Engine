@@ -14,8 +14,10 @@ public:
     ~Window();
     void Run();
 
+    SDL_Renderer* GetRenderer();
 private:
     SDL_Window* window;
+    SDL_Renderer* renderer;
     GameLoop* gameLoop;
 };
 

@@ -1,14 +1,15 @@
 #include "SdlEngine/gameloop.h"
 #include <SDL2/SDL.h>
 
-GameLoop::GameLoop() : quit(false){
+GameLoop::GameLoop() : quit(false) {
+    // Initialization logic here
 }
 
 GameLoop::~GameLoop() {
     SDL_Quit();
 }
 
-void GameLoop::Run() {
+void GameLoop::Run(SDL_Renderer* renderer) {
     Initialize();
 
     SDL_Event event;
@@ -22,7 +23,7 @@ void GameLoop::Run() {
 
         ProcessInput();
         Update();
-        Render();
+        Render(renderer);
     }
 
     Cleanup();
