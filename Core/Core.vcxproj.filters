@@ -12,22 +12,31 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\SdlEngine\draw.h">
+      <Filter>include\SdlEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\gameloop.h">
+      <Filter>include\SdlEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\texturemanager.h">
+      <Filter>include\SdlEngine</Filter>
+    </ClInclude>
     <ClInclude Include="include\SdlEngine\window.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\SdlEngine\gameloop.h" />
-    <ClInclude Include="include\SdlEngine\draw.h" />
-    <ClInclude Include="include\SdlEngine\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\draw.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gameloop.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\texturemanager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\window.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\gameloop.cpp" />
-    <ClCompile Include="src\draw.cpp" />
-    <ClCompile Include="src\TextureManager.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Todo.txt" />
   </ItemGroup>
 </Project>

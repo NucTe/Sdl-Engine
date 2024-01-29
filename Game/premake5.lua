@@ -25,5 +25,5 @@ project "Game"
 
 
    postbuildcommands {
-    '{COPY} %{wks.location}/dependencies/lib/SDL2.dll %{cfg.buildtarget.directory}',
+    '{COPY} %{wks.location}/dependencies/lib/**.dll %{cfg.buildtarget.directory}',
   }

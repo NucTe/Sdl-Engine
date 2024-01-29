@@ -3,22 +3,15 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <string>
+#include <iostream>
 #include <unordered_map>
 
 class TextureManager {
 public:
-    static TextureManager& Instance();
-
-    SDL_Texture* LoadTexture(const std::string& filePath);
-    void DrawTextureRect(SDL_Renderer* renderer, const std::string& filePath, int x, int y, int width, int height);
-    void ClearTextures();
+    static SDL_Texture* LoadTexture(SDL_Renderer* renderer, const std::string& filePath, int rectWidth, int rectHeight);
+    static void Draw(SDL_Renderer* renderer, SDL_Texture* texture, const SDL_Rect& sourceRect, const SDL_Rect& destRect);
+    static void Clear();
 
 private:
-    TextureManager();
-    ~TextureManager();
-
-    SDL_Texture* GetDefaultTexture();
-
-    std::unordered_map<std::string, SDL_Texture*> textures;
-    SDL_Texture* defaultTexture;
+    static std::unordered_map<std::string, SDL_Texture*> textureMap;
 };
