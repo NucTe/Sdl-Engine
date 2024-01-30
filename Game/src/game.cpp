@@ -24,11 +24,8 @@ void MyGame::Render(SDL_Renderer* renderer) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
 
-    Vector2 rectPosition = { 400.0f, 100.0f };
-    Draw::Rectangle(renderer, rectPosition, 50, 50, { 0, 74, 82, 107 }, false);
-
     Vector2 trectPosition = { 400.0f, 200.0f };
-    Draw::TextureRect(renderer, ". /e.png", trectPosition, 50, 50);
+    Draw::TextureRect(renderer, "./assets/e.jpg", trectPosition, 400, 400);
 
     SDL_RenderPresent(renderer);
 }

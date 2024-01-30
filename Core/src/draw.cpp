@@ -24,7 +24,7 @@ void Draw::Rectangle(SDL_Renderer* renderer, const Vector2& position, float widt
     }
 }
 
-void Draw::TextureRect(SDL_Renderer* renderer, const std::string& filePath, const Vector2& position, float width, float height) {
+void Draw::TextureRect(SDL_Renderer* renderer, const std::string& filePath, const Vector2& position, int width, int height) {
     SDL_Texture* texture = TextureManager::LoadTexture(renderer, filePath, width, height);
     if (!texture) {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);

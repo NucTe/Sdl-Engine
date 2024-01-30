@@ -5,6 +5,7 @@
 #include <string>
 #include <iostream>
 #include <unordered_map>
+#include <filesystem>
 
 class TextureManager {
 public:

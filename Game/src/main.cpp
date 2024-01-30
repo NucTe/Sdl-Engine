@@ -1,5 +1,5 @@
 #include "SdlEngine/window.h"
-#include "src/gameloop.h"
+#include "gameloop.h"
 
 int main() {
 	MyGame myGameLoop;
