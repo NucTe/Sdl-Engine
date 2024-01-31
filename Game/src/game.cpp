@@ -1,5 +1,7 @@
 #include "gameloop.h"
 #include "SdlEngine/draw.h"
+#include "SdlEngine/texturemanager.h"
+#include "SdlEngine/EMS/EntityManager.h"
 
 MyGame::MyGame() {
 }
@@ -9,7 +11,7 @@ MyGame::~MyGame() {
 }
 
 void MyGame::Initialize() {
-    // Implement initialization logic for your game
+    
 }
 
 void MyGame::ProcessInput() {
@@ -21,11 +23,13 @@ void MyGame::Update() {
 }
 
 void MyGame::Render(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
 
-    Vector2 trectPosition = { 400.0f, 200.0f };
-    Draw::TextureRect(renderer, "./assets/e.jpg", trectPosition, 400, 400);
+    EntityManager entityManager;
+    for (const auto& entity : entityManager.GetEntities()) {
+        entity->Render(renderer);
+    }
 
     SDL_RenderPresent(renderer);
 }

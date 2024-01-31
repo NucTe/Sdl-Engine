@@ -1,7 +1,6 @@
 #include "SdlEngine/window.h"
-#include <iostream>
 
-Window::Window(const std::string& title, int width, int height, GameLoop* gameLoop)
+Window::Window(std::string& title, int width, int height, GameLoop* gameLoop)
     : gameLoop(gameLoop), window(nullptr), renderer(nullptr)
 {
     if (!gameLoop) {
@@ -11,7 +10,11 @@ Window::Window(const std::string& title, int width, int height, GameLoop* gameLo
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cerr << "Unable to initialize SDL: " << SDL_GetError() << std::endl;
     }
+    CreateWindow(title, width, height);
+}
 
+
+void Window::CreateWindow(const std::string& title, int width, int height) {
     window = SDL_CreateWindow(
         title.c_str(),
         SDL_WINDOWPOS_UNDEFINED,

@@ -100,12 +100,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\SdlEngine\draw.h" />
+    <ClInclude Include="include\SdlEngine\EMS\Entity.h" />
+    <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
     <ClInclude Include="include\SdlEngine\gameloop.h" />
     <ClInclude Include="include\SdlEngine\texturemanager.h" />
+    <ClInclude Include="include\SdlEngine\Vector2.h" />
     <ClInclude Include="include\SdlEngine\window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\draw.cpp" />
+    <ClCompile Include="src\EMS\Entity.cpp" />
+    <ClCompile Include="src\EMS\EntityManager.cpp" />
     <ClCompile Include="src\gameloop.cpp" />
     <ClCompile Include="src\texturemanager.cpp" />
     <ClCompile Include="src\window.cpp" />

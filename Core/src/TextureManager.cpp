@@ -37,7 +37,6 @@ SDL_Texture* TextureManager::LoadTexture(SDL_Renderer* renderer, const std::stri
 }
 
 
-
 void TextureManager::Draw(SDL_Renderer* renderer, SDL_Texture* texture, const SDL_Rect& sourceRect, const SDL_Rect& destRect) {
     SDL_RenderCopy(renderer, texture, &sourceRect, &destRect);
 }

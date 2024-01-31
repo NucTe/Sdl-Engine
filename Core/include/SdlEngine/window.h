@@ -6,16 +6,20 @@
 
 #include <SDL2/SDL.h>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include "nlohmann/json.hpp"
 #include "gameloop.h"
 
 class Window {
 public:
-    Window(const std::string& title, int width, int height, GameLoop* gameLoop);
+    Window(std::string& title, int width, int height, GameLoop* gameLoop);
     ~Window();
     void Run();
 
     SDL_Renderer* GetRenderer();
 private:
+    void CreateWindow(const std::string& title, int width, int height);
     SDL_Window* window;
     SDL_Renderer* renderer;
     GameLoop* gameLoop;

@@ -27,6 +27,7 @@ void Draw::Rectangle(SDL_Renderer* renderer, const Vector2& position, float widt
 void Draw::TextureRect(SDL_Renderer* renderer, const std::string& filePath, const Vector2& position, int width, int height) {
     SDL_Texture* texture = TextureManager::LoadTexture(renderer, filePath, width, height);
     if (!texture) {
+        // Handle the case where texture loading fails
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_Rect rect = { static_cast<int>(position.x), static_cast<int>(position.y),
                           static_cast<int>(width), static_cast<int>(height) };
@@ -45,3 +46,18 @@ void Draw::TextureRect(SDL_Renderer* renderer, const std::string& filePath, cons
     TextureManager::Draw(renderer, texture, sourceRect, destRect);
 }
 
+void Draw::Entity(SDL_Renderer* renderer, const wEntity* entity, SDL_Color color, bool fill) {
+    Vector2 position = entity->GetPosition();
+    Vector2 size = entity->GetSize();
+
+    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
+    SDL_Rect rect = { static_cast<int>(position.x), static_cast<int>(position.y),
+                      static_cast<int>(size.x), static_cast<int>(size.y) };
+
+    if (fill) {
+        SDL_RenderFillRect(renderer, &rect);
+    }
+    else {
+        SDL_RenderDrawRect(renderer, &rect);
+    }
+}

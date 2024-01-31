@@ -24,6 +24,9 @@
     <ClInclude Include="include\SdlEngine\window.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
+    <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
+    <ClInclude Include="include\SdlEngine\EMS\Entity.h" />
+    <ClInclude Include="include\SdlEngine\Vector2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\draw.cpp">
@@ -38,5 +41,7 @@
     <ClCompile Include="src\window.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\EMS\Entity.cpp" />
+    <ClCompile Include="src\EMS\EntityManager.cpp" />
   </ItemGroup>
 </Project>
