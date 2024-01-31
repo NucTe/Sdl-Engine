@@ -1,6 +1,7 @@
 #pragma once
 
-#include "SdlEngine/EMS/Entity.h"
+#include "SdlEngine/EMS/wEntity.h"
+#include "SdlEngine/draw.h"
 
 class Player : public wEntity {
 public:

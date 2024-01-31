@@ -14,7 +14,14 @@ void GameLoop::Run(SDL_Renderer* renderer) {
 
     SDL_Event event;
 
+    Uint32 prevTicks = SDL_GetTicks();
+    Uint32 currentTicks;
+
     while (!quit) {
+        currentTicks = SDL_GetTicks();
+        float deltaTime = (currentTicks - prevTicks) / 1000.0f;
+        prevTicks = currentTicks;
+
         while (SDL_PollEvent(&event) != 0) {
             if (event.type == SDL_QUIT) {
                 quit = true;
@@ -22,7 +29,7 @@ void GameLoop::Run(SDL_Renderer* renderer) {
         }
 
         ProcessInput();
-        Update();
+        Update(deltaTime);
         Render(renderer);
     }
 

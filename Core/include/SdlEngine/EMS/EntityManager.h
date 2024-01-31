@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "./Entity.h"
+#include "./wEntity.h"
 
 class EntityManager {
 public:

@@ -1,7 +1,7 @@
-#include "Player.h"
-#include "SdlEngine/Draw.h"
+#include "player.h"
 
-Player::Player(const Vector2& position, const Vector2& size) : wEntity(position, size) {}
+
+Player::Player(const Vector2& position, const Vector2& size) : wEntity(position, size, true) {}
 
 Player::~Player() {}
 

@@ -25,8 +25,9 @@
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
     <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
-    <ClInclude Include="include\SdlEngine\EMS\Entity.h" />
+    <ClInclude Include="include\SdlEngine\EMS\wEntity.h" />
     <ClInclude Include="include\SdlEngine\Vector2.h" />
+    <ClInclude Include="include\SdlEngine\Collider.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\draw.cpp">
@@ -43,5 +44,11 @@
     </ClCompile>
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />
+    <ClCompile Include="src\PhysicsObject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\SdlEngine\PhysicsObject.h">
+      <Filter>include\SdlEngine</Filter>
+    </None>
   </ItemGroup>
 </Project>

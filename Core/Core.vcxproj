@@ -99,8 +99,9 @@
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\SdlEngine\Collider.h" />
     <ClInclude Include="include\SdlEngine\draw.h" />
-    <ClInclude Include="include\SdlEngine\EMS\Entity.h" />
+    <ClInclude Include="include\SdlEngine\EMS\wEntity.h" />
     <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
     <ClInclude Include="include\SdlEngine\gameloop.h" />
     <ClInclude Include="include\SdlEngine\texturemanager.h" />
@@ -112,8 +113,12 @@
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />
     <ClCompile Include="src\gameloop.cpp" />
+    <ClCompile Include="src\PhysicsObject.cpp" />
     <ClCompile Include="src\texturemanager.cpp" />
     <ClCompile Include="src\window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\SdlEngine\PhysicsObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
