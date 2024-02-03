@@ -7,48 +7,84 @@
     <Filter Include="include\SdlEngine">
       <UniqueIdentifier>{9143C106-FD59-BF9C-46D1-4ABEB2269024}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\SdlEngine\EMS">
+      <UniqueIdentifier>{A5990546-1106-C140-DAF9-589E4625E3A8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\SdlEngine\Renderer">
+      <UniqueIdentifier>{571A64B4-432A-1085-ACE3-74A39812FF1D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\EMS">
+      <UniqueIdentifier>{416F2FA9-AD4E-AE44-B666-391B22C514A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Renderer">
+      <UniqueIdentifier>{73D1DFBF-5F34-6F64-08BA-A71AF4FB3AE7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\SdlEngine\Collider.h">
+      <Filter>include\SdlEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\EMS\EntityManager.h">
+      <Filter>include\SdlEngine\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\EMS\wEntity.h">
+      <Filter>include\SdlEngine\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\PhysicsObject.h">
+      <Filter>include\SdlEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h">
+      <Filter>include\SdlEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h">
+      <Filter>include\SdlEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h">
+      <Filter>include\SdlEngine\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SdlEngine\Vector2.h">
+      <Filter>include\SdlEngine</Filter>
+    </ClInclude>
     <ClInclude Include="include\SdlEngine\draw.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
     <ClInclude Include="include\SdlEngine\gameloop.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\SdlEngine\texturemanager.h">
-      <Filter>include\SdlEngine</Filter>
-    </ClInclude>
     <ClInclude Include="include\SdlEngine\window.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
-    <ClInclude Include="include\SdlEngine\EMS\wEntity.h" />
-    <ClInclude Include="include\SdlEngine\Vector2.h" />
-    <ClInclude Include="include\SdlEngine\Collider.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\EMS\Entity.cpp">
+      <Filter>src\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EMS\EntityManager.cpp">
+      <Filter>src\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PhysicsObject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\OpenGLRenderer.cpp">
+      <Filter>src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\ShaderLoader.cpp">
+      <Filter>src\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Renderer\texturemanager.cpp">
+      <Filter>src\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\draw.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\gameloop.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\texturemanager.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\window.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\EMS\Entity.cpp" />
-    <ClCompile Include="src\EMS\EntityManager.cpp" />
-    <ClCompile Include="src\PhysicsObject.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="include\SdlEngine\PhysicsObject.h">
-      <Filter>include\SdlEngine</Filter>
-    </None>
   </ItemGroup>
 </Project>

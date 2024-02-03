@@ -2,7 +2,9 @@
 #include "player.h"
 
 #include "SdlEngine/draw.h"
-#include "SdlEngine/texturemanager.h"
+#include "SdlEngine/Renderer/texturemanager.h"
+#include "SdlEngine/window.h"
+#include "glm/glm.hpp"
 
 
 MyGame::MyGame() {
@@ -29,15 +31,18 @@ void MyGame::Update(float deltaTime) {
     }
 }
 
-void MyGame::Render(SDL_Renderer* renderer) {
-    SDL_SetRenderDrawColor(renderer, 0, 255, 255, 0);
-    SDL_RenderClear(renderer);
+void MyGame::Render(Window window) {
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    PhysicsObject physicsObject1(Vector2(200, 200), Vector2(30, 30));
+
+    Draw::Rectangle(glm::vec2(200, 200), 100, 30, { 255, 0, 0, 255 }, true, &physicsObject1);
 
     for (const auto& entity : entityManager.GetEntities()) {
-        entity->Render(renderer);
+        Draw::Entity(entity, { 255, 0, 0, 255 });
     }
 
-    SDL_RenderPresent(renderer);
+    SDL_GL_SwapWindow(window.GetSDLWindow());
 }
 
 void MyGame::Cleanup() {

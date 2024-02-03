@@ -1,10 +1,10 @@
 #include "player.h"
 
 
-Player::Player(const Vector2& position, const Vector2& size) : wEntity(position, size, true) {}
+Player::Player(const Vector2& position, const Vector2& size) : wEntity(position, size, true, true) {}
 
 Player::~Player() {}
 
-void Player::Render(SDL_Renderer* renderer) {
-    Draw::Entity(renderer, this, { 255, 0, 0, 255 }, true);
+void Player::Render() {
+    Draw::Entity(this, { 255, 0, 0, 255 }, true);
 }

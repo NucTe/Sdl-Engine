@@ -5,13 +5,10 @@ GameLoop::GameLoop() : quit(false) {
     // Initialization logic here
 }
 
-GameLoop::~GameLoop() {
-    SDL_Quit();
-}
+GameLoop::~GameLoop() {}
 
-void GameLoop::Run(SDL_Renderer* renderer) {
+void GameLoop::Run(Window window) {
     Initialize();
-
     SDL_Event event;
 
     Uint32 prevTicks = SDL_GetTicks();
@@ -30,7 +27,9 @@ void GameLoop::Run(SDL_Renderer* renderer) {
 
         ProcessInput();
         Update(deltaTime);
-        Render(renderer);
+        Render(window);
+
+        SDL_GL_SwapWindow(window.GetSDLWindow());
     }
 
     Cleanup();

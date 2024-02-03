@@ -69,7 +69,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glew32s.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
@@ -94,31 +94,33 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;glew32s.lib;SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\SdlEngine\Collider.h" />
-    <ClInclude Include="include\SdlEngine\draw.h" />
-    <ClInclude Include="include\SdlEngine\EMS\wEntity.h" />
     <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
-    <ClInclude Include="include\SdlEngine\gameloop.h" />
-    <ClInclude Include="include\SdlEngine\texturemanager.h" />
+    <ClInclude Include="include\SdlEngine\EMS\wEntity.h" />
+    <ClInclude Include="include\SdlEngine\PhysicsObject.h" />
+    <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h" />
+    <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h" />
+    <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h" />
     <ClInclude Include="include\SdlEngine\Vector2.h" />
+    <ClInclude Include="include\SdlEngine\draw.h" />
+    <ClInclude Include="include\SdlEngine\gameloop.h" />
     <ClInclude Include="include\SdlEngine\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\draw.cpp" />
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />
-    <ClCompile Include="src\gameloop.cpp" />
     <ClCompile Include="src\PhysicsObject.cpp" />
-    <ClCompile Include="src\texturemanager.cpp" />
+    <ClCompile Include="src\Renderer\OpenGLRenderer.cpp" />
+    <ClCompile Include="src\Renderer\ShaderLoader.cpp" />
+    <ClCompile Include="src\Renderer\texturemanager.cpp" />
+    <ClCompile Include="src\draw.cpp" />
+    <ClCompile Include="src\gameloop.cpp" />
     <ClCompile Include="src\window.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="include\SdlEngine\PhysicsObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

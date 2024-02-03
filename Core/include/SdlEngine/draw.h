@@ -1,17 +1,18 @@
 #pragma once
 
-#include <SDL2/SDL.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <stb/stb_image.h>
 #include <iostream>
-
 #include "EMS/wEntity.h"
 
 class Draw {
 public:
     // Drawing functions
-    static void Point(SDL_Renderer* renderer, const Vector2& point, SDL_Color color);
-    static void Line(SDL_Renderer* renderer, const Vector2& start, const Vector2& end, SDL_Color color);
-    static void Rectangle(SDL_Renderer* renderer, const Vector2& position, float width, float height, SDL_Color color, bool fill = true);
-    static void TextureRect(SDL_Renderer* renderer, const std::string& filePath, const Vector2& position, int width, int height);
-    static void Entity(SDL_Renderer* renderer,const wEntity* entity, SDL_Color color, bool fill = true);
-};
+    static void Point(const glm::vec2& point, const glm::vec4& color);
+    static void Line(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color);
+    static void Rectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill = true, PhysicsObject* physicsObject = nullptr);
+    static void TextureRect(const std::string& filePath, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject);
+    static void Entity(const wEntity* entity, const glm::vec4& color, bool fill = true);
 
+};

@@ -22,6 +22,9 @@ project "Core"
   }
 
   links {
+      "opengl32.lib",
+      "glew32.lib",
+      "glew32s.lib",
       "SDL2.lib",
       "SDL2main.lib",
       "SDL2_image.lib"

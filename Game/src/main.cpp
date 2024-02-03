@@ -5,8 +5,8 @@
 int main() {
 	MyGame myGameLoop;
 	std::string title = "Helllo";
-	Window gameWindow(title, 800, 600, &myGameLoop);
-	gameWindow.Run();
+	Window window;
+	window.CreateWindow(title, 800, 600, &myGameLoop);
 	
 	return 0;
 }

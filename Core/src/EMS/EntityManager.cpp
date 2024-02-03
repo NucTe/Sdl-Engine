@@ -15,7 +15,6 @@ void EntityManager::AddEntity(wEntity* entity) {
 }
 
 void EntityManager::RemoveEntity(wEntity* entity) {
-    // Remove and delete the entity
     auto it = std::find(entities.begin(), entities.end(), entity);
     if (it != entities.end()) {
         delete* it;
