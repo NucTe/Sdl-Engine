@@ -5,24 +5,28 @@
 
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
-#include "window.h"
+
+class Window;
 
 class GameLoop {
 public:
     GameLoop();
     virtual ~GameLoop();
 
-    void Run(Window *window);
+    void init(Window *window) { this->window = window; };
+    void Run();
 
 protected:
+    Window* window = nullptr;
     virtual void Initialize() = 0;
     virtual void ProcessInput() = 0;
     virtual void Update(float deltaTime) = 0;
-    virtual void Render(Window *window) = 0;
+    virtual void Render() = 0;
     virtual void Cleanup() = 0;
 
 private:
-    bool quit; 
+    
+    bool quit = false; 
 };
 
 #endif

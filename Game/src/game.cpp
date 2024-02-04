@@ -31,7 +31,7 @@ void MyGame::Update(float deltaTime) {
     }
 }
 
-void MyGame::Render(Window *window) {
+void MyGame::Render() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     PhysicsObject physicsObject1(Vector2(200, 200), Vector2(30, 30));

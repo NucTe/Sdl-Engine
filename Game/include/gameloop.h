@@ -15,7 +15,7 @@ protected:
     virtual void Initialize() override;
     virtual void ProcessInput() override;
     virtual void Update(float deltaTime) override;
-    virtual void Render(Window *window) override;
+    virtual void Render() override;
     virtual void Cleanup() override;
 
 private:

@@ -54,11 +54,13 @@ void Window::CreateWindow(const std::string& title, int width, int height, GameL
         SDL_GL_SetSwapInterval(1);
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        gameLoop->init((Window*)this);
     }
 }
 void Window::Run() {
     if (gameLoop) {
-        gameLoop->Run(this);
+        gameLoop->Run();
     }
     else {
         std::cerr << "Error: GameLoop instance not provided to Window." << std::endl;
