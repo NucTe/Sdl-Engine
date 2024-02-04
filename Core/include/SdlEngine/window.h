@@ -9,12 +9,13 @@
 #include "nlohmann/json.hpp"
 #include <GL/glew.h>
 #include "gameloop.h"
+#include "Renderer/OpenGLRenderer.h"
 
 class Window {
 public:
     Window();
     ~Window();
-    void Run();
+    void Run(std::string vertexShaderPath, std::string fragmentShaderPath);
     void CreateWindow(const std::string& title, int width, int height, GameLoop* gameLoop);
     SDL_Window* GetSDLWindow();
 private:
@@ -22,6 +23,7 @@ private:
     SDL_Window* window = nullptr;
     SDL_GLContext glContext = nullptr;
     GameLoop* gameLoop;
+    OpenGLRenderer* renderer;
 };
 
 #endif

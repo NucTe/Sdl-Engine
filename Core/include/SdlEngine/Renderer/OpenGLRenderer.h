@@ -20,9 +20,9 @@ public:
 
     static void DrawPoint(const glm::vec2& point, const glm::vec4& color);
     static void DrawLine(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color);
-    static GLuint  DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill, PhysicsObject* physicsObject);
+    static GLuint DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill, PhysicsObject* physicsObject);
     static GLuint DrawTextureRect(GLuint vaoID, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject);
-    static GLuint  DrawEntity(GLuint vaoID, const wEntity* entity, const glm::vec4& color, bool fill);
+    static GLuint DrawEntity(GLuint vaoID, const wEntity* entity, const glm::vec4& color, bool fill);
 
 private:
     static GLuint shaderProgram;

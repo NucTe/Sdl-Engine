@@ -59,8 +59,9 @@ void Window::CreateWindow(const std::string& title, int width, int height, GameL
         gameLoop->init((Window*)this);
     }
 }
-void Window::Run() {
+void Window::Run(std::string vertexShaderPath, std::string fragmentShaderPath) {
     if (gameLoop) {
+        renderer->Initialize(vertexShaderPath.c_str(), fragmentShaderPath.c_str());
         gameLoop->Run();
     }
     else {

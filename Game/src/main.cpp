@@ -7,7 +7,7 @@ int main() {
 	std::string title = "Helllo";
 	Window window;
 	window.CreateWindow(title, 800, 600, &myGameLoop);
-	window.Run(); // it's not my brain it's my brain  
+	window.Run("./assets/shaders/vertexShader.vert", "./assets/shaders/fragmentShader.frag");
 
 	return 0;
 }

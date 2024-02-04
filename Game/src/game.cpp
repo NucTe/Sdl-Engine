@@ -36,10 +36,9 @@ void MyGame::Render() {
 
     PhysicsObject physicsObject1(Vector2(200, 200), Vector2(30, 30));
 
-    Draw::Rectangle(glm::vec2(200, 200), 100, 30, { 255, 0, 0, 255 }, true, &physicsObject1);
 
     for (const auto& entity : entityManager.GetEntities()) {
-        Draw::Entity(entity, { 255, 0, 0, 255 });
+        Draw::Entity(entity, { 255, 0, 0, 0 });
     }
 
     SDL_GL_SwapWindow(window->GetSDLWindow());

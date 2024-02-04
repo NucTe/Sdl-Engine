@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <filesystem>
 
 GLuint ShaderLoader::LoadShader(const char* filePath, GLenum shaderType) {
     std::ifstream shaderFile(filePath);
