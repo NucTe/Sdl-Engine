@@ -12,13 +12,13 @@ public:
     GameLoop();
     virtual ~GameLoop();
 
-    void Run(Window window);
+    void Run(Window *window);
 
 protected:
     virtual void Initialize() = 0;
     virtual void ProcessInput() = 0;
     virtual void Update(float deltaTime) = 0;
-    virtual void Render(Window window) = 0;
+    virtual void Render(Window *window) = 0;
     virtual void Cleanup() = 0;
 
 private:

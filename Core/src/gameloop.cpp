@@ -7,7 +7,7 @@ GameLoop::GameLoop() : quit(false) {
 
 GameLoop::~GameLoop() {}
 
-void GameLoop::Run(Window window) {
+void GameLoop::Run(Window *window) {
     Initialize();
     SDL_Event event;
 
@@ -28,8 +28,6 @@ void GameLoop::Run(Window window) {
         ProcessInput();
         Update(deltaTime);
         Render(window);
-
-        SDL_GL_SwapWindow(window.GetSDLWindow());
     }
 
     Cleanup();

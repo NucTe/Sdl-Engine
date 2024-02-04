@@ -22,7 +22,7 @@ void MyGame::Initialize() {
 }
 
 void MyGame::ProcessInput() {
-    // Implement input processing logic for your game
+
 }
 
 void MyGame::Update(float deltaTime) {
@@ -31,7 +31,7 @@ void MyGame::Update(float deltaTime) {
     }
 }
 
-void MyGame::Render(Window window) {
+void MyGame::Render(Window *window) {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     PhysicsObject physicsObject1(Vector2(200, 200), Vector2(30, 30));
@@ -42,7 +42,7 @@ void MyGame::Render(Window window) {
         Draw::Entity(entity, { 255, 0, 0, 255 });
     }
 
-    SDL_GL_SwapWindow(window.GetSDLWindow());
+    SDL_GL_SwapWindow(window->GetSDLWindow());
 }
 
 void MyGame::Cleanup() {

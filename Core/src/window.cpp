@@ -58,7 +58,7 @@ void Window::CreateWindow(const std::string& title, int width, int height, GameL
 }
 void Window::Run() {
     if (gameLoop) {
-        gameLoop->Run(*this);
+        gameLoop->Run(this);
     }
     else {
         std::cerr << "Error: GameLoop instance not provided to Window." << std::endl;
