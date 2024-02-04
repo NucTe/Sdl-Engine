@@ -6,6 +6,7 @@ Window::Window(){}
 
 void Window::CreateWindow(const std::string& title, int width, int height, GameLoop* gameLoop) {
     {
+        this->gameLoop = gameLoop;
         if (!gameLoop) {
             std::cerr << "Error: GameLoop instance not provided to Window constructor." << std::endl;
         }

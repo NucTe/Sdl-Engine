@@ -12,9 +12,6 @@ void GameLoop::Run() {
     Initialize();
     SDL_Event event;
 
-    std::cout << "Called" << std::endl;
-    std::cin.get();
-
     Uint32 prevTicks = SDL_GetTicks();
     Uint32 currentTicks;
 
@@ -23,6 +20,11 @@ void GameLoop::Run() {
         float deltaTime = (currentTicks - prevTicks) / 1000.0f;
         prevTicks = currentTicks;
 
+        while (SDL_PollEvent(&event) != 0) {
+            if (event.type == SDL_QUIT) {
+                quit = true;
+            }
+        }
 
         ProcessInput();
         Update(deltaTime);
