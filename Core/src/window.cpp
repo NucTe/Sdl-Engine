@@ -4,9 +4,13 @@
 
 Window::Window(){}
 
-void Window::CreateWindow(const std::string& title, int width, int height, GameLoop* gameLoop) {
+void Window::CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop) {
     {
         this->gameLoop = gameLoop;
+        screenWidth = width;
+        screenHeight = height;
+        isFullscreen = fullscreen;
+
         if (!gameLoop) {
             std::cerr << "Error: GameLoop instance not provided to Window constructor." << std::endl;
         }
@@ -71,6 +75,24 @@ void Window::Run(std::string vertexShaderPath, std::string fragmentShaderPath) {
 
 SDL_Window* Window::GetSDLWindow() {
     return window;
+}
+
+void Window::ToggleFullscreen() {
+    isFullscreen = !isFullscreen;
+
+    Uint32 flags = isFullscreen ? SDL_WINDOW_FULLSCREEN : 0;
+    SDL_SetWindowFullscreen(window, flags);
+}
+
+void Window::SetWindowSize(int width, int height) {
+    screenWidth = width;
+    screenHeight = height;
+    SDL_SetWindowSize(window, width, height);
+}
+
+void Window::GetWindowSize(int& width, int& height) const {
+    width = screenWidth;
+    height = screenHeight;
 }
 
 Window::~Window() {

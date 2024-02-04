@@ -16,10 +16,17 @@ public:
     Window();
     ~Window();
     void Run(std::string vertexShaderPath, std::string fragmentShaderPath);
-    void CreateWindow(const std::string& title, int width, int height, GameLoop* gameLoop);
+    void CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop);
+    void ToggleFullscreen();
+    void SetWindowSize(int width, int height);
+    void GetWindowSize(int& width, int& height) const;
+
     SDL_Window* GetSDLWindow();
 private:
-    
+    int screenWidth;
+    int screenHeight;
+    bool isFullscreen;
+
     SDL_Window* window = nullptr;
     SDL_GLContext glContext = nullptr;
     GameLoop* gameLoop;

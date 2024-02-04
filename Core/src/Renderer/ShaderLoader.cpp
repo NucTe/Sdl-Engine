@@ -35,8 +35,13 @@ GLuint ShaderLoader::LoadShader(const char* filePath, GLenum shaderType) {
 }
 
 GLuint ShaderLoader::CreateShaderProgram(const char* vertexShaderPath, const char* fragmentShaderPath) {
-    GLuint vertexShader = LoadShader(vertexShaderPath, GL_VERTEX_SHADER);
-    GLuint fragmentShader = LoadShader(fragmentShaderPath, GL_FRAGMENT_SHADER);
+    std::filesystem::path absoluteVertexPath = std::filesystem::absolute(vertexShaderPath);
+    std::filesystem::path absoluteFragmentPath = std::filesystem::absolute(fragmentShaderPath);
+    std::string aVertexPath = absoluteVertexPath.string();
+    std::string afragmentPath = absoluteFragmentPath.string();
+
+    GLuint vertexShader = LoadShader(aVertexPath.c_str(), GL_VERTEX_SHADER);
+    GLuint fragmentShader = LoadShader(afragmentPath.c_str(), GL_FRAGMENT_SHADER);
 
     if (vertexShader == 0 || fragmentShader == 0) {
         std::cerr << "Failed to load shaders." << std::endl;
