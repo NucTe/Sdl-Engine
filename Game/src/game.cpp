@@ -32,16 +32,15 @@ void MyGame::Update(float deltaTime) {
 }
 
 void MyGame::Render() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     PhysicsObject physicsObject1(Vector2(200, 200), Vector2(30, 30));
+    Vector2 Pos = { 100.0f, 100.0f };
 
+    Draw::Rectangle(glm::vec2(Pos.x, Pos.y), 40, 40, { 0, 0, 255, 0 });
 
-    for (const auto& entity : entityManager.GetEntities()) {
-        Draw::Entity(entity, { 255, 0, 0, 0 });
-    }
-
-    SDL_GL_SwapWindow(window->GetSDLWindow());
+    //for (const auto& entity : entityManager.GetEntities()) {
+    //    Draw::Entity(entity, { 255, 0, 0, 0 });
+    //}
 }
 
 void MyGame::Cleanup() {

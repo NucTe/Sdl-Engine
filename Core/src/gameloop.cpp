@@ -1,6 +1,9 @@
 #include "SdlEngine/gameloop.h"
 #include <SDL2/SDL.h>
+
+
 #include "SdlEngine/window.h"
+#include "SdlEngine/Renderer/ShaderLoader.h"
 
 GameLoop::GameLoop() : quit(false) {
     // Initialization logic here
@@ -8,8 +11,15 @@ GameLoop::GameLoop() : quit(false) {
 
 GameLoop::~GameLoop() {}
 
-void GameLoop::Run() {
+
+
+void GameLoop::Run(GLuint shaderProgram) {
     Initialize();
+    glm::mat4 modelMatrix = glm::mat4(1.0f);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glUseProgram(shaderProgram);
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    glUniform4f(glGetUniformLocation(shaderProgram, "color"), 1.0f, 0.0f, 0.0f, 1.0f);
     SDL_Event event;
 
     Uint32 prevTicks = SDL_GetTicks();
@@ -29,6 +39,7 @@ void GameLoop::Run() {
         ProcessInput();
         Update(deltaTime);
         Render();
+        SDL_GL_SwapWindow(window->GetSDLWindow());
     }
 
     Cleanup();

@@ -5,6 +5,9 @@
 
 #include <GL/glew.h>
 #include <SDL2/SDL.h>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 class Window;
 
@@ -14,7 +17,7 @@ public:
     virtual ~GameLoop();
 
     void init(Window *window) { this->window = window; };
-    void Run();
+    void Run(GLuint shaderProgram);
 
 protected:
     Window* window = nullptr;
@@ -25,7 +28,7 @@ protected:
     virtual void Cleanup() = 0;
 
 private:
-    
+    static glm::mat4 modelMatrix;
     bool quit = false; 
 };
 

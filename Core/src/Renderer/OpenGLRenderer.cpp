@@ -10,13 +10,15 @@ GLuint OpenGLRenderer::shaderProgram = 0;
 OpenGLRenderer::OpenGLRenderer() {};
 OpenGLRenderer::~OpenGLRenderer() {};
 
-void OpenGLRenderer::Initialize(const char* vertexShaderPath, const char* fragmentShaderPath) {
+GLuint OpenGLRenderer::Initialize(const char* vertexShaderPath, const char* fragmentShaderPath) {
     GLuint ShaderProgram = CreateShaderProgram(vertexShaderPath, fragmentShaderPath);
     if (ShaderProgram == 0) {
         // Something
     }
 
-    this->shaderProgram = ShaderProgram;
+
+    std::cout << ShaderProgram << std::endl;
+    return ShaderProgram;
 };
 
 // GLuint
@@ -98,45 +100,43 @@ GLuint OpenGLRenderer::CreateTextureRectVAO(const std::string& filePath, int wid
 
 GLuint OpenGLRenderer::DrawTextureRect(GLuint vaoID, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject) {
     glBindVertexArray(vaoID);
-    glUseProgram(shaderProgram);
 
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(position.x, position.y, 0.0f));
     model = glm::scale(model, glm::vec3(width, height, 1.0f));
 
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "model"), 1, GL_FALSE, glm::value_ptr(model));
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(glm::value_ptr(model));
+
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
 
     glBindVertexArray(0);
-    glUseProgram(0);
 
     return vaoID;
 }
 
-
-
 GLuint OpenGLRenderer::DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill, PhysicsObject* physicsObject) {
-    glUseProgram(shaderProgram);
-
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(position.x, position.y, 0.0f));
     model = glm::scale(model, glm::vec3(width, height, 1.0f));
 
-    GLuint modelLoc = glGetUniformLocation(shaderProgram, "model");
-    glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+    glMatrixMode(GL_MODELVIEW);
+    glLoadMatrixf(glm::value_ptr(model));
 
     glBindVertexArray(vaoID);
+
     if (fill) {
         glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     }
     else {
         glDrawArrays(GL_LINE_LOOP, 0, 4);
     }
+
     glBindVertexArray(0);
-    glUseProgram(0);
 
     return vaoID;
 }
+
 
 
 GLuint OpenGLRenderer::DrawEntity(GLuint vaoID, const wEntity* entity, const glm::vec4& color, bool fill) {

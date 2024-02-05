@@ -106,6 +106,7 @@
     <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h" />
     <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h" />
     <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h" />
+    <ClInclude Include="include\SdlEngine\utils\JSON.h" />
     <ClInclude Include="include\SdlEngine\Vector2.h" />
     <ClInclude Include="include\SdlEngine\draw.h" />
     <ClInclude Include="include\SdlEngine\gameloop.h" />
@@ -120,6 +121,7 @@
     <ClCompile Include="src\Renderer\texturemanager.cpp" />
     <ClCompile Include="src\draw.cpp" />
     <ClCompile Include="src\gameloop.cpp" />
+    <ClCompile Include="src\utils\JSON.cpp" />
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

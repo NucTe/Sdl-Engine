@@ -12,7 +12,7 @@ public:
     OpenGLRenderer();
     ~OpenGLRenderer();
 
-    void Initialize(const char* vertexShaderPath, const char* fragmentShaderPath);
+    GLuint Initialize(const char* vertexShaderPath, const char* fragmentShaderPath);
 
     static GLuint CreateShaderProgram(const char* vertexShaderPath, const char* fragmentShaderPath);
     static GLuint CreateRectangleVAO();
