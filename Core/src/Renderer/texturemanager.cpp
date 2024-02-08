@@ -34,7 +34,6 @@ GLuint TextureManager::LoadTexture(const std::string& filePath, int rectWidth, i
 }
 
 GLuint TextureManager::DrawRect(const std::string& filePath, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject) {
-
     GLuint vaoID = OpenGLRenderer::CreateTextureRectVAO(filePath, width, height);
     OpenGLRenderer::DrawTextureRect(vaoID, position, width, height, physicsObject);
     return vaoID;

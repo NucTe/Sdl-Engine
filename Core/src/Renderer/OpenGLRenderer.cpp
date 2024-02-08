@@ -1,5 +1,8 @@
 #include "SdlEngine/Renderer/OpenGLRenderer.h"
 #include "SdlEngine/Renderer/ShaderLoader.h"
+#include "SdlEngine/Renderer/texturemanager.h"
+
+#include <iostream>
 #include <glm/ext/matrix_transform.hpp>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -9,6 +12,24 @@ GLuint OpenGLRenderer::shaderProgram = 0;
 
 OpenGLRenderer::OpenGLRenderer() {};
 OpenGLRenderer::~OpenGLRenderer() {};
+
+void OpenGLRenderer::Render(const GameWorld& gameWorld) {
+    const std::vector<Entity*>& entities = gameWorld.GetEntities();
+    for (Entity* entity : entities) {
+        Vector2 entityPosition = entity->GetPosition();
+        float width = entity->GetSize().x;
+        float height = entity->GetSize().y;
+        std::string filepath = entity->GetTextureFilePath();
+        if (entity->HasTexture()) {
+            int Vao = CreateTextureRectVAO(filepath, width, height);
+            DrawTextureRect(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, entity->GetPhysicsObject());
+        }
+        else {
+            int Vao = CreateRectangleVAO();
+            DrawRectangle(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, {0, 0, 0, 0}, true, entity->GetPhysicsObject());
+        }
+    }
+}
 
 GLuint OpenGLRenderer::Initialize(const char* vertexShaderPath, const char* fragmentShaderPath) {
     GLuint ShaderProgram = CreateShaderProgram(vertexShaderPath, fragmentShaderPath);
@@ -137,22 +158,6 @@ GLuint OpenGLRenderer::DrawRectangle(GLuint vaoID, const glm::vec2& position, fl
     return vaoID;
 }
 
-
-
-GLuint OpenGLRenderer::DrawEntity(GLuint vaoID, const wEntity* entity, const glm::vec4& color, bool fill) {
-    Vector2 entityPosition = entity->GetPosition();
-    float width = entity->GetSize().x;
-    float height = entity->GetSize().y;
-
-    if (entity->HasTexture()) {
-        DrawTextureRect(vaoID, glm::vec2(entityPosition.x, entityPosition.y), width, height, entity->GetPhysicsObject());
-    }
-    else {
-        DrawRectangle(vaoID, glm::vec2(entityPosition.x, entityPosition.y), width, height, color, fill, entity->GetPhysicsObject());
-    }
-
-    return vaoID;
-}
 
 void OpenGLRenderer::DrawPoint(const glm::vec2& point, const glm::vec4& color) {
     glBegin(GL_POINTS);

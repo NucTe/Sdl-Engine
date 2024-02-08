@@ -15,6 +15,7 @@ project "Core"
   includedirs {
     "include/",
     DepsINC,
+    EngineINC,
   }
 
   libdirs {

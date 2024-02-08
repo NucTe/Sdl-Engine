@@ -1,20 +1,20 @@
-#include "SdlEngine/EMS/EntityManager.h"
+#include "Engine/EMS/EntityManager.h"
 
 EntityManager::EntityManager() {}
 
 EntityManager::~EntityManager() {
     // Cleanup entities when the manager is destroyed
-    for (wEntity* entity : entities) {
+    for (Entity* entity : entities) {
         delete entity;
     }
     entities.clear();
 }
 
-void EntityManager::AddEntity(wEntity* entity) {
+void EntityManager::AddEntity(Entity* entity) {
     entities.push_back(entity);
 }
 
-void EntityManager::RemoveEntity(wEntity* entity) {
+void EntityManager::RemoveEntity(Entity* entity) {
     auto it = std::find(entities.begin(), entities.end(), entity);
     if (it != entities.end()) {
         delete* it;
@@ -22,6 +22,6 @@ void EntityManager::RemoveEntity(wEntity* entity) {
     }
 }
 
-const std::vector<wEntity*>& EntityManager::GetEntities() const {
+const std::vector<Entity*>& EntityManager::GetEntities() const {
     return entities;
 }

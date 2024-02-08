@@ -23,8 +23,7 @@ project "Engine"
   }
 
   links {
-      "Core",
-      "freetype.lib"
+      "Core"
   }
 
   filter "configurations:Debug"

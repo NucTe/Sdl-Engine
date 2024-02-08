@@ -4,18 +4,52 @@
     <Filter Include="imgui">
       <UniqueIdentifier>{0098A80F-6CAC-D0C0-352E-7420A101CDF1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine">
+      <UniqueIdentifier>{EEA51C00-DA73-1006-C307-812CAF74EC6A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\GameLogic">
+      <UniqueIdentifier>{25DB47D9-1100-9759-3A4B-7CE926CF9577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\Input">
+      <UniqueIdentifier>{6D90F2F1-591F-7CBB-023E-90B6EEAB8C61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\Rendering">
+      <UniqueIdentifier>{BB3013D8-A755-6258-D0A0-47E8BC246176}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\GameLogic">
+      <UniqueIdentifier>{24BB0EBD-907B-8AF3-59B6-D370C535CFCF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{EC4823B3-58B3-D729-A1F1-88CF0D9BB57E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rendering">
+      <UniqueIdentifier>{BA10DABB-26D1-55F2-EF0B-9F6F5B8B9ACE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Engine\GameLogic\GameWorld.h">
+      <Filter>include\Engine\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Input\InputManager.h">
+      <Filter>include\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Rendering\Renderer.h">
+      <Filter>include\Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\EMS\EntityManager.h" />
+    <ClInclude Include="include\Engine\EMS\Entity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_draw.cpp">
-      <Filter>imgui</Filter>
-    </ClCompile>
-    <ClCompile Include="imgui\imgui_freetype.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
     <ClCompile Include="imgui\imgui_impl_opengl3.cpp">
@@ -30,8 +64,19 @@
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameLogic\GameWorld.cpp">
+      <Filter>src\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\InputManager.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rendering\Renderer.cpp">
+      <Filter>src\Rendering</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\EMS\Entity.cpp" />
+    <ClCompile Include="src\EMS\EntityManager.cpp" />
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@ workspace "Sdl-Engine"
 
 DepsINC = "$(SolutionDir)/dependencies/include"
 DepsLIB = "$(SolutionDir)/dependencies/lib"
+EngineINC = "$(SolutionDir)/Engine/include"
 
 include "Core"
 include "Game"

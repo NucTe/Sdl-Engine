@@ -33,12 +33,6 @@
     <ClInclude Include="include\SdlEngine\Collider.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\SdlEngine\EMS\EntityManager.h">
-      <Filter>include\SdlEngine\EMS</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SdlEngine\EMS\wEntity.h">
-      <Filter>include\SdlEngine\EMS</Filter>
-    </ClInclude>
     <ClInclude Include="include\SdlEngine\PhysicsObject.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
@@ -68,12 +62,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\EMS\Entity.cpp">
-      <Filter>src\EMS</Filter>
-    </ClCompile>
-    <ClCompile Include="src\EMS\EntityManager.cpp">
-      <Filter>src\EMS</Filter>
-    </ClCompile>
     <ClCompile Include="src\PhysicsObject.cpp">
       <Filter>src</Filter>
     </ClCompile>

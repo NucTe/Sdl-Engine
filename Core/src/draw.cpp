@@ -23,9 +23,3 @@ void Draw::TextureRect(const std::string& filePath, const glm::vec2& position, i
     OpenGLRenderer::DrawTextureRect(vaoID, position, width, height, physicsObject);
     glDeleteVertexArrays(1, &vaoID);
 }
-
-void Draw::Entity(const wEntity* entity, const glm::vec4& color, bool fill) {
-    GLuint vaoID = OpenGLRenderer::CreateRectangleVAO();
-    OpenGLRenderer::DrawEntity(vaoID, entity, color, fill);
-    glDeleteVertexArrays(1, &vaoID);
-}

@@ -56,7 +56,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>include;$(SolutionDir)\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;$(SolutionDir)\dependencies\include;$(SolutionDir)\Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
@@ -78,7 +78,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>include;$(SolutionDir)\dependencies\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;$(SolutionDir)\dependencies\include;$(SolutionDir)\Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -100,8 +100,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\SdlEngine\Collider.h" />
-    <ClInclude Include="include\SdlEngine\EMS\EntityManager.h" />
-    <ClInclude Include="include\SdlEngine\EMS\wEntity.h" />
     <ClInclude Include="include\SdlEngine\PhysicsObject.h" />
     <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h" />
     <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h" />
@@ -113,8 +111,6 @@
     <ClInclude Include="include\SdlEngine\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\EMS\Entity.cpp" />
-    <ClCompile Include="src\EMS\EntityManager.cpp" />
     <ClCompile Include="src\PhysicsObject.cpp" />
     <ClCompile Include="src\Renderer\OpenGLRenderer.cpp" />
     <ClCompile Include="src\Renderer\ShaderLoader.cpp" />
