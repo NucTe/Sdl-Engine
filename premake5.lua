@@ -1,7 +1,7 @@
 workspace "Sdl-Engine"
   configurations { "Debug", "Release" }
   architecture "x86_64"
-  startproject "Game"
+  startproject "Engine"
 
   flags {
     "MultiProcessorCompile"

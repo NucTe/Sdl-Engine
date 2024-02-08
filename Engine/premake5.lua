@@ -1,12 +1,13 @@
 project "Engine"
   kind "ConsoleApp"
-  targetdir ("%{wks.location}/bin/Game/%{cfg.buildcfg}")
-  objdir ("%{wks.location}/bin-int/Game/%{cfg.buildcfg}")
+  targetdir ("%{wks.location}/bin/Engine/%{cfg.buildcfg}")
+  objdir ("%{wks.location}/bin-int/Engine/%{cfg.buildcfg}")
 
   language "c++"
   cppdialect "c++17"
   
   files {
+    "imgui/**.cpp",
     "src/**.cpp",
     "include/**.h"
   }
@@ -22,7 +23,8 @@ project "Engine"
   }
 
   links {
-      "Core"
+      "Core",
+      "freetype.lib"
   }
 
   filter "configurations:Debug"
@@ -34,5 +36,7 @@ project "Engine"
       optimize "On"
 
    postbuildcommands {
-    '{COPY} %{wks.location}/dependencies/lib/**.dll %{cfg.buildtarget.directory}',
-  }
+    'echo Copying DLL files...',
+    '{COPY} %{wks.location}/dependencies/lib/*.dll %{wks.location}/bin/Engine/%{cfg.buildcfg}',
+    'echo DLL files copied.'
+    }

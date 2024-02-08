@@ -41,15 +41,15 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\Game\Debug\</OutDir>
-    <IntDir>..\bin-int\Game\Debug\Debug\Engine\</IntDir>
+    <OutDir>..\bin\Engine\Debug\</OutDir>
+    <IntDir>..\bin-int\Engine\Debug\</IntDir>
     <TargetName>Engine</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Game\Release\</OutDir>
-    <IntDir>..\bin-int\Game\Release\Release\Engine\</IntDir>
+    <OutDir>..\bin\Engine\Release\</OutDir>
+    <IntDir>..\bin-int\Engine\Release\</IntDir>
     <TargetName>Engine</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
@@ -69,6 +69,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -91,13 +92,23 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)\dependencies\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST $(SolutionDir)\dependencies\lib\**.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\**.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\**.dll $(TargetDir) &gt; nul)</Command>
+      <Command>echo Copying DLL files...
+IF EXIST $(SolutionDir)\dependencies\lib\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\*.dll $(SolutionDir)\bin\Engine\Release &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\*.dll $(SolutionDir)\bin\Engine\Release &gt; nul)
+echo DLL files copied.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_freetype.cpp" />
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="imgui\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>

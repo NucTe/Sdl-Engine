@@ -1,8 +1,9 @@
-#include <imgui.h>
-#include <backends/imgui_impl_sdl.h>
-#include <backends/imgui_impl_opengl3.h>
-#include <SDL.h>
-#include <SDL_opengl.h>
+#include <imgui/imgui.h>
+#include <imgui/backends/imgui_impl_sdl2.h>
+#include <imgui/backends/imgui_impl_opengl3.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_opengl.h>
+#include <iostream>
 
 int main(int argc, char* argv[]) {
     // Initialize SDL
