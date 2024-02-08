@@ -12,3 +12,4 @@ DepsLIB = "$(SolutionDir)/dependencies/lib"
 
 include "Core"
 include "Game"
+include "Engine"

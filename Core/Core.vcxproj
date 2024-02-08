@@ -106,10 +106,10 @@
     <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h" />
     <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h" />
     <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h" />
-    <ClInclude Include="include\SdlEngine\utils\JSON.h" />
     <ClInclude Include="include\SdlEngine\Vector2.h" />
     <ClInclude Include="include\SdlEngine\draw.h" />
     <ClInclude Include="include\SdlEngine\gameloop.h" />
+    <ClInclude Include="include\SdlEngine\utils\JSON.h" />
     <ClInclude Include="include\SdlEngine\window.h" />
   </ItemGroup>
   <ItemGroup>

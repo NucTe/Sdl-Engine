@@ -13,6 +13,9 @@
     <Filter Include="include\SdlEngine\Renderer">
       <UniqueIdentifier>{571A64B4-432A-1085-ACE3-74A39812FF1D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\SdlEngine\utils">
+      <UniqueIdentifier>{D1FD4CE1-3D35-9578-463F-F99BB2F5BB71}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
@@ -21,6 +24,9 @@
     </Filter>
     <Filter Include="src\Renderer">
       <UniqueIdentifier>{73D1DFBF-5F34-6F64-08BA-A71AF4FB3AE7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{6DAA42B6-D914-F72C-2253-A8D28EFCD481}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,10 +60,12 @@
     <ClInclude Include="include\SdlEngine\gameloop.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
+    <ClInclude Include="include\SdlEngine\utils\JSON.h">
+      <Filter>include\SdlEngine\utils</Filter>
+    </ClInclude>
     <ClInclude Include="include\SdlEngine\window.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\SdlEngine\utils\JSON.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EMS\Entity.cpp">
@@ -84,9 +92,11 @@
     <ClCompile Include="src\gameloop.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\JSON.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
     <ClCompile Include="src\window.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\JSON.cpp" />
   </ItemGroup>
 </Project>
