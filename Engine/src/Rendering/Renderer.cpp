@@ -1,9 +1,10 @@
 #include "Engine/Rendering/Renderer.h"
+#include "Engine/GameLogic/GameWorld.h"
 #include <SDL2/SDL.h>
 #include <iostream>
 
 namespace NUCTE_NS {
-    Renderer::Renderer(SDL_Window* window, void (*imguiFunc)()) : m_Window(window), m_imguiFunc(imguiFunc) {
+    Renderer::Renderer(SDL_Window* window) : m_Window(window) {
     }
 
     Renderer::~Renderer() {}

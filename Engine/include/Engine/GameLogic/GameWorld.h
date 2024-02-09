@@ -13,6 +13,18 @@ namespace NUCTE_NS {
         GameWorld(EntityManager& entityManager);
         ~GameWorld();
 
+        GameWorld(const GameWorld& other) : entityManager(other.entityManager) {
+            m_Entities = other.m_Entities;
+        }
+
+        GameWorld& operator=(const GameWorld& other) {
+            if (this != &other) {
+                entityManager = other.entityManager;
+                m_Entities = other.m_Entities;
+            }
+            return *this;
+        }
+
         void Update();
 
         const std::vector<Entity*>& GetEntities() const;

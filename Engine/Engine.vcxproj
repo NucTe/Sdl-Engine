@@ -100,6 +100,8 @@ echo DLL files copied.</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="include\Engine\App\Application.h" />
+    <ClInclude Include="include\Engine\App\ImGuiManager.h" />
     <ClInclude Include="include\Engine\EMS\Entity.h" />
     <ClInclude Include="include\Engine\EMS\EntityManager.h" />
     <ClInclude Include="include\Engine\GameLogic\GameWorld.h" />
@@ -114,6 +116,8 @@ echo DLL files copied.</Command>
     <ClCompile Include="imgui\imgui_impl_sdl2.cpp" />
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="src\App\Application.cpp" />
+    <ClCompile Include="src\App\ImGuiManager.cpp" />
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />
     <ClCompile Include="src\GameLogic\GameWorld.cpp" />

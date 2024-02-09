@@ -55,6 +55,8 @@
       <Filter>include\Engine\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine\utils.h" />
+    <ClInclude Include="include\Engine\App\Application.h" />
+    <ClInclude Include="include\Engine\App\ImGuiManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -92,5 +94,7 @@
     </ClCompile>
     <ClCompile Include="src\Rendering\Renderer.cpp" />
     <ClCompile Include="src\utils.cpp" />
+    <ClCompile Include="src\App\Application.cpp" />
+    <ClCompile Include="src\App\ImGuiManager.cpp" />
   </ItemGroup>
 </Project>

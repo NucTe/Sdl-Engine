@@ -7,14 +7,14 @@
 #include "SdlEngine/draw.h"
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
-#include "Engine/GameLogic/GameWorld.h"
 #include "Engine/utils.h"
-
 namespace NUCTE_NS {
+
+    class GameWorld;
 
     class Renderer {
     public:
-        Renderer(SDL_Window* m_window, void (*imguiFunc)());
+        Renderer(SDL_Window* m_window);
         ~Renderer();
         void Render(const GameWorld& gameWorld);
 
@@ -23,7 +23,6 @@ namespace NUCTE_NS {
         SDL_GLContext m_GLContext;
         OpenGLRenderer m_OpenGLRenderer;
         Draw m_draw;
-        void (*m_imguiFunc)();
 
         void InitializeOpenGL();
     };
