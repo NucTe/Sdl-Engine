@@ -10,6 +10,9 @@
     <Filter Include="include\Engine">
       <UniqueIdentifier>{EEA51C00-DA73-1006-C307-812CAF74EC6A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\Engine\EMS">
+      <UniqueIdentifier>{82E2D468-6EC6-95BE-D726-9011C3298040}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\Engine\GameLogic">
       <UniqueIdentifier>{25DB47D9-1100-9759-3A4B-7CE926CF9577}</UniqueIdentifier>
     </Filter>
@@ -22,6 +25,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\EMS">
+      <UniqueIdentifier>{416F2FA9-AD4E-AE44-B666-391B22C514A6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\GameLogic">
       <UniqueIdentifier>{24BB0EBD-907B-8AF3-59B6-D370C535CFCF}</UniqueIdentifier>
     </Filter>
@@ -33,6 +39,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="include\Engine\EMS\Entity.h">
+      <Filter>include\Engine\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\EMS\EntityManager.h">
+      <Filter>include\Engine\EMS</Filter>
+    </ClInclude>
     <ClInclude Include="include\Engine\GameLogic\GameWorld.h">
       <Filter>include\Engine\GameLogic</Filter>
     </ClInclude>
@@ -42,8 +54,7 @@
     <ClInclude Include="include\Engine\Rendering\Renderer.h">
       <Filter>include\Engine\Rendering</Filter>
     </ClInclude>
-    <ClInclude Include="include\Engine\EMS\EntityManager.h" />
-    <ClInclude Include="include\Engine\EMS\Entity.h" />
+    <ClInclude Include="include\Engine\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -64,19 +75,22 @@
     <ClCompile Include="imgui\imgui_widgets.cpp">
       <Filter>imgui</Filter>
     </ClCompile>
+    <ClCompile Include="src\EMS\Entity.cpp">
+      <Filter>src\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EMS\EntityManager.cpp">
+      <Filter>src\EMS</Filter>
+    </ClCompile>
     <ClCompile Include="src\GameLogic\GameWorld.cpp">
       <Filter>src\GameLogic</Filter>
     </ClCompile>
     <ClCompile Include="src\Input\InputManager.cpp">
       <Filter>src\Input</Filter>
     </ClCompile>
-    <ClCompile Include="src\Rendering\Renderer.cpp">
-      <Filter>src\Rendering</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\EMS\Entity.cpp" />
-    <ClCompile Include="src\EMS\EntityManager.cpp" />
+    <ClCompile Include="src\Rendering\Renderer.cpp" />
+    <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
 </Project>

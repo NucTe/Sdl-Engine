@@ -3,15 +3,18 @@
 #include <vector>
 #include "Entity.h"
 
-class EntityManager {
-public:
-    EntityManager();
-    ~EntityManager();
+namespace NUCTE_NS {
+    class EntityManager {
+    public:
+        EntityManager();
+        ~EntityManager();
 
-    void AddEntity(Entity* entity);
-    void RemoveEntity(Entity* entity);
-    const std::vector<Entity*>& GetEntities() const;
+        void AddEntity(Entity* entity);
+        void RemoveEntity(Entity* entity);
+        const std::vector<Entity*>& GetEntities() const;
 
-private:
-    std::vector<Entity*> entities;
-};
+    private:
+        std::vector<Entity*> entities;
+    };
+
+}

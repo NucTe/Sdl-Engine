@@ -5,19 +5,23 @@
 
 #include <vector>
 #include "Engine/EMS/EntityManager.h"
+#include "Engine/utils.h"
 
-class GameWorld {
-public:
-    GameWorld(EntityManager& entityManager);
-    ~GameWorld();
+namespace NUCTE_NS {
+    class GameWorld {
+    public:
+        GameWorld(EntityManager& entityManager);
+        ~GameWorld();
 
-    void Update();
+        void Update();
 
-    const std::vector<Entity*>& GetEntities() const;
+        const std::vector<Entity*>& GetEntities() const;
 
-private:
-    EntityManager& entityManager;
-    std::vector<Entity*> m_Entities;
-};
+    private:
+        EntityManager& entityManager;
+        std::vector<Entity*> m_Entities;
+    };
+}
+
 
 #endif // GAMEWORLD_H

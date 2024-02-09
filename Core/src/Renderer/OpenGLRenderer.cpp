@@ -13,9 +13,9 @@ GLuint OpenGLRenderer::shaderProgram = 0;
 OpenGLRenderer::OpenGLRenderer() {};
 OpenGLRenderer::~OpenGLRenderer() {};
 
-void OpenGLRenderer::Render(const GameWorld& gameWorld) {
-    const std::vector<Entity*>& entities = gameWorld.GetEntities();
-    for (Entity* entity : entities) {
+void OpenGLRenderer::Render(const NUCTE_NS::GameWorld& gameWorld) {
+    const std::vector<NUCTE_NS::Entity*>& entities = gameWorld.GetEntities();
+    for (NUCTE_NS::Entity* entity : entities) {
         Vector2 entityPosition = entity->GetPosition();
         float width = entity->GetSize().x;
         float height = entity->GetSize().y;

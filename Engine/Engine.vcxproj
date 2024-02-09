@@ -105,6 +105,7 @@ echo DLL files copied.</Command>
     <ClInclude Include="include\Engine\GameLogic\GameWorld.h" />
     <ClInclude Include="include\Engine\Input\InputManager.h" />
     <ClInclude Include="include\Engine\Rendering\Renderer.h" />
+    <ClInclude Include="include\Engine\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp" />
@@ -117,8 +118,9 @@ echo DLL files copied.</Command>
     <ClCompile Include="src\EMS\EntityManager.cpp" />
     <ClCompile Include="src\GameLogic\GameWorld.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
-    <ClCompile Include="src\Rendering\Renderer.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Rendering\Renderer.cpp" />
+    <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

@@ -7,9 +7,6 @@
     <Filter Include="include\SdlEngine">
       <UniqueIdentifier>{9143C106-FD59-BF9C-46D1-4ABEB2269024}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\SdlEngine\EMS">
-      <UniqueIdentifier>{A5990546-1106-C140-DAF9-589E4625E3A8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\SdlEngine\Renderer">
       <UniqueIdentifier>{571A64B4-432A-1085-ACE3-74A39812FF1D}</UniqueIdentifier>
     </Filter>
@@ -18,9 +15,6 @@
     </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\EMS">
-      <UniqueIdentifier>{416F2FA9-AD4E-AE44-B666-391B22C514A6}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Renderer">
       <UniqueIdentifier>{73D1DFBF-5F34-6F64-08BA-A71AF4FB3AE7}</UniqueIdentifier>

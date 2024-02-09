@@ -11,7 +11,7 @@ public:
     OpenGLRenderer();
     ~OpenGLRenderer();
 
-    void Render(const GameWorld& gameWorld); // Render the game world
+    void Render(const NUCTE_NS::GameWorld& gameWorld); // Render the game world
 
     static GLuint Initialize(const char* vertexShaderPath, const char* fragmentShaderPath);
     static GLuint CreateShaderProgram(const char* vertexShaderPath, const char* fragmentShaderPath);
