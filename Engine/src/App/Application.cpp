@@ -1,15 +1,13 @@
 #include "Engine/App/Application.h"
-#include "Engine/utils.h" // Include your utils.h file
+#include "Engine/utils.h"
 
 namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
-        : m_Running(true), m_Renderer(nullptr), m_em(EntityManager()), m_world(GameWorld(m_em)), m_ImGuiManager(ImGuiManager(m_Window)){
+        : m_Running(true), m_Renderer(nullptr), m_Entitym(nullptr), m_World(nullptr), m_ImGuiManager(nullptr) {
         InitializeSDL(windowTitle, screenWidth, screenHeight);
         InitializeOpenGL();
-        m_world = GameWorld(m_em);
-        m_Renderer = Renderer(m_Window);
-        m_ImGuiManager = ImGuiManager(m_Window);
+        InitializeExt();
     }
 
     Application::~Application() {
@@ -43,6 +41,14 @@ namespace NUCTE_NS {
             SDL_Quit();
             std::exit(EXIT_FAILURE);
         }
+        
+    }
+
+    void Application::InitializeExt() {
+        m_Entitym = new EntityManager();
+        m_World = new GameWorld(*m_Entitym);
+        m_Renderer = Renderer(m_Window);
+        m_ImGuiManager = ImGuiManager(m_Window);
     }
 
     void Application::InitializeOpenGL() {
@@ -116,7 +122,7 @@ namespace NUCTE_NS {
 
         // Render game content using the renderer
         // Pass game world data or any other necessary parameters
-        m_Renderer.Render(m_world);
+        m_Renderer.Render(m_World);
 
         // Swap buffers
         SDL_GL_SwapWindow(m_Window);

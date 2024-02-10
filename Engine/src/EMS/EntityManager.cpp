@@ -4,7 +4,6 @@ namespace NUCTE_NS {
     EntityManager::EntityManager() {}
 
     EntityManager::~EntityManager() {
-        // Cleanup entities when the manager is destroyed
         for (Entity* entity : entities) {
             delete entity;
         }

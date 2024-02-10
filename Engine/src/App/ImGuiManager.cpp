@@ -7,10 +7,11 @@ namespace NUCTE_NS {
         ImGui::CreateContext();
         ImGuiIO& io = ImGui::GetIO(); (void)io;
         ImGui::StyleColorsDark();
-
+        SDL_GL_MakeCurrent(window, SDL_GL_GetCurrentContext());
         ImGui_ImplSDL2_InitForOpenGL(window, SDL_GL_GetCurrentContext());
         ImGui_ImplOpenGL3_Init("#version 330");
     }
+
 
     ImGuiManager::~ImGuiManager() {
         ImGui_ImplOpenGL3_Shutdown();

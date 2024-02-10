@@ -21,13 +21,14 @@ namespace NUCTE_NS {
         SDL_Window* m_Window;
         SDL_GLContext m_GLContext;
         Renderer m_Renderer;
-        EntityManager m_em;
-        GameWorld m_world;
+        EntityManager m_Entitym;
+        GameWorld m_World;
         ImGuiManager m_ImGuiManager;
         bool m_Running;
 
         void InitializeSDL(const std::string& windowTitle, int screenWidth, int screenHeight);
         void InitializeOpenGL();
+        void InitializeExt();
         void Cleanup();
         void HandleEvents();
         void Update();

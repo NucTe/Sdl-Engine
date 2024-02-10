@@ -23,8 +23,6 @@ namespace NUCTE_NS {
         SDL_GLContext m_GLContext;
         OpenGLRenderer m_OpenGLRenderer;
         Draw m_draw;
-
-        void InitializeOpenGL();
     };
 }
 
