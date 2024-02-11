@@ -1,0 +1,38 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - dist
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install Visual Studio
+      uses: microsoft/setup-msbuild@v1
+      with:
+        vs-version: 'latest'
+
+    - name: Build project
+      run: msbuild /p:Configuration=Release /p:Platform=x64 /m /t:Rebuild
+
+    - name: Create GitHub Release
+      run: |
+        # Replace $GITHUB_TOKEN with the appropriate token
+        gh release create v1.0.0 --title "Release v1.0.0" --notes "Release notes here" --target dist
+
+    - name: Move artifacts to dist branch
+      run: |
+        mkdir dist
+        # Copy built artifacts to dist folder
+        # Replace <path_to_built_artifacts> with the appropriate path
+        cp <path_to_built_artifacts> dist/
+        git checkout -b dist
+        git add dist/*
+        git commit -m "Add built artifacts"
+        git push origin dist
