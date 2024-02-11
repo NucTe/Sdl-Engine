@@ -1,32 +1,50 @@
-name: Build and Deploy
+name: MSBuild and Deploy
 
 on:
   push:
     branches:
       - dist
 
+env:
+  # Path to the solution file relative to the root of the project.
+  SOLUTION_FILE_PATH: .
+
+  # Configuration type to build.
+  # You can convert this to a build matrix if you need coverage of multiple configuration types.
+  # https://docs.github.com/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
+  BUILD_CONFIGURATION: Release
+
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Install Visual Studio
-      uses: microsoft/setup-msbuild@v1
-      with:
-        vs-version: 'latest'
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
 
-    - name: Build project
-      run: msbuild /p:Configuration=Release /p:Platform=x64 /m /t:Rebuild
+    - name: Restore NuGet packages
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Build
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      # Add additional options to the MSBuild command line here (like platform or verbosity level).
+      # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
+      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
 
     - name: Create GitHub Release
+      if: github.ref == 'refs/heads/dist'
       run: |
         # Replace $GITHUB_TOKEN with the appropriate token
-        gh release create v1.0.0 --title "Release v1.0.0" --notes "Release notes here" --target dist
+        gh release create v1.0.0 --title "Release v1.0.0" --notes "Release notes here"
 
     - name: Move artifacts to dist branch
+      if: github.ref == 'refs/heads/dist'
       run: |
         mkdir dist
         # Copy built artifacts to dist folder
