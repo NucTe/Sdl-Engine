@@ -71,6 +71,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -93,8 +99,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PreBuildEvent>
+      <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
+    </PreBuildEvent>
     <PostBuildEvent>
-      <Command>echo Copying DLL files...
+      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)
+echo Copying DLL files...
 IF EXIST $(SolutionDir)\dependencies\lib\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\*.dll $(SolutionDir)\bin\Engine\Release &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\*.dll $(SolutionDir)\bin\Engine\Release &gt; nul)
 echo DLL files copied.</Command>
     </PostBuildEvent>
@@ -124,9 +134,7 @@ echo DLL files copied.</Command>
     <ClCompile Include="src\GameLogic\GameWorld.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Rendering\Renderer.cpp" />
-    <ClCompile Include="src\main.cpp">
-      <ObjectFileName>$(IntDir)\main20.obj</ObjectFileName>
-    </ClCompile>
+    <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>

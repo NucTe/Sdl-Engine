@@ -25,6 +25,16 @@ for _, path in ipairs(DepsINC) do
   includedirs { path }
 end
 
+local vendorPath = "$(SolutionDir)/vendors"
+local targetDir = path.join(vendorPath, "DLLs")
+postbuildcommands {
+  "{COPY} %{cfg.buildtarget.directory}/*.dll " .. targetDir
+}
+
+prebuildcommands {
+  "{COPY} " .. targetDir .. "/*.dll %{cfg.buildtarget.directory}"
+}
+
 include "Core"
 include "Game"
 include "Engine"
