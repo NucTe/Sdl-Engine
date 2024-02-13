@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="deps">
+      <UniqueIdentifier>{F1A1957C-DDD8-960D-86C5-7C1072DB120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui">
+      <UniqueIdentifier>{1BA06925-0758-AB72-705F-84CE5C364663}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\backends">
+      <UniqueIdentifier>{A568F040-11CA-CD4E-9A37-14010698040E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples">
+      <UniqueIdentifier>{293CB1EB-959D-8EF9-1E0B-D5AB8A6BC5B8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_allegro5">
+      <UniqueIdentifier>{DE025A46-CAE9-1B3E-733A-825B5F0095A4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_android_opengl3">
+      <UniqueIdentifier>{FBC2DC6E-6728-70F5-F000-12CE5C656564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_emscripten_wgpu">
+      <UniqueIdentifier>{DFE482E9-4B4A-1670-D422-B84840870BDF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_glfw_opengl2">
+      <UniqueIdentifier>{E9766B12-D5F3-5E55-FE70-5F69EA4CFBE8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_glfw_opengl3">
+      <UniqueIdentifier>{EA766B12-D6F3-5E55-FF70-5F69EB4CFBE8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_glfw_vulkan">
+      <UniqueIdentifier>{E35B9E85-4FEB-5F70-58E7-4088C4F59A7C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_glut_opengl2">
+      <UniqueIdentifier>{D5A494F1-C121-8834-EA9E-8848D67A24C8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_null">
+      <UniqueIdentifier>{1ED3F17D-0A24-DDBF-3388-CB811F387029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl2_directx11">
+      <UniqueIdentifier>{ACBE3437-9826-FB04-0192-0F1BED1812F1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl2_opengl2">
+      <UniqueIdentifier>{EE1EA3E5-DA9B-9628-0319-973CEFF432BC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl2_opengl3">
+      <UniqueIdentifier>{EF1EA3E5-DB9B-9628-0419-973CF0F432BC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl2_sdlrenderer2">
+      <UniqueIdentifier>{E3FF98B8-4F70-9B31-188F-15BA84BED332}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl2_vulkan">
+      <UniqueIdentifier>{4897CEB2-B426-909D-BD22-71B52931CBA9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl3_opengl3">
+      <UniqueIdentifier>{F08F1F5A-DC0C-139D-058A-13B1F165AF30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_sdl3_sdlrenderer3">
+      <UniqueIdentifier>{8539D9F3-F1A9-DB6C-BAC8-55F526F8136E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_win32_directx10">
+      <UniqueIdentifier>{E93BC874-55A1-5BFB-DE79-FDD34ADE506A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_win32_directx11">
+      <UniqueIdentifier>{EA3BC874-56A1-5BFB-DF79-FDD34BDE506A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_win32_directx12">
+      <UniqueIdentifier>{EB3BC874-57A1-5BFB-E079-FDD34CDE506A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_win32_directx9">
+      <UniqueIdentifier>{A1286368-8D90-2936-F6FB-3D4CE2824022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\examples\example_win32_opengl3">
+      <UniqueIdentifier>{AD341A69-194F-7D0A-6271-8D9ECECAA411}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\misc">
+      <UniqueIdentifier>{D6FBF86A-4287-662F-4B98-E923B7A2C22F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\misc\cpp">
+      <UniqueIdentifier>{A8703AF4-14D2-1702-9D3F-5EB409A04EC1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\misc\fonts">
+      <UniqueIdentifier>{AFFECEEC-1B6B-8AE7-E45E-2245508AAC4F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\imgui\misc\freetype">
+      <UniqueIdentifier>{49AB99BE-35D0-E83E-5E1B-CECE4A9FE75C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine">
+      <UniqueIdentifier>{EEA51C00-DA73-1006-C307-812CAF74EC6A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\App">
+      <UniqueIdentifier>{1ED6D468-0ABA-95BE-731A-90115F1D8040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\EMS">
+      <UniqueIdentifier>{82E2D468-6EC6-95BE-D726-9011C3298040}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\GameLogic">
+      <UniqueIdentifier>{25DB47D9-1100-9759-3A4B-7CE926CF9577}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\Input">
+      <UniqueIdentifier>{6D90F2F1-591F-7CBB-023E-90B6EEAB8C61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Engine\Rendering">
+      <UniqueIdentifier>{BB3013D8-A755-6258-D0A0-47E8BC246176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\App">
+      <UniqueIdentifier>{DD622FA9-4942-AE44-525A-391BBEB814A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\EMS">
+      <UniqueIdentifier>{416F2FA9-AD4E-AE44-B666-391B22C514A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\GameLogic">
+      <UniqueIdentifier>{24BB0EBD-907B-8AF3-59B6-D370C535CFCF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Input">
+      <UniqueIdentifier>{EC4823B3-58B3-D729-A1F1-88CF0D9BB57E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Rendering">
+      <UniqueIdentifier>{BA10DABB-26D1-55F2-EF0B-9F6F5B8B9ACE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Engine\App\Application.h">
+      <Filter>include\Engine\App</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\App\Ui.h">
+      <Filter>include\Engine\App</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\EMS\Entity.h">
+      <Filter>include\Engine\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\EMS\EntityManager.h">
+      <Filter>include\Engine\EMS</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\GameLogic\GameWorld.h">
+      <Filter>include\Engine\GameLogic</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Input\InputManager.h">
+      <Filter>include\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Rendering\Renderer.h">
+      <Filter>include\Engine\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\utils.h">
+      <Filter>include\Engine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\App\Application.cpp">
+      <Filter>src\App</Filter>
+    </ClCompile>
+    <ClCompile Include="src\App\Ui.cpp">
+      <Filter>src\App</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EMS\Entity.cpp">
+      <Filter>src\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EMS\EntityManager.cpp">
+      <Filter>src\EMS</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GameLogic\GameWorld.cpp">
+      <Filter>src\GameLogic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Input\InputManager.cpp">
+      <Filter>src\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Rendering\Renderer.cpp">
+      <Filter>src\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="imgui\imgui.cpp" />
+    <ClCompile Include="imgui\imgui_demo.cpp" />
+    <ClCompile Include="imgui\imgui_draw.cpp" />
+    <ClCompile Include="imgui\imgui_impl_sdl2.cpp" />
+    <ClCompile Include="imgui\imgui_tables.cpp" />
+    <ClCompile Include="imgui\imgui_widgets.cpp" />
+    <ClCompile Include="imgui\imgui_impl_opengl3.cpp" />
+  </ItemGroup>
+</Project>
