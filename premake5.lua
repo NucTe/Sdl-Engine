@@ -36,5 +36,5 @@ prebuildcommands {
 }
 
 include "Core"
-include "Game"
+include "Interface"
 include "Engine"

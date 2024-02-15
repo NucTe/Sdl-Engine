@@ -1,5 +1,5 @@
-project "Engine"
-  kind "ConsoleApp"
+project "Interface"
+  kind "StaticLib"
   targetdir ("%{wks.location}/bin/Engine/%{cfg.buildcfg}")
   objdir ("%{wks.location}/bin-int/Engine/%{cfg.buildcfg}")
 
@@ -7,14 +7,14 @@ project "Engine"
   cppdialect "c++17"
   
   files {
-    "imgui/**.cpp",
     "src/**.cpp",
     "include/**.h"
   }
 
   includedirs {
     "include/",
-    CoreINC
+    CoreINC,
+    EngineINC,
   }
 
   libdirs {
@@ -22,6 +22,5 @@ project "Engine"
   }
 
   links {
-    "Core",
-    "Interface",
+    "Core"
   }

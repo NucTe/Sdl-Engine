@@ -113,7 +113,7 @@
     <ClCompile Include="src\Rendering\Renderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\main.cpp">
+    <ClCompile Include="src\Engine.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\utils.cpp">

@@ -109,8 +109,8 @@ namespace NUCTE_NS {
     void Application::Render() {
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
         m_UI->Render();
-        m_Renderer.Render(m_World);
     }
 
 }

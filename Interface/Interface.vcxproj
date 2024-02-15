@@ -11,20 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7FA9857C-6BE0-860D-14CD-6C1000E3020F}</ProjectGuid>
+    <ProjectGuid>{764D2783-E2B7-DBF9-2BF6-8C9F979FB94E}</ProjectGuid>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Game</RootNamespace>
+    <RootNamespace>Interface</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
@@ -40,26 +40,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <OutDir>..\bin\Game\Debug\</OutDir>
-    <IntDir>..\bin-int\Game\Debug\</IntDir>
-    <TargetName>Game</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <OutDir>..\bin\Engine\Debug\</OutDir>
+    <IntDir>..\bin-int\Engine\Debug\Debug\Interface\</IntDir>
+    <TargetName>Interface</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <OutDir>..\bin\Game\Release\</OutDir>
-    <IntDir>..\bin-int\Game\Release\</IntDir>
-    <TargetName>Game</TargetName>
-    <TargetExt>.exe</TargetExt>
+    <OutDir>..\bin\Engine\Release\</OutDir>
+    <IntDir>..\bin-int\Engine\Release\Release\Interface\</IntDir>
+    <TargetName>Interface</TargetName>
+    <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>include;$(SolutionDir)\Core\include;$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;$(SolutionDir)\Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -67,10 +63,11 @@
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
     <PreBuildEvent>
       <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
     </PreBuildEvent>
@@ -82,40 +79,26 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>include;$(SolutionDir)\Core\include;$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <Optimization>Full</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;$(SolutionDir)\Engine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
-      <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SubSystem>Windows</SubSystem>
     </Link>
+    <Lib>
+      <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Lib>
     <PreBuildEvent>
       <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)
-IF EXIST $(SolutionDir)\dependencies\lib\**.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\**.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\**.dll $(TargetDir) &gt; nul)</Command>
+      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="include\gameloop.h" />
-    <ClInclude Include="include\player.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\game.cpp" />
-    <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\player.cpp" />
-  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</Project>

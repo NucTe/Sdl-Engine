@@ -19,7 +19,7 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
+    <UseDebugLibraries>false</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
@@ -42,14 +42,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Engine\Debug\</OutDir>
-    <IntDir>..\bin-int\Engine\Debug\</IntDir>
+    <IntDir>..\bin-int\Engine\Debug\Debug\Engine\</IntDir>
     <TargetName>Engine</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
+    <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Engine\Release\</OutDir>
-    <IntDir>..\bin-int\Engine\Release\</IntDir>
+    <IntDir>..\bin-int\Engine\Release\Release\Engine\</IntDir>
     <TargetName>Engine</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
@@ -57,9 +57,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -68,7 +66,6 @@
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
@@ -82,31 +79,22 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <Optimization>Full</Optimization>
-      <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
-      <StringPooling>true</StringPooling>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)\vendors;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PreBuildEvent>
       <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)
-echo Copying DLL files...
-IF EXIST $(SolutionDir)\dependencies\lib\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\dependencies\lib\*.dll $(SolutionDir)\bin\Engine\Release &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\dependencies\lib\*.dll $(SolutionDir)\bin\Engine\Release &gt; nul)
-echo DLL files copied.</Command>
+      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -134,12 +122,15 @@ echo DLL files copied.</Command>
     <ClCompile Include="src\GameLogic\GameWorld.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Rendering\Renderer.cpp" />
-    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">
       <Project>{2EB4837C-1AEB-840D-C3D7-6A10AFED000F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Interface\Interface.vcxproj">
+      <Project>{764D2783-E2B7-DBF9-2BF6-8C9F979FB94E}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

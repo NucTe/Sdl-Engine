@@ -26,7 +26,6 @@ namespace NUCTE_NS {
         ImGuiIO& io = ImGui::GetIO(); (void)io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
         io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
         ImGui::StyleColorsDark();
         ImGui_ImplSDL2_InitForOpenGL(m_Window, SDL_GL_GetCurrentContext());
         ImGui_ImplOpenGL3_Init("#version 130");
@@ -34,21 +33,25 @@ namespace NUCTE_NS {
 
     void UI::Render() {
         ImGuiIO& io = ImGui::GetIO(); (void)io;
+        ImGui::SetNextWindowSize(io.DisplaySize);
+        std::cout << "Display Size: " << io.DisplaySize.x << ", " << io.DisplaySize.y << std::endl;
+
         ImGui_ImplOpenGL3_NewFrame();
         ImGui_ImplSDL2_NewFrame(m_Window);
         ImGui::NewFrame();
 
-        ImGui::Begin("Test Window");
-        ImGui::Text("This is a test window");
+        ImGui::DockSpaceOverViewport();
+
+        ImGui::Begin("Main Window");
+        ImGui::Text("This is the main window");
         ImGui::End();
 
         ImGui::Render();
-        ImGui::UpdatePlatformWindows();
-        ImGui::RenderPlatformWindowsDefault();
+
         glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
         SDL_GL_SwapWindow(m_Window);
 
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
     void UI::Events(SDL_Event event) {
