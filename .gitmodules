@@ -12,3 +12,6 @@
 	path = deps/SDL2
 	url = https://github.com/libsdl-org/SDL
 	branch = SDL2
+[submodule "deps/Physics"]
+	path = deps/Physics
+	url = https://github.com/NucTe/NucTe-Physics
