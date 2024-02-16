@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef ENTITYMANAGER_H
+#define ENTITYMANAGER_H
+
 #include <vector>
 #include "Entity.h"
 
@@ -18,3 +21,4 @@ namespace NUCTE_NS {
     };
 
 }
+#endif 

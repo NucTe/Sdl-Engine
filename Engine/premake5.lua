@@ -22,6 +22,6 @@ project "Engine"
   }
 
   links {
-    "Core",
-    "Interface",
+    "Core.lib",
+    "Interface.lib",
   }

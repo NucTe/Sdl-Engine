@@ -42,14 +42,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Engine\Debug\</OutDir>
-    <IntDir>..\bin-int\Engine\Debug\Debug\Engine\</IntDir>
+    <IntDir>..\bin-int\Engine\Debug\</IntDir>
     <TargetName>Engine</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\bin\Engine\Release\</OutDir>
-    <IntDir>..\bin-int\Engine\Release\Release\Engine\</IntDir>
+    <IntDir>..\bin-int\Engine\Release\</IntDir>
     <TargetName>Engine</TargetName>
     <TargetExt>.exe</TargetExt>
   </PropertyGroup>
@@ -57,7 +57,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\Physics\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -79,7 +79,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\deps\SDL2\include;$(SolutionDir)\deps\Physics\include;$(SolutionDir)\deps\glm;$(SolutionDir)\deps;include;$(SolutionDir)\Core\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <MinimalRebuild>false</MinimalRebuild>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -119,10 +119,10 @@
     <ClCompile Include="src\App\Ui.cpp" />
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />
+    <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\GameLogic\GameWorld.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Rendering\Renderer.cpp" />
-    <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>

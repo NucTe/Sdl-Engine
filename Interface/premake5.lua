@@ -1,7 +1,7 @@
 project "Interface"
   kind "StaticLib"
-  targetdir ("%{wks.location}/bin/Engine/%{cfg.buildcfg}")
-  objdir ("%{wks.location}/bin-int/Engine/%{cfg.buildcfg}")
+  targetdir ("%{wks.location}/bin/Interface/%{cfg.buildcfg}")
+  objdir ("%{wks.location}/bin-int/Interface/%{cfg.buildcfg}")
 
   language "c++"
   cppdialect "c++17"
@@ -24,3 +24,11 @@ project "Interface"
   links {
     "Core"
   }
+
+  filter "configurations:Debug"
+        defines { "DEBUG" }
+        symbols "On"
+
+  filter "configurations:Release"
+      defines { "NDEBUG" }
+      optimize "On"

@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef ENTITY_H
+#define ENTITY_H
+
 #include <GL/glew.h>
 #include "SdlEngine/Vector2.h"
 #include "SdlEngine/PhysicsObject.h"
@@ -37,3 +40,4 @@ namespace NUCTE_NS {
     };
 }
 
+#endif

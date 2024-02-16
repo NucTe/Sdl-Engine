@@ -5,11 +5,7 @@ PhysicsObject::PhysicsObject(const Vector2& position, const Vector2& size, bool 
 
 
 void PhysicsObject::Update(float deltaTime) {
-    if (applyGravity) {
-        ApplyGravity(9.8f);
-    }
-    velocity += acceleration * deltaTime;
-    position += velocity * deltaTime;
+ 
 }
 
 Vector2 PhysicsObject::GetPosition() const {

@@ -1,5 +1,8 @@
 #pragma once
 
+#ifndef APPLICATION_H
+#define APPLICATION_H
+
 #include <string>
 #include "Engine/Rendering/Renderer.h"
 #include "Engine/GameLogic/GameWorld.h"
@@ -24,6 +27,9 @@ namespace NUCTE_NS {
         EntityManager m_Entitym;
         GameWorld m_World;
         UI* m_UI;
+
+        int m_ScreenWidth;
+        int m_ScreenHeight;
         bool m_Running;
 
         void InitializeSDL(const std::string& windowTitle, int screenWidth, int screenHeight);
@@ -35,3 +41,5 @@ namespace NUCTE_NS {
     };
 
 }
+
+#endif

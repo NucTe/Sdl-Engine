@@ -104,6 +104,9 @@
     <ClCompile Include="src\EMS\EntityManager.cpp">
       <Filter>src\EMS</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\GameLogic\GameWorld.cpp">
       <Filter>src\GameLogic</Filter>
     </ClCompile>
@@ -112,9 +115,6 @@
     </ClCompile>
     <ClCompile Include="src\Rendering\Renderer.cpp">
       <Filter>src\Rendering</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine.cpp">
-      <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\utils.cpp">
       <Filter>src</Filter>

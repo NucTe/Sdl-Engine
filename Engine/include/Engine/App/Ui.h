@@ -1,28 +1,41 @@
+#pragma once
+
 #ifndef UI_H
 #define UI_H
 
+#include <vector>
 #include <SDL2/SDL.h>
 #include "imgui/imgui.h"
+#include "imgui/backends/imgui_impl_sdl2.h"
+#include "imgui/backends/imgui_impl_opengl3.h"
+
+#include "Engine/utils.h"
 
 namespace NUCTE_NS {
-
-    class Application;
+    struct Viewport {
+        SDL_Window* window;
+        SDL_GLContext glContext;
+    };
 
     class UI {
     public:
-        UI(Application* application);
+        UI();
         ~UI();
 
-        void InitImgui();
-        void Render();
-        void Events(SDL_Event event);
+        void InitImgui(SDL_Window* mainWindow);
+        void Events(SDL_Event* event);
+        void Render(int Width, int Height);
+        
+        void AddViewport(SDL_Window* window, int width, int height);
+        void RemoveViewport(SDL_Window* window);
+        
 
     private:
-        SDL_Window* m_Window;
+        std::vector<Viewport> m_Viewports;
         ImGuiContext* m_ImGuiContext;
-        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+        void RenderViewport(SDL_Window* window, int width, int height);
     };
 
 }
-
 #endif

@@ -13,6 +13,7 @@ EngineINC = "$(SolutionDir)/Engine/include"
 
 DepsINC = {
   "$(SolutionDir)/deps/SDL2/include",
+  "$(SolutionDir)/deps/Physics/include",
   "$(SolutionDir)/deps/glm/",
   "$(SolutionDir)/deps/",
 }

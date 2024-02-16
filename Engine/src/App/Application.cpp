@@ -7,11 +7,17 @@
 namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
-        : m_Running(true), m_Renderer(nullptr), m_Entitym(), m_World(m_Entitym)
+        : m_Running(nullptr), m_Renderer(nullptr), m_Entitym(), m_World(m_Entitym)
         , m_Window(nullptr), m_GLContext(nullptr), m_UI(nullptr) {
+        NE_ASSERT("TUN");
         InitializeSDL(windowTitle, screenWidth, screenHeight);
         InitializeOpenGL();
-        m_UI = new UI(this);
+        m_UI = new UI();
+        m_UI->InitImgui(m_Window);
+        m_UI->AddViewport(m_Window, screenWidth, screenHeight);
+
+        m_Running = true;
+       
     }
 
     Application::~Application() {
@@ -51,8 +57,18 @@ namespace NUCTE_NS {
             std::exit(EXIT_FAILURE);
         }
 
-        SDL_GLContext glContext = SDL_GL_CreateContext(m_Window);
-        SDL_GL_MakeCurrent(m_Window, glContext);
+        
+        m_GLContext = SDL_GL_CreateContext(m_Window);
+        if (!m_GLContext) {
+            std::cerr << "Failed to create OpenGL context!" << std::endl;
+            SDL_DestroyWindow(m_Window);
+            SDL_Quit();
+            std::exit(EXIT_FAILURE);
+        }
+
+        m_ScreenHeight = screenHeight;
+        m_ScreenWidth = screenWidth;
+        SDL_GL_MakeCurrent(m_Window, m_GLContext);
         SDL_GL_SetSwapInterval(1);
     }
 
@@ -95,7 +111,7 @@ namespace NUCTE_NS {
         SDL_Event event;
         while (SDL_PollEvent(&event))
         {
-            m_UI->Events(event);
+            m_UI->Events(&event);
             if (event.type == SDL_QUIT)
                 m_Running = false;
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(m_Window))
@@ -110,7 +126,9 @@ namespace NUCTE_NS {
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        m_UI->Render();
+        m_UI->Render(m_ScreenWidth, m_ScreenHeight);
+
+        SDL_GL_SwapWindow(m_Window);
     }
 
 }
