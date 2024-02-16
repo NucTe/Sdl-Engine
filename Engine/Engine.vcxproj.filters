@@ -48,7 +48,7 @@
     <ClInclude Include="include\Engine\App\Application.h">
       <Filter>include\Engine\App</Filter>
     </ClInclude>
-    <ClInclude Include="include\Engine\App\Ui.h">
+    <ClInclude Include="include\Engine\App\ImGuiHelper.h">
       <Filter>include\Engine\App</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine\EMS\Entity.h">
@@ -95,7 +95,7 @@
     <ClCompile Include="src\App\Application.cpp">
       <Filter>src\App</Filter>
     </ClCompile>
-    <ClCompile Include="src\App\Ui.cpp">
+    <ClCompile Include="src\App\ImGuiHelper.cpp">
       <Filter>src\App</Filter>
     </ClCompile>
     <ClCompile Include="src\EMS\Entity.cpp">
