@@ -99,7 +99,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="include\Engine\App\Application.h" />
-    <ClInclude Include="include\Engine\App\ImGuiHelper.h" />
+    <ClInclude Include="include\Engine\App\Imgui\ImGuiHelper.h" />
     <ClInclude Include="include\Engine\App\UI.h" />
     <ClInclude Include="include\Engine\EMS\Entity.h" />
     <ClInclude Include="include\Engine\EMS\EntityManager.h" />
@@ -117,7 +117,7 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\App\Application.cpp" />
-    <ClCompile Include="src\App\ImGuiHelper.cpp" />
+    <ClCompile Include="src\App\Imgui\ImGuiHelper.cpp" />
     <ClCompile Include="src\App\UI.cpp" />
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />

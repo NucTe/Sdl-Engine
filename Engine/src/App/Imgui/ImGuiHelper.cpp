@@ -1,4 +1,4 @@
-#include "Engine/App/ImGuiHelper.h"
+#include "Engine/App/Imgui/ImGuiHelper.h"
 #include "SdlEngine/window.h"
 #include <iostream>
 
@@ -36,8 +36,6 @@ namespace NUCTE_NS {
         ImGui_ImplOpenGL3_Shutdown();
         ImGui_ImplSDL2_Shutdown();
         ImGui::DestroyContext();
-
-        ImGui::DockSpaceOverViewport();
     }
 
     void ImGuiHelper::newFrame() {
@@ -48,9 +46,11 @@ namespace NUCTE_NS {
 
     void ImGuiHelper::render() {
         ImGuiIO& io = ImGui::GetIO(); (void)io;
-        glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-
+        std::cout << "Display Size: " << io.DisplaySize.x << ", " << io.DisplaySize.y << std::endl; // Debug stateme
         ImGui::Render();
+        glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
+        glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
+        glClear(GL_COLOR_BUFFER_BIT);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
 
@@ -79,15 +79,12 @@ namespace NUCTE_NS {
                 return dockNode->ID;
             }
         }
-        return 0;
+        return ImGui::GetID("MyDockspace");
     }
 
-
     ImGuiID ImGuiHelper::GetDockspaceNodeID(std::string DockID) const {
-        ImGuiViewport* viewport = ImGui::GetMainViewport();
-        ImGuiID dockspaceID = viewport->ID;
-        ImGuiID dockNodeID = dockspaceID ? dockspaceID : ImGui::GetID(DockID.c_str());
-        return dockNodeID;
+        ImGuiID dockspaceID = ImGui::GetID(DockID.c_str());
+        return dockspaceID;
     }
 
 

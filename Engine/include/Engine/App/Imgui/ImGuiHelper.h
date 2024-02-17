@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef UI_H
-#define UI_H
+#ifndef IMGUIHELPER_H
+#define IMGUIHELPER_H
 
 #include "SdlEngine/window.h"
 #include <vector>
@@ -34,6 +34,7 @@ namespace NUCTE_NS {
         static void update();
     private:
         ::Window* m_win;
+        ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
     };
 
 }

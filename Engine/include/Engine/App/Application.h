@@ -7,7 +7,7 @@
 #include "Engine/Rendering/Renderer.h"
 #include "Engine/GameLogic/GameWorld.h"
 #include "Engine/EMS/EntityManager.h"
-#include "Engine/App/ImGuiHelper.h"
+#include "Engine/App/Imgui/ImGuiHelper.h"
 #include "Engine/App/UI.h"
 
 class Window;
