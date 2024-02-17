@@ -69,6 +69,7 @@
     <ClInclude Include="include\Engine\utils.h">
       <Filter>include\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="include\Engine\App\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -116,8 +117,6 @@
     <ClCompile Include="src\Rendering\Renderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
+    <ClCompile Include="src\App\UI.cpp" />
   </ItemGroup>
 </Project>

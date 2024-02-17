@@ -100,6 +100,7 @@
   <ItemGroup>
     <ClInclude Include="include\Engine\App\Application.h" />
     <ClInclude Include="include\Engine\App\ImGuiHelper.h" />
+    <ClInclude Include="include\Engine\App\UI.h" />
     <ClInclude Include="include\Engine\EMS\Entity.h" />
     <ClInclude Include="include\Engine\EMS\EntityManager.h" />
     <ClInclude Include="include\Engine\GameLogic\GameWorld.h" />
@@ -117,13 +118,13 @@
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="src\App\Application.cpp" />
     <ClCompile Include="src\App\ImGuiHelper.cpp" />
+    <ClCompile Include="src\App\UI.cpp" />
     <ClCompile Include="src\EMS\Entity.cpp" />
     <ClCompile Include="src\EMS\EntityManager.cpp" />
     <ClCompile Include="src\Engine.cpp" />
     <ClCompile Include="src\GameLogic\GameWorld.cpp" />
     <ClCompile Include="src\Input\InputManager.cpp" />
     <ClCompile Include="src\Rendering\Renderer.cpp" />
-    <ClCompile Include="src\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.vcxproj">

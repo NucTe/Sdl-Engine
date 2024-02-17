@@ -11,12 +11,14 @@
 #include "gameloop.h"
 #include "Renderer/OpenGLRenderer.h"
 
+#include "Engine/utils.h"
+
 class Window {
 public:
     Window();
     ~Window();
     void Run(std::string vertexShaderPath = "", std::string fragmentShaderPath = "");
-    void CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop);
+    void CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop = nullptr);
     void ToggleFullscreen();
     void SetWindowSize(int width, int height);
     int GetScreenWidth();

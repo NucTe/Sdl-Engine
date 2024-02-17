@@ -1,7 +1,8 @@
-#include "Engine/App/Application.h"
-#include "Engine/utils.h"
-
 #include "SdlEngine/window.h"
+
+#include "Engine/App/Application.h"
+#include "Engine/App/UI.h"
+#include "Engine/utils.h"
 
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
@@ -10,14 +11,15 @@ namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
         : m_Running(nullptr), m_Renderer(nullptr), m_Entitym(), m_World(m_Entitym)
-        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr) {
-        NE_ASSERT("TUN");
+        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr) {
 
-        m_Window = new Window();
+        m_Window = new ::Window();
         m_Window->CreateWindow(windowTitle, screenWidth, screenHeight, false, nullptr);
 
         m_IGH = new ImGuiHelper();
         m_IGH->initialize(m_Window);
+
+        m_UI = new UI(m_IGH, m_Window);
 
         m_Running = true;
        
@@ -38,7 +40,6 @@ namespace NUCTE_NS {
 
 
     void Application::Cleanup() {
-        Cleanup();
         delete m_IGH;
         delete m_Window;
     }
@@ -62,9 +63,7 @@ namespace NUCTE_NS {
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        m_IGH->render();
-
-        SDL_GL_SwapWindow(m_Window->GetSDLWindow());
+        m_UI->Render();
     }
 
 }
