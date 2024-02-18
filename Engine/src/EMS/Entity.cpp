@@ -2,7 +2,7 @@
 
 namespace NUCTE_NS {
     Entity::Entity(const Vector2& position, const Vector2& size, const std::string& textureFilePath, bool hasPhysics, bool applyGravity)
-        : position(position), size(size), physicsObject(position, size, applyGravity), hasPhysics(hasPhysics), textureFilePath(textureFilePath) {
+        : position(position), size(size), hasPhysics(hasPhysics), textureFilePath(textureFilePath) {
         glGenVertexArrays(1, &vaoID);
         hasTexture = !textureFilePath.empty();
     }
@@ -12,9 +12,6 @@ namespace NUCTE_NS {
     }
 
     void Entity::Update(float deltaTime) {
-        if (hasPhysics) {
-            physicsObject.Update(deltaTime);
-        }
     }
 
     void Entity::Render() {
@@ -22,15 +19,11 @@ namespace NUCTE_NS {
     }
 
     Vector2 Entity::GetPosition() const {
-        return physicsObject.GetPosition();
+        return Vector2{ 1,2 };
     }
 
     Vector2 Entity::GetSize() const {
-        return physicsObject.GetSize();
-    }
-
-    PhysicsObject* Entity::GetPhysicsObject() const {
-        return const_cast<PhysicsObject*>(&physicsObject);
+        return Vector2{ 1,2 };
     }
 
     bool Entity::HasTexture() const {

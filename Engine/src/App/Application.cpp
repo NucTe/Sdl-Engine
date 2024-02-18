@@ -10,8 +10,8 @@
 namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
-        : m_Running(nullptr), m_Renderer(nullptr), m_Entitym(), m_World(m_Entitym)
-        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr) {
+        : m_Running(nullptr), m_Entitym(), m_World(m_Entitym)
+        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr), m_Renderer(nullptr) {
 
         m_Window = new ::Window();
         m_Window->CreateWindow(windowTitle, screenWidth, screenHeight, false, nullptr);
@@ -19,7 +19,9 @@ namespace NUCTE_NS {
         m_IGH = new ImGuiHelper();
         m_IGH->initialize(m_Window);
 
-        m_UI = new UI(m_IGH, m_Window);
+        m_UI = new UI(m_IGH, m_Window, this);
+
+        m_Renderer = new Renderer(m_Window);
 
         m_Running = true;
        
@@ -42,6 +44,8 @@ namespace NUCTE_NS {
     void Application::Cleanup() {
         delete m_IGH;
         delete m_Window;
+        delete m_UI;
+        delete m_Renderer;
     }
 
     void Application::HandleEvents() {
@@ -60,10 +64,7 @@ namespace NUCTE_NS {
     }
 
     void Application::Render() {
-        glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        m_UI->Render();
+        m_UI->Render(m_World);
     }
 
 }

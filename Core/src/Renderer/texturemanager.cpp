@@ -6,9 +6,14 @@ std::unordered_map<std::string, GLuint> TextureManager::textureMap;
 GLuint TextureManager::vaoID = 0;
 GLuint TextureManager::vboID = 0;
 
+GLuint TextureManager::CreateTextureID() {
+    GLuint texture;
+    glGenTextures(1, &texture);
+    return texture;
+}
 
-GLuint TextureManager::LoadTexture(const std::string& filePath, int rectWidth, int rectHeight) {
-    GLuint texture = 0;
+GLuint TextureManager::LoadTexture(const std::string& filePath) {
+    GLuint texture = CreateTextureID();
 
     int width, height, channels;
     unsigned char* image = stbi_load(filePath.c_str(), &width, &height, &channels, STBI_rgb_alpha);
@@ -33,9 +38,9 @@ GLuint TextureManager::LoadTexture(const std::string& filePath, int rectWidth, i
     return texture;
 }
 
-GLuint TextureManager::DrawRect(const std::string& filePath, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject) {
+GLuint TextureManager::DrawRect(const std::string& filePath, const glm::vec2& position, int width, int height) {
     GLuint vaoID = OpenGLRenderer::CreateTextureRectVAO(filePath, width, height);
-    OpenGLRenderer::DrawTextureRect(vaoID, position, width, height, physicsObject);
+    OpenGLRenderer::DrawTextureRect(vaoID, position, width, height);
     return vaoID;
 }
 

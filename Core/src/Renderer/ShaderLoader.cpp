@@ -5,6 +5,11 @@
 #include <filesystem>
 
 GLuint ShaderLoader::LoadShader(const char* filePath, GLenum shaderType) {
+    if (!std::filesystem::exists(filePath)) {
+        std::cerr << "Shader file does not exist: " << filePath << std::endl;
+        return 0;
+    }
+
     std::ifstream shaderFile(filePath);
     if (!shaderFile.is_open()) {
         std::cerr << "Failed to open shader file: " << filePath << std::endl;
@@ -16,6 +21,11 @@ GLuint ShaderLoader::LoadShader(const char* filePath, GLenum shaderType) {
     shaderFile.close();
 
     std::string shaderCode = shaderStream.str();
+    if (shaderCode.empty()) {
+        std::cerr << "Shader file is empty: " << filePath << std::endl;
+        return 0;
+    }
+
     const char* shaderCodePtr = shaderCode.c_str();
 
     GLuint shaderID = glCreateShader(shaderType);
@@ -34,14 +44,37 @@ GLuint ShaderLoader::LoadShader(const char* filePath, GLenum shaderType) {
     return shaderID;
 }
 
-GLuint ShaderLoader::CreateShaderProgram(const char* vertexShaderPath, const char* fragmentShaderPath) {
-    std::filesystem::path absoluteVertexPath = std::filesystem::absolute(vertexShaderPath);
-    std::filesystem::path absoluteFragmentPath = std::filesystem::absolute(fragmentShaderPath);
-    std::string aVertexPath = absoluteVertexPath.string();
-    std::string afragmentPath = absoluteFragmentPath.string();
+GLuint ShaderLoader::LoadShaderFromMemory(const char* shaderCode, GLenum shaderType) {
+    const char* shaderCodePtr = shaderCode;
 
-    GLuint vertexShader = LoadShader(aVertexPath.c_str(), GL_VERTEX_SHADER);
-    GLuint fragmentShader = LoadShader(afragmentPath.c_str(), GL_FRAGMENT_SHADER);
+    GLuint shaderID = glCreateShader(shaderType);
+    glShaderSource(shaderID, 1, &shaderCodePtr, nullptr);
+    glCompileShader(shaderID);
+
+    GLint success;
+    glGetShaderiv(shaderID, GL_COMPILE_STATUS, &success);
+    if (!success) {
+        GLchar infoLog[512];
+        glGetShaderInfoLog(shaderID, sizeof(infoLog), nullptr, infoLog);
+        std::cerr << "Shader compilation error:\n" << infoLog << std::endl;
+        return 0;
+    }
+
+    return shaderID;
+}
+
+
+GLuint ShaderLoader::CreateShaderProgram(const char* mvertexShader, const char* mfragmentShader, bool ShaderMem) {
+    GLuint vertexShader, fragmentShader;
+    if (ShaderMem) {
+        vertexShader = LoadShaderFromMemory(mvertexShader, GL_VERTEX_SHADER);
+        fragmentShader = LoadShaderFromMemory(mfragmentShader, GL_FRAGMENT_SHADER);
+    }
+    else {
+        vertexShader = LoadShader(mvertexShader, GL_VERTEX_SHADER);
+        fragmentShader = LoadShader(mfragmentShader, GL_FRAGMENT_SHADER);
+    }
+    
 
     if (vertexShader == 0 || fragmentShader == 0) {
         std::cerr << "Failed to load shaders." << std::endl;

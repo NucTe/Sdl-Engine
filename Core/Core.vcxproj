@@ -114,8 +114,6 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="include\SdlEngine\Collider.h" />
-    <ClInclude Include="include\SdlEngine\PhysicsObject.h" />
     <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h" />
     <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h" />
     <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h" />
@@ -126,7 +124,6 @@
     <ClInclude Include="include\SdlEngine\window.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\PhysicsObject.cpp" />
     <ClCompile Include="src\Renderer\OpenGLRenderer.cpp" />
     <ClCompile Include="src\Renderer\ShaderLoader.cpp" />
     <ClCompile Include="src\Renderer\texturemanager.cpp" />

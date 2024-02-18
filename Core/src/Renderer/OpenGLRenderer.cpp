@@ -22,11 +22,11 @@ void OpenGLRenderer::Render(const NUCTE_NS::GameWorld& gameWorld) {
         std::string filepath = entity->GetTextureFilePath();
         if (entity->HasTexture()) {
             int Vao = CreateTextureRectVAO(filepath, width, height);
-            DrawTextureRect(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, entity->GetPhysicsObject());
+            DrawTextureRect(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height);
         }
         else {
             int Vao = CreateRectangleVAO();
-            DrawRectangle(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, {0, 0, 0, 0}, true, entity->GetPhysicsObject());
+            DrawRectangle(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, {0, 0, 0, 0}, true);
         }
     }
 }
@@ -87,7 +87,7 @@ GLuint OpenGLRenderer::CreateRectangleVAO() {
 GLuint OpenGLRenderer::CreateTextureRectVAO(const std::string& filePath, int width, int height) {
     GLuint vaoID, vboID, textureID;
 
-    textureID = TextureManager::LoadTexture(filePath, width, height);
+    textureID = TextureManager::LoadTexture(filePath);
 
     GLfloat vertices[] = {
 
@@ -119,7 +119,7 @@ GLuint OpenGLRenderer::CreateTextureRectVAO(const std::string& filePath, int wid
 
 // Drawing Funcions
 
-GLuint OpenGLRenderer::DrawTextureRect(GLuint vaoID, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject) {
+GLuint OpenGLRenderer::DrawTextureRect(GLuint vaoID, const glm::vec2& position, int width, int height) {
     glBindVertexArray(vaoID);
 
     glm::mat4 model = glm::mat4(1.0f);
@@ -136,7 +136,7 @@ GLuint OpenGLRenderer::DrawTextureRect(GLuint vaoID, const glm::vec2& position, 
     return vaoID;
 }
 
-GLuint OpenGLRenderer::DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill, PhysicsObject* physicsObject) {
+GLuint OpenGLRenderer::DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill) {
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(position.x, position.y, 0.0f));
     model = glm::scale(model, glm::vec3(width, height, 1.0f));

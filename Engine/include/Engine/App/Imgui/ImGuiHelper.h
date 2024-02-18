@@ -4,6 +4,7 @@
 #define IMGUIHELPER_H
 
 #include "SdlEngine/window.h"
+#include "SdlEngine/Renderer/texturemanager.h"
 #include <vector>
 #include <SDL2/SDL.h>
 #include "imgui/imgui.h"

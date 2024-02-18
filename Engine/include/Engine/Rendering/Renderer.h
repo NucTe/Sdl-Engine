@@ -4,7 +4,12 @@
 #define RENDERER_H
 
 #include "SdlEngine/Renderer/OpenGLRenderer.h"
+#include "SdlEngine/Renderer/ShaderLoader.h"
+
 #include "SdlEngine/draw.h"
+#include "SdlEngine/window.h"
+
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
 #include "Engine/utils.h"
@@ -14,15 +19,14 @@ namespace NUCTE_NS {
 
     class Renderer {
     public:
-        Renderer(SDL_Window* m_window);
+        Renderer(Window* m_Window);
         ~Renderer();
-        void Render(const GameWorld& gameWorld);
+        static void Render(const GameWorld& gameWorld);
 
     private:
-        SDL_Window* m_Window;
-        SDL_GLContext m_GLContext;
-        OpenGLRenderer m_OpenGLRenderer;
-        Draw m_draw;
+        Window* m_Window;
+        GLuint m_ShaderProgram;
+        ShaderLoader m_shaderLoader;
     };
 }
 

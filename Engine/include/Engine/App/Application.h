@@ -6,7 +6,9 @@
 #include <string>
 #include "Engine/Rendering/Renderer.h"
 #include "Engine/GameLogic/GameWorld.h"
+
 #include "Engine/EMS/EntityManager.h"
+
 #include "Engine/App/Imgui/ImGuiHelper.h"
 #include "Engine/App/UI.h"
 
@@ -15,6 +17,8 @@ class Window;
 namespace NUCTE_NS {
 
     class ImGuiHelper;
+    class Renderer;
+
     class Application {
     public:
         Application(const std::string& windowTitle, int screenWidth, int screenHeight);
@@ -25,7 +29,7 @@ namespace NUCTE_NS {
     private:
         ::Window* m_Window;
         SDL_GLContext m_GLContext;
-        Renderer m_Renderer;
+        Renderer* m_Renderer;
         EntityManager m_Entitym;
         GameWorld m_World;
         ImGuiHelper* m_IGH;

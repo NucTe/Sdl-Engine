@@ -5,7 +5,6 @@
 
 #include <GL/glew.h>
 #include "SdlEngine/Vector2.h"
-#include "SdlEngine/PhysicsObject.h"
 #include "Engine/utils.h"
 #include <string>
 
@@ -23,14 +22,14 @@ namespace NUCTE_NS {
         Vector2 GetPosition() const;
         Vector2 GetSize() const;
 
-        PhysicsObject* GetPhysicsObject() const;
+       // PhysicsObject* GetPhysicsObject() const;
 
         const std::string& GetTextureFilePath() const;
 
     private:
         Vector2 position;
         Vector2 size;
-        PhysicsObject physicsObject;
+       // PhysicsObject physicsObject;
 
         bool hasPhysics;
         GLuint vaoID;

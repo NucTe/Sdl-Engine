@@ -10,16 +10,16 @@ void Draw::Line(const glm::vec2& start, const glm::vec2& end, const glm::vec4& c
     OpenGLRenderer::DrawLine(start, end, color);
 }
 
-void Draw::Rectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill, PhysicsObject* physicsObject) {
+void Draw::Rectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill) {
     GLuint vaoID = OpenGLRenderer::CreateRectangleVAO();
-    OpenGLRenderer::DrawRectangle(vaoID, position, width, height, color, fill, physicsObject);
+    OpenGLRenderer::DrawRectangle(vaoID, position, width, height, color, fill);
     glDeleteVertexArrays(1, &vaoID);
         
 }
 
 
-void Draw::TextureRect(const std::string& filePath, const glm::vec2& position, int width, int height, PhysicsObject* physicsObject) {
+void Draw::TextureRect(const std::string& filePath, const glm::vec2& position, int width, int height) {
     GLuint vaoID = OpenGLRenderer::CreateTextureRectVAO(filePath, width, height);
-    OpenGLRenderer::DrawTextureRect(vaoID, position, width, height, physicsObject);
+    OpenGLRenderer::DrawTextureRect(vaoID, position, width, height);
     glDeleteVertexArrays(1, &vaoID);
 }

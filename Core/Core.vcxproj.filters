@@ -24,12 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\SdlEngine\Collider.h">
-      <Filter>include\SdlEngine</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SdlEngine\PhysicsObject.h">
-      <Filter>include\SdlEngine</Filter>
-    </ClInclude>
     <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h">
       <Filter>include\SdlEngine\Renderer</Filter>
     </ClInclude>
@@ -56,9 +50,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\PhysicsObject.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\Renderer\OpenGLRenderer.cpp">
       <Filter>src\Renderer</Filter>
     </ClCompile>

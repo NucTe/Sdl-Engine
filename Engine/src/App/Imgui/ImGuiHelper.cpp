@@ -20,16 +20,10 @@ namespace NUCTE_NS {
         io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
         ImGui::StyleColorsDark();
-        ImGuiStyle& style = ImGui::GetStyle();
-        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
-        {
-            style.WindowRounding = 0.0f;
-            style.Colors[ImGuiCol_WindowBg].w = 1.0f;
-        }
 
 
         ImGui_ImplSDL2_InitForOpenGL(win->GetSDLWindow(), win->GetContext());
-        ImGui_ImplOpenGL3_Init("#version 130");
+        ImGui_ImplOpenGL3_Init("#version 330 core");
     }
 
     void ImGuiHelper::cleanup() {
@@ -46,7 +40,6 @@ namespace NUCTE_NS {
 
     void ImGuiHelper::render() {
         ImGuiIO& io = ImGui::GetIO(); (void)io;
-        std::cout << "Display Size: " << io.DisplaySize.x << ", " << io.DisplaySize.y << std::endl; // Debug stateme
         ImGui::Render();
         glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
         glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
