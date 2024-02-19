@@ -14,6 +14,9 @@ OpenGLRenderer::OpenGLRenderer() {};
 OpenGLRenderer::~OpenGLRenderer() {};
 
 void OpenGLRenderer::Render(const NUCTE_NS::GameWorld& gameWorld) {
+    glUseProgram(shaderProgram);
+    glClear(GL_COLOR_BUFFER_BIT);
+
     const std::vector<NUCTE_NS::Entity*>& entities = gameWorld.GetEntities();
     for (NUCTE_NS::Entity* entity : entities) {
         Vector2 entityPosition = entity->GetPosition();
@@ -26,10 +29,11 @@ void OpenGLRenderer::Render(const NUCTE_NS::GameWorld& gameWorld) {
         }
         else {
             int Vao = CreateRectangleVAO();
-            DrawRectangle(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, {0, 0, 0, 0}, true);
+            DrawRectangle(Vao, glm::vec2(entityPosition.x, entityPosition.y), width, height, { 0, 0, 0, 0 }, true);
         }
     }
 }
+
 
 GLuint OpenGLRenderer::Initialize(const char* vertexShaderPath, const char* fragmentShaderPath) {
     GLuint ShaderProgram = CreateShaderProgram(vertexShaderPath, fragmentShaderPath);

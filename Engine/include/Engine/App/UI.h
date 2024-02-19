@@ -7,6 +7,7 @@ namespace NUCTE_NS {
     class ImGuiHelper;
     class Application;
     class GameWorld;
+    class Renderer;
 
     class UI {
     public:
@@ -16,6 +17,7 @@ namespace NUCTE_NS {
         void Render(const GameWorld& gameWorld);
 
     private:
+        Renderer* m_Renderer;
         Application* m_app;
         ImGuiHelper* m_ImGuiHelper;
         ::Window* m_Window;

@@ -7,10 +7,12 @@
 namespace NUCTE_NS {
 
     UI::UI(ImGuiHelper* imguiHelper, ::Window* window, Application* app)
-        : m_ImGuiHelper(imguiHelper), m_Window(window), m_app(app) {
+        : m_ImGuiHelper(imguiHelper), m_Window(window), m_app(app), m_Renderer(nullptr) {
+        m_Renderer = new Renderer(m_Window);
     }
 
     UI::~UI() {
+        delete m_Renderer;
     }
 
     void UI::Render(const GameWorld& gameWorld) {
@@ -69,8 +71,8 @@ namespace NUCTE_NS {
 
         ImGui::Begin("Game Viewport");
         ImVec2 viewportSize = ImGui::GetContentRegionAvail();
-        glViewport(0, 0, (int)viewportSize.x, (int)viewportSize.y);
-        Renderer::Render(gameWorld);
+        GLuint gameTexture = m_Renderer->Render(viewportSize.x, viewportSize.y, gameWorld);
+        ImGui::Image((void*)(intptr_t)gameTexture, viewportSize);
         ImGui::End();
 
         m_ImGuiHelper->render();
@@ -78,5 +80,4 @@ namespace NUCTE_NS {
 
         SDL_GL_SwapWindow(m_Window->GetSDLWindow());
     }
-
 }

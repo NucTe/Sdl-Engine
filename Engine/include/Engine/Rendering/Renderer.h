@@ -21,11 +21,11 @@ namespace NUCTE_NS {
     public:
         Renderer(Window* m_Window);
         ~Renderer();
-        static void Render(const GameWorld& gameWorld);
+        static GLuint Render(float width, float height, const GameWorld& gameWorld);
 
     private:
         Window* m_Window;
-        GLuint m_ShaderProgram;
+        static unsigned int m_ShaderProgram;
         ShaderLoader m_shaderLoader;
     };
 }

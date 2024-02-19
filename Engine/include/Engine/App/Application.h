@@ -29,7 +29,6 @@ namespace NUCTE_NS {
     private:
         ::Window* m_Window;
         SDL_GLContext m_GLContext;
-        Renderer* m_Renderer;
         EntityManager m_Entitym;
         GameWorld m_World;
         ImGuiHelper* m_IGH;

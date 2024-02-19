@@ -41,11 +41,12 @@ namespace NUCTE_NS {
     void ImGuiHelper::render() {
         ImGuiIO& io = ImGui::GetIO(); (void)io;
         ImGui::Render();
-        glViewport(0, 0, (int)io.DisplaySize.x, (int)io.DisplaySize.y);
-        glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-        glClear(GL_COLOR_BUFFER_BIT);
+        int display_w, display_h;
+        SDL_GL_GetDrawableSize(m_win->GetSDLWindow(), &display_w, &display_h);
+        glViewport(0, 0, display_w, display_h);
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     }
+
 
 
     void ImGuiHelper::update() {

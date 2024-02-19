@@ -1,9 +1,15 @@
 #include "Engine/Rendering/Renderer.h"
 #include "Engine/GameLogic/GameWorld.h"
+
+#include "SdlEngine/draw.h"
+
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <cmath>
 
 namespace NUCTE_NS {
+    unsigned int Renderer::m_ShaderProgram = 0;
+
     Renderer::Renderer(Window* window) : m_Window(window) {
         const char* vertexShaderSource = R"(
             #version 330 core
@@ -16,12 +22,15 @@ namespace NUCTE_NS {
         const char* fragmentShaderSource = R"(
             #version 330 core
             out vec4 FragColor;
+            uniform float time; // Time uniform for color modulation
             void main() {
-                FragColor = vec4(1.0, 1.0, 1.0, 1.0); // White color
+                float colorR = (sin(time) + 1.0) / 2.0; // Calculate the color component based on sine wave
+                FragColor = vec4(colorR, 1.0 - colorR, 0.5, 1.0); // Use the color component for red, green, and blue channels
             }
         )";
 
         m_ShaderProgram = m_shaderLoader.CreateShaderProgram(vertexShaderSource, fragmentShaderSource, true);
+        std::cout << m_ShaderProgram << std::endl;
         glUseProgram(m_ShaderProgram);
     }
 
@@ -29,29 +38,35 @@ namespace NUCTE_NS {
         glDeleteProgram(m_ShaderProgram);
     }
 
-    void Renderer::Render(const GameWorld& gameWorld) {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    GLuint Renderer::Render(float width, float height, const GameWorld& gameWorld) {
+        GLuint framebuffer;
+        glGenFramebuffers(1, &framebuffer);
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
 
-        float vertices[] = {
-            -0.5f, -0.5f,
-             0.5f, -0.5f,
-             0.5f,  0.5f,
-            -0.5f,  0.5f 
-        };
+        GLuint texture;
+        glGenTextures(1, &texture);
+        glBindTexture(GL_TEXTURE_2D, texture);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, nullptr);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texture, 0);
 
-        GLuint vao, vbo;
-        glGenVertexArrays(1, &vao);
-        glGenBuffers(1, &vbo);
-        glBindVertexArray(vao);
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
+        GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+        if (status != GL_FRAMEBUFFER_COMPLETE) {
+            std::cout << "Framebuffer is not complete! Status: " << status << std::endl;
+            glDeleteFramebuffers(1, &framebuffer);
+            glDeleteTextures(1, &texture);
+            return 0;
+        }
 
-        glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+        float time = SDL_GetTicks() / 1000.0f;
+        glUniform1f(glGetUniformLocation(m_ShaderProgram, "time"), time);
 
-        glDeleteBuffers(1, &vbo);
-        glDeleteVertexArrays(1, &vao);
-
+        glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
+        glViewport(0, 0, width, height);
+        glClear(GL_COLOR_BUFFER_BIT);
+        Draw::Rectangle(glm::vec2{ 100, 100 }, 100, 100, { 1, 1, 1, 1 });
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        return texture;
     }
 }
