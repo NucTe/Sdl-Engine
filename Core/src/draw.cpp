@@ -10,9 +10,9 @@ void Draw::Line(const glm::vec2& start, const glm::vec2& end, const glm::vec4& c
     OpenGLRenderer::DrawLine(start, end, color);
 }
 
-void Draw::Rectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill) {
+void Draw::Rectangle(const glm::vec2& position, float width, float height, bool fill) {
     GLuint vaoID = OpenGLRenderer::CreateRectangleVAO();
-    OpenGLRenderer::DrawRectangle(vaoID, position, width, height, color, fill);
+    OpenGLRenderer::DrawRectangle(vaoID, position, width, height, fill);
     glDeleteVertexArrays(1, &vaoID);
         
 }

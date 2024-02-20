@@ -13,6 +13,9 @@
     <Filter Include="include\Engine\App">
       <UniqueIdentifier>{1ED6D468-0ABA-95BE-731A-90115F1D8040}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\Engine\App\Imgui">
+      <UniqueIdentifier>{E871F95E-D496-48DF-FDE1-2D6FE96547FD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="include\Engine\EMS">
       <UniqueIdentifier>{82E2D468-6EC6-95BE-D726-9011C3298040}</UniqueIdentifier>
     </Filter>
@@ -30,6 +33,9 @@
     </Filter>
     <Filter Include="src\App">
       <UniqueIdentifier>{DD622FA9-4942-AE44-525A-391BBEB814A6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\App\Imgui">
+      <UniqueIdentifier>{E751C042-5312-3C79-1C4D-85F688CC8055}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\EMS">
       <UniqueIdentifier>{416F2FA9-AD4E-AE44-B666-391B22C514A6}</UniqueIdentifier>
@@ -49,6 +55,9 @@
       <Filter>include\Engine\App</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine\App\Imgui\ImGuiHelper.h">
+      <Filter>include\Engine\App\Imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\App\UI.h">
       <Filter>include\Engine\App</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine\EMS\Entity.h">
@@ -69,7 +78,6 @@
     <ClInclude Include="include\Engine\utils.h">
       <Filter>include\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="include\Engine\App\UI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -97,6 +105,9 @@
       <Filter>src\App</Filter>
     </ClCompile>
     <ClCompile Include="src\App\Imgui\ImGuiHelper.cpp">
+      <Filter>src\App\Imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\App\UI.cpp">
       <Filter>src\App</Filter>
     </ClCompile>
     <ClCompile Include="src\EMS\Entity.cpp">
@@ -117,6 +128,5 @@
     <ClCompile Include="src\Rendering\Renderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
-    <ClCompile Include="src\App\UI.cpp" />
   </ItemGroup>
 </Project>

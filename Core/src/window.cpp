@@ -1,8 +1,4 @@
-#define STB_IMAGE_IMPLEMENTATION
 #include "SdlEngine/window.h"
-#include "stb/stb_image.h"
-
-
     Window::Window() {}
 
     void Window::CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop) {

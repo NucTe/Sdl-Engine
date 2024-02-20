@@ -61,7 +61,7 @@ namespace NUCTE_NS {
     }
 
     void Application::Render() {
-        m_UI->Render(m_World, );
+        m_UI->Render(m_World);
     }
 
 }

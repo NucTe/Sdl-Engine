@@ -3,15 +3,15 @@
 
 #include <string>
 #include <glm/glm.hpp>
-#include "Engine/EMS/Entity.h" // Include necessary headers for game entities
-#include "Engine/GameLogic/GameWorld.h" // Include necessary headers for the game world
+#include "Engine/EMS/Entity.h"
+#include "Engine/GameLogic/GameWorld.h"
 
 class OpenGLRenderer {
 public:
-    OpenGLRenderer();
-    ~OpenGLRenderer();
+    OpenGLRenderer() {};
+    ~OpenGLRenderer() {};
 
-    void Render(NUCTE_NS::GameWorld& gameWorld); // Render the game world
+    void Render(NUCTE_NS::GameWorld& gameWorld);
 
     static GLuint Initialize(const char* vertexShaderPath, const char* fragmentShaderPath);
     static GLuint CreateShaderProgram(const char* vertexShaderPath, const char* fragmentShaderPath);
@@ -19,7 +19,7 @@ public:
     static GLuint CreateTextureRectVAO(const std::string& filePath, int width, int height);
 
     static GLuint DrawTextureRect(GLuint vaoID, const glm::vec2& position, int width, int height);
-    static GLuint DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, const glm::vec4& color, bool fill);
+    static GLuint DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, bool fill);
     static void DrawPoint(const glm::vec2& point, const glm::vec4& color);
     static void DrawLine(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color);
 

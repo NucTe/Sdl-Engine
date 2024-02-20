@@ -39,5 +39,9 @@ project "Core"
       defines { "NDEBUG" }
       optimize "On"
 
+  postbuildcommands {
+      "{COPY} %{cfg.buildtarget.relpath} %{wks.location}/vendors"
+  }
+
 
 CoreINC = "$(SolutionDir)/Core/include/"

@@ -1,5 +1,6 @@
 #include "SdlEngine/Renderer/texturemanager.h"
 #include "SdlEngine/Renderer/OpenGLRenderer.h"
+
 #include "stb/stb_image.h"
 
 std::unordered_map<std::string, GLuint> TextureManager::textureMap;

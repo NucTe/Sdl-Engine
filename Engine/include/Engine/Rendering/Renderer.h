@@ -21,7 +21,7 @@ namespace NUCTE_NS {
     public:
         Renderer(Window* m_Window);
         ~Renderer();
-        static GLuint Render(float width, float height, GameWorld gameWorld, OpenGLRenderer* m_OGL);
+        static GLuint Render(float width, float height, GameWorld gameWorld);
 
     private:
         Window* m_Window;

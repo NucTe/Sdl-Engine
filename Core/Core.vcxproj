@@ -15,6 +15,7 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Core</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -40,13 +41,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\bin\Core\Debug\</OutDir>
+    <OutDir>..\vendors</OutDir>
     <IntDir>..\bin-int\Core\Debug\</IntDir>
     <TargetName>Core</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\bin\Core\Release\</OutDir>
+    <OutDir>..\vendors</OutDir>
     <IntDir>..\bin-int\Core\Release\</IntDir>
     <TargetName>Core</TargetName>
     <TargetExt>.lib</TargetExt>
@@ -110,7 +111,8 @@
       <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)</Command>
+      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)
+IF EXIST ..\bin\Core\Release\Core.lib\ (xcopy /Q /E /Y /I ..\bin\Core\Release\Core.lib $(SolutionDir)\vendors &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Core\Release\Core.lib $(SolutionDir)\vendors &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -122,6 +124,26 @@
     <ClInclude Include="include\SdlEngine\gameloop.h" />
     <ClInclude Include="include\SdlEngine\utils\JSON.h" />
     <ClInclude Include="include\SdlEngine\window.h" />
+    <ClInclude Include="include\stb\stb_connected_components.h" />
+    <ClInclude Include="include\stb\stb_c_lexer.h" />
+    <ClInclude Include="include\stb\stb_divide.h" />
+    <ClInclude Include="include\stb\stb_ds.h" />
+    <ClInclude Include="include\stb\stb_dxt.h" />
+    <ClInclude Include="include\stb\stb_easy_font.h" />
+    <ClInclude Include="include\stb\stb_herringbone_wang_tile.h" />
+    <ClInclude Include="include\stb\stb_hexwave.h" />
+    <ClInclude Include="include\stb\stb_image.h" />
+    <ClInclude Include="include\stb\stb_image_resize2.h" />
+    <ClInclude Include="include\stb\stb_image_write.h" />
+    <ClInclude Include="include\stb\stb_include.h" />
+    <ClInclude Include="include\stb\stb_leakcheck.h" />
+    <ClInclude Include="include\stb\stb_perlin.h" />
+    <ClInclude Include="include\stb\stb_rect_pack.h" />
+    <ClInclude Include="include\stb\stb_sprintf.h" />
+    <ClInclude Include="include\stb\stb_textedit.h" />
+    <ClInclude Include="include\stb\stb_tilemap_editor.h" />
+    <ClInclude Include="include\stb\stb_truetype.h" />
+    <ClInclude Include="include\stb\stb_voxel_render.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Renderer\OpenGLRenderer.cpp" />
@@ -129,6 +151,8 @@
     <ClCompile Include="src\Renderer\texturemanager.cpp" />
     <ClCompile Include="src\draw.cpp" />
     <ClCompile Include="src\gameloop.cpp" />
+    <ClCompile Include="src\stb.cpp" />
+    <ClCompile Include="src\stb_vorbis.c" />
     <ClCompile Include="src\utils\JSON.cpp" />
     <ClCompile Include="src\window.cpp" />
   </ItemGroup>

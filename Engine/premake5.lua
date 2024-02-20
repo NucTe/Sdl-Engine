@@ -25,3 +25,5 @@ project "Engine"
     "Core.lib",
     "Interface.lib",
   }
+
+  dependson { "Core", "Interface", }

@@ -32,3 +32,7 @@ project "Interface"
   filter "configurations:Release"
       defines { "NDEBUG" }
       optimize "On"
+
+  postbuildcommands {
+    "{COPY} %{cfg.buildtarget.relpath} %{wks.location}/vendors"
+    }

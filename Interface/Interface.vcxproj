@@ -15,6 +15,7 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Interface</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -40,13 +41,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\bin\Interface\Debug\</OutDir>
+    <OutDir>..\vendors</OutDir>
     <IntDir>..\bin-int\Interface\Debug\</IntDir>
     <TargetName>Interface</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\bin\Interface\Release\</OutDir>
+    <OutDir>..\vendors</OutDir>
     <IntDir>..\bin-int\Interface\Release\</IntDir>
     <TargetName>Interface</TargetName>
     <TargetExt>.lib</TargetExt>
@@ -63,8 +64,8 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -108,7 +109,8 @@
       <Command>IF EXIST $(SolutionDir)\vendors\DLLs\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\vendors\DLLs\*.dll $(TargetDir) &gt; nul)</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)</Command>
+      <Command>IF EXIST $(TargetDir)\*.dll\ (xcopy /Q /E /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul) ELSE (xcopy /Q /Y /I $(TargetDir)\*.dll $(SolutionDir)\vendors\DLLs &gt; nul)
+IF EXIST ..\bin\Interface\Release\Interface.lib\ (xcopy /Q /E /Y /I ..\bin\Interface\Release\Interface.lib $(SolutionDir)\vendors &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Interface\Release\Interface.lib $(SolutionDir)\vendors &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
