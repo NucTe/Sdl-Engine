@@ -4,10 +4,14 @@
 #define GAMEWORLD_H
 
 #include <vector>
+
 #include "Engine/EMS/EntityManager.h"
 #include "Engine/utils.h"
+#include "SdlEngine/Renderer/OpenGLRenderer.h"
 
 namespace NUCTE_NS {
+    class Draw;
+
     class GameWorld {
     public:
         GameWorld(EntityManager& entityManager);
@@ -18,10 +22,13 @@ namespace NUCTE_NS {
         }
 
         void Update();
+        void Render(OpenGLRenderer* m_OGL);
+
 
         const std::vector<Entity*>& GetEntities() const;
 
     private:
+        Draw* m_Draw;
         EntityManager& entityManager;
         std::vector<Entity*> m_Entities;
     };

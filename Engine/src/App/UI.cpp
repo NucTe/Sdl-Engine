@@ -15,7 +15,7 @@ namespace NUCTE_NS {
         delete m_Renderer;
     }
 
-    void UI::Render(const GameWorld& gameWorld) {
+    void UI::Render(const GameWorld& gameWorld, OpenGLRenderer* m_OGL) {
         m_ImGuiHelper->newFrame();
 
         ImGui::DockSpaceOverViewport();
@@ -71,7 +71,7 @@ namespace NUCTE_NS {
 
         ImGui::Begin("Game Viewport");
         ImVec2 viewportSize = ImGui::GetContentRegionAvail();
-        GLuint gameTexture = m_Renderer->Render(viewportSize.x, viewportSize.y, gameWorld);
+        GLuint gameTexture = m_Renderer->Render(viewportSize.x, viewportSize.y, gameWorld, m_OGL);
         ImGui::Image((void*)(intptr_t)gameTexture, viewportSize);
         ImGui::End();
 

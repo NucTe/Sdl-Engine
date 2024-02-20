@@ -13,7 +13,7 @@ GLuint OpenGLRenderer::shaderProgram = 0;
 OpenGLRenderer::OpenGLRenderer() {};
 OpenGLRenderer::~OpenGLRenderer() {};
 
-void OpenGLRenderer::Render(const NUCTE_NS::GameWorld& gameWorld) {
+void OpenGLRenderer::Render(NUCTE_NS::GameWorld& gameWorld) {
     glUseProgram(shaderProgram);
     glClear(GL_COLOR_BUFFER_BIT);
 

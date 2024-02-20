@@ -38,7 +38,7 @@ namespace NUCTE_NS {
         glDeleteProgram(m_ShaderProgram);
     }
 
-    GLuint Renderer::Render(float width, float height, const GameWorld& gameWorld) {
+    GLuint Renderer::Render(float width, float height, GameWorld gameWorld, OpenGLRenderer* m_OGL) {
         GLuint framebuffer;
         glGenFramebuffers(1, &framebuffer);
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
@@ -65,7 +65,7 @@ namespace NUCTE_NS {
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT);
-        Draw::Rectangle(glm::vec2{ 100, 100 }, 100, 100, { 1, 1, 1, 1 });
+        gameWorld.Render(m_OGL);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         return texture;
     }

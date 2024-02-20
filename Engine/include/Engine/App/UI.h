@@ -14,7 +14,7 @@ namespace NUCTE_NS {
         UI(ImGuiHelper* imguiHelper, ::Window* window, Application* app);
         ~UI();
 
-        void Render(const GameWorld& gameWorld);
+        void Render(const GameWorld& gameWorld, OpenGLRenderer* m_OGL);
 
     private:
         Renderer* m_Renderer;
