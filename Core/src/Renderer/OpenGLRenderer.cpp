@@ -17,7 +17,7 @@ void OpenGLRenderer::Render(NUCTE_NS::GameWorld& gameWorld) {
 
     const std::vector<NUCTE_NS::Entity*>& entities = gameWorld.GetEntities();
     for (NUCTE_NS::Entity* entity : entities) {
-        Vector2 entityPosition = entity->GetPosition();
+        Vector2d entityPosition = entity->GetPosition();
         float width = entity->GetSize().x;
         float height = entity->GetSize().y;
         std::string filepath = entity->GetTextureFilePath();

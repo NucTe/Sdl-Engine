@@ -33,9 +33,6 @@
     <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h">
       <Filter>include\SdlEngine\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="include\SdlEngine\Vector2.h">
-      <Filter>include\SdlEngine</Filter>
-    </ClInclude>
     <ClInclude Include="include\SdlEngine\draw.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>

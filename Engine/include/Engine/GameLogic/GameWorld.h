@@ -11,6 +11,7 @@
 #include "Engine/utils.h"
 
 class OpenGLRenderer;
+class PhysicsObject;
 
 namespace NUCTE_NS {
 
@@ -33,7 +34,7 @@ namespace NUCTE_NS {
         void Update();
         void Render();
 
-        void AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color);
+        void AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject);
 
         void test();
 

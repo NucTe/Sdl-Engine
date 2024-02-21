@@ -1,7 +1,8 @@
 #include "Engine/GameLogic/GameWorld.h"
 #include "SdlEngine/Renderer/OpenGLRenderer.h"
 #include "SdlEngine/draw.h"
-
+#include "Physics/2d/Physics.h"
+#include "Physics/2d/Vector2d.h"
 
 
 namespace NUCTE_NS {
@@ -21,7 +22,23 @@ namespace NUCTE_NS {
 	void GameWorld::Render() {
 	}
 
-	void GameWorld::AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color) {
+	void GameWorld::AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject) {
+		Body body;
+		body.position = Vector2d(position.x, position.y);
+		body.velocity = Vector2d(0.0, 0.0);
+		body.mass = 1.0;
+
+		physicsObject.position = Vector2d(position.x, position.y);
+		physicsObject.width = width;
+		physicsObject.height = height;
+		physicsObject.velocity = Vector2d(0.0, 0.0);
+		physicsObject.bounciness = 0.5;
+		physicsObject.isStatic = false;
+
+		World world;
+		world.addBody(body);
+		world.addCollider(Collider(&physicsObject, &body));
+
 		Rectangle rect;
 		rect.position = position;
 		rect.width = width;
@@ -36,10 +53,11 @@ namespace NUCTE_NS {
 
 	void GameWorld::test() {
 		glm::vec4 aquaBlue = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
-		AddRectangle(glm::vec2(50.0f, 50.0f), 25.0f, 25.0f, aquaBlue);
+		PhysicsObject physicsObject({ 2.0f, 2.0f }, 0.5, false, 20.0);
+		AddRectangle(glm::vec2(50.0f, 50.0f), 25.0f, 25.0f, aquaBlue, physicsObject);
 		
 		glm::vec4 Blue = glm::vec4(0.0f, 1.0f, 1.0f, 1.0f);
-		AddRectangle(glm::vec2(100.0f, 100.0f), 25.0f, 25.0f, Blue);
+		AddRectangle(glm::vec2(100.0f, 100.0f), 25.0f, 25.0f, Blue, physicsObject);
 
 	}
 }

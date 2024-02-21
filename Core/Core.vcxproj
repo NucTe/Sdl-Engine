@@ -119,7 +119,6 @@ IF EXIST ..\bin\Core\Release\Core.lib\ (xcopy /Q /E /Y /I ..\bin\Core\Release\Co
     <ClInclude Include="include\SdlEngine\Renderer\OpenGLRenderer.h" />
     <ClInclude Include="include\SdlEngine\Renderer\ShaderLoader.h" />
     <ClInclude Include="include\SdlEngine\Renderer\texturemanager.h" />
-    <ClInclude Include="include\SdlEngine\Vector2.h" />
     <ClInclude Include="include\SdlEngine\draw.h" />
     <ClInclude Include="include\SdlEngine\gameloop.h" />
     <ClInclude Include="include\SdlEngine\utils\JSON.h" />

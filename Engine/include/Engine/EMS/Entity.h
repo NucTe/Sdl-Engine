@@ -4,14 +4,14 @@
 #define ENTITY_H
 
 #include <GL/glew.h>
-#include "SdlEngine/Vector2.h"
+#include "Physics/2d/Vector2d.h"
 #include "Engine/utils.h"
 #include <string>
 
 namespace NUCTE_NS {
     class Entity {
     public:
-        Entity(const Vector2& position, const Vector2& size, const std::string& textureFilePath, bool hasPhysics, bool applyGravity = true);
+        Entity(const Vector2d& position, const Vector2d& size, const std::string& textureFilePath, bool hasPhysics, bool applyGravity = true);
         ~Entity();
 
         void Update(float deltaTime);
@@ -19,16 +19,16 @@ namespace NUCTE_NS {
 
         bool HasTexture() const;
 
-        Vector2 GetPosition() const;
-        Vector2 GetSize() const;
+        Vector2d GetPosition() const;
+        Vector2d GetSize() const;
 
        // PhysicsObject* GetPhysicsObject() const;
 
         const std::string& GetTextureFilePath() const;
 
     private:
-        Vector2 position;
-        Vector2 size;
+        Vector2d position;
+        Vector2d size;
        // PhysicsObject physicsObject;
 
         bool hasPhysics;

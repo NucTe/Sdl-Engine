@@ -1,7 +1,7 @@
 #include "Engine/EMS/Entity.h"
 
 namespace NUCTE_NS {
-    Entity::Entity(const Vector2& position, const Vector2& size, const std::string& textureFilePath, bool hasPhysics, bool applyGravity)
+    Entity::Entity(const Vector2d& position, const Vector2d& size, const std::string& textureFilePath, bool hasPhysics, bool applyGravity)
         : position(position), size(size), hasPhysics(hasPhysics), textureFilePath(textureFilePath) {
         glGenVertexArrays(1, &vaoID);
         hasTexture = !textureFilePath.empty();
@@ -18,12 +18,12 @@ namespace NUCTE_NS {
         // Rendering logic goes here
     }
 
-    Vector2 Entity::GetPosition() const {
-        return Vector2{ 1,2 };
+    Vector2d Entity::GetPosition() const {
+        return Vector2d{ 1,2 };
     }
 
-    Vector2 Entity::GetSize() const {
-        return Vector2{ 1,2 };
+    Vector2d Entity::GetSize() const {
+        return Vector2d{ 1,2 };
     }
 
     bool Entity::HasTexture() const {
