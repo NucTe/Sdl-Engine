@@ -2,6 +2,7 @@
 
 #include "Vector2d.h"
 
+
 class PhysicsObject {
 public:
     float width;
@@ -51,6 +52,10 @@ public:
         return position + rotatedSupportPoint;
     }
 
+    void applyGravity(float gravity, float dt) {
+        velocity.y -= gravity * dt;
+    }
+
 };
 
 struct Body {
@@ -90,6 +95,7 @@ public:
 
     void step(double dt) {
     }
+
 };
 
 

@@ -4,13 +4,15 @@
 #include "Engine/App/UI.h"
 #include "Engine/utils.h"
 
+#include "Engine/GameLogic/GameWorld.h"
+
 #include <SDL2/SDL.h>
 #include <GL/glew.h>
 
 namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
-        : m_Running(nullptr), m_Entitym(), m_World(m_Entitym)
+        : m_Running(nullptr), m_Entitym(), m_World()
         , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr) {
 
         m_Window = new ::Window();
@@ -31,6 +33,10 @@ namespace NUCTE_NS {
 
     void Application::Run() {
         while (m_Running) {
+            double currentFrameTime = SDL_GetTicks() / 1000.0;
+            double deltaTime = currentFrameTime - lastTime;
+            lastTime = currentFrameTime;
+
             HandleEvents();
             Update();
             Render();
@@ -58,10 +64,15 @@ namespace NUCTE_NS {
     }
 
     void Application::Update() {
+        m_World->Update(GetDt());
     }
 
     void Application::Render() {
-        m_UI->Render(m_World);
+        m_UI->Render(*m_World);
+    }
+
+    double Application::GetDt() const {
+        return currentTime - lastTime;
     }
 
 }

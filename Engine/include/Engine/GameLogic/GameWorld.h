@@ -20,6 +20,7 @@ namespace NUCTE_NS {
         float width;
         float height;
         glm::vec4 color;
+        PhysicsObject* physicsObject;
     };
 
     class GameWorld {
@@ -31,7 +32,7 @@ namespace NUCTE_NS {
             m_Entities = other.m_Entities;
         }
 
-        void Update();
+        void Update(float dt);
         void Render();
 
         void AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject);

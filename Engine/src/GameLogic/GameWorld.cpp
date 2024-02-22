@@ -16,8 +16,17 @@ namespace NUCTE_NS {
 		return entityManager.GetEntities();
 	}
 
-	void GameWorld::Update() {
+	void GameWorld::Update(float dt) {
+		for (Rectangle& rect : m_Rectangles) {
+			rect.physicsObject->applyGravity(9.81f, dt);
+
+			rect.position.x += rect.physicsObject->velocity.x * dt;
+			rect.position.y += rect.physicsObject->velocity.y * dt;
+
+			std::cout << "y:" << rect.position.y << " x:" << rect.position.x << std::endl;
+		}
 	}
+
 
 	void GameWorld::Render() {
 	}
@@ -44,6 +53,7 @@ namespace NUCTE_NS {
 		rect.width = width;
 		rect.height = height;
 		rect.color = color;
+		rect.physicsObject = &physicsObject;
 		m_Rectangles.push_back(rect);
 	}
 

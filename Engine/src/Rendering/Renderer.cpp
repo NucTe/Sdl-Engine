@@ -49,6 +49,7 @@ namespace NUCTE_NS {
         for (const auto& rect : gameWorld.GetRectangles()) {
             glUniform4fv(colorLocation, 1, glm::value_ptr(rect.color));
             Draw::Rectangle(rect.position, rect.width, rect.height);
+            std::cout << "x: " << rect.position.x << "y: " << rect.position.y << std::endl;
         }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         return texture;

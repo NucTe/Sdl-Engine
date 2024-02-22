@@ -5,7 +5,6 @@
 
 #include <string>
 #include "Engine/Rendering/Renderer.h"
-#include "Engine/GameLogic/GameWorld.h"
 
 #include "Engine/EMS/EntityManager.h"
 
@@ -18,6 +17,7 @@ namespace NUCTE_NS {
 
     class ImGuiHelper;
     class Renderer;
+    class GameWorld;
 
     class Application {
     public:
@@ -25,18 +25,21 @@ namespace NUCTE_NS {
         ~Application();
 
         void Run();
+        double GetDt() const;
 
     private:
         ::Window* m_Window;
         SDL_GLContext m_GLContext;
         EntityManager m_Entitym;
-        GameWorld m_World;
+        GameWorld* m_World;
         ImGuiHelper* m_IGH;
         UI* m_UI;
 
         int m_ScreenWidth;
         int m_ScreenHeight;
         bool m_Running;
+        double currentTime = 0.0;
+        double lastTime = 0.0;
 
         void Cleanup();
         void HandleEvents();
