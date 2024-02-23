@@ -27,6 +27,14 @@ namespace NUCTE_NS {
         void Run();
         double GetDt() const;
 
+        bool IsCtrlPressed() const {
+            const Uint8* state = SDL_GetKeyboardState(NULL);
+            return state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL];
+        }
+
+        float GetZoomLevel() const {
+            return m_ZoomLevel;
+        }
     private:
         ::Window* m_Window;
         SDL_GLContext m_GLContext;
@@ -35,6 +43,7 @@ namespace NUCTE_NS {
         ImGuiHelper* m_IGH;
         UI* m_UI;
 
+        float m_ZoomLevel;
         int m_ScreenWidth;
         int m_ScreenHeight;
         bool m_Running;
@@ -45,6 +54,8 @@ namespace NUCTE_NS {
         void HandleEvents();
         void Update();
         void Render();
+
+        
     };
 
 }

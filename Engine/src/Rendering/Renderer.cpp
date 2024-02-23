@@ -10,7 +10,7 @@
 namespace NUCTE_NS {
     unsigned int Renderer::m_ShaderProgram = 0;
 
-    Renderer::Renderer(Window* window) : m_Window(window) {
+    Renderer::Renderer(Window* window, Application app) : m_Window(window), m_App(app) {
         
 
         m_ShaderProgram = m_shaderLoader.CreateShaderProgram("./assets/shaders/test.vert", "./assets/shaders/test.frag");
@@ -23,6 +23,8 @@ namespace NUCTE_NS {
     }
 
     GLuint Renderer::Render(float width, float height, GameWorld gameWorld) {
+        m_Camera = Camera(width, height);
+
         GLuint framebuffer;
         glGenFramebuffers(1, &framebuffer);
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
@@ -44,7 +46,15 @@ namespace NUCTE_NS {
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT);
-        gameWorld.test();
+        
+        // Camera setup
+        float zoomLevel = m_App
+        m_Camera.SetZoom(zoomLevel);
+        m_Camera.SetPosition({ 0, 0 });
+        GLuint viewProjectionLocation = glGetUniformLocation(m_ShaderProgram, "viewProjection");
+        glUniformMatrix4fv(viewProjectionLocation, 1, GL_FALSE, glm::value_ptr(m_Camera.GetViewProjectionMatrix()));
+
+        // render rectangles
         GLuint colorLocation = glGetUniformLocation(m_ShaderProgram, "rectColors");
         for (const auto& rect : gameWorld.GetRectangles()) {
             glUniform4fv(colorLocation, 1, glm::value_ptr(rect.color));

@@ -13,7 +13,7 @@ namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
         : m_Running(nullptr), m_Entitym(), m_World()
-        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr) {
+        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr), m_ZoomLevel(1.0f) {
 
         m_Window = new ::Window();
         m_Window->CreateWindow(windowTitle, screenWidth, screenHeight, false, nullptr);
@@ -60,6 +60,19 @@ namespace NUCTE_NS {
                 m_Running = false;
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(m_Window->GetSDLWindow()))
                 m_Running = false;
+
+            switch (event.type) {
+            case SDL_MOUSEWHEEL:
+                if (IsCtrlPressed()) {
+                    if (event.wheel.y > 0) {
+                        m_ZoomLevel *= 1.1f;
+                    }
+                    else if (event.wheel.y < 0) {
+                        m_ZoomLevel /= 1.1f;
+                    }
+                }
+                break;
+            }
         }
     }
 

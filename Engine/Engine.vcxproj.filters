@@ -78,6 +78,7 @@
     <ClInclude Include="include\Engine\utils.h">
       <Filter>include\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="include\Engine\Rendering\Camera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
