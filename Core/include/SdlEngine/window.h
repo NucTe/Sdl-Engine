@@ -10,9 +10,10 @@
 #include "nlohmann/json.hpp"
 #include <GL/glew.h>
 #include "gameloop.h"
-#include "Renderer/OpenGLRenderer.h"
 
 #include "Engine/utils.h"
+
+class OpenGLRenderer;
 
 class Window {
 public:

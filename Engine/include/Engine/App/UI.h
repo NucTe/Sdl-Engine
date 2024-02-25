@@ -11,7 +11,7 @@ namespace NUCTE_NS {
 
     class UI {
     public:
-        UI(ImGuiHelper* imguiHelper, ::Window* window, Application* app);
+        UI(ImGuiHelper* imguiHelper, ::Window* window, Application* app, Renderer* renderer);
         ~UI();
 
         void Render(const GameWorld& gameWorld);

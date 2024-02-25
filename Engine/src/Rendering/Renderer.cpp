@@ -1,6 +1,8 @@
 #include "Engine/Rendering/Renderer.h"
 #include "Engine/GameLogic/GameWorld.h"
 
+#include "Engine/App/Application.h"
+
 #include "SdlEngine/draw.h"
 
 #include <SDL2/SDL.h>
@@ -10,7 +12,7 @@
 namespace NUCTE_NS {
     unsigned int Renderer::m_ShaderProgram = 0;
 
-    Renderer::Renderer(Window* window, Application app) : m_Window(window), m_App(app) {
+    Renderer::Renderer(Window* window, Application* app) : m_Window(window), m_App(app), m_Camera(0, 0) {
         
 
         m_ShaderProgram = m_shaderLoader.CreateShaderProgram("./assets/shaders/test.vert", "./assets/shaders/test.frag");
@@ -23,6 +25,9 @@ namespace NUCTE_NS {
     }
 
     GLuint Renderer::Render(float width, float height, GameWorld gameWorld) {
+        gViewWidth = width;
+        gViewHeight = height;
+
         m_Camera = Camera(width, height);
 
         GLuint framebuffer;
@@ -48,7 +53,7 @@ namespace NUCTE_NS {
         glClear(GL_COLOR_BUFFER_BIT);
         
         // Camera setup
-        float zoomLevel = m_App
+        float zoomLevel = m_App->GetZoomLevel();
         m_Camera.SetZoom(zoomLevel);
         m_Camera.SetPosition({ 0, 0 });
         GLuint viewProjectionLocation = glGetUniformLocation(m_ShaderProgram, "viewProjection");

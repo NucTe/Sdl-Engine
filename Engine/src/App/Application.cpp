@@ -4,6 +4,7 @@
 #include "Engine/App/UI.h"
 #include "Engine/utils.h"
 
+#include "Engine/Rendering/Renderer.h"
 #include "Engine/GameLogic/GameWorld.h"
 
 #include <SDL2/SDL.h>
@@ -12,7 +13,7 @@
 namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
-        : m_Running(nullptr), m_Entitym(), m_World()
+        : m_Running(nullptr), m_Entitym(), m_World(nullptr)
         , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr), m_ZoomLevel(1.0f) {
 
         m_Window = new ::Window();
@@ -21,7 +22,11 @@ namespace NUCTE_NS {
         m_IGH = new ImGuiHelper();
         m_IGH->initialize(m_Window);
 
-        m_UI = new UI(m_IGH, m_Window, this);
+        m_Renderer = new Renderer(m_Window, this);
+
+        m_UI = new UI(m_IGH, m_Window, this, m_Renderer);
+
+        m_World = new GameWorld(m_Entitym, *m_Renderer);
 
         m_Running = true;
        

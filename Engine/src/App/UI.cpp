@@ -2,13 +2,14 @@
 #include "Engine/App/Imgui/ImGuiHelper.h"
 #include "Engine/App/Application.h"
 
+#include "Engine/Rendering/Renderer.h"
+
 #include "Engine/GameLogic/GameWorld.h"
 
 namespace NUCTE_NS {
 
-    UI::UI(ImGuiHelper* imguiHelper, ::Window* window, Application* app)
-        : m_ImGuiHelper(imguiHelper), m_Window(window), m_app(app), m_Renderer(nullptr) {
-        m_Renderer = new Renderer(m_Window);
+    UI::UI(ImGuiHelper* imguiHelper, ::Window* window, Application* app, Renderer* renderer)
+        : m_ImGuiHelper(imguiHelper), m_Window(window), m_app(app), m_Renderer(renderer) {
     }
 
     UI::~UI() {

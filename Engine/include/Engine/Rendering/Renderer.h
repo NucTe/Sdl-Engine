@@ -11,7 +11,6 @@
 
 #include "Engine/Rendering/Camera.h"
 
-#include "Engine/App/Application.h"
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_opengl.h>
@@ -19,20 +18,24 @@
 namespace NUCTE_NS {
 
     class GameWorld;
+    class Application;
 
     class Renderer {
     public:
-        Renderer(Window* m_Window, Application m_App);
+        Renderer(Window* m_Window, Application* m_App);
         ~Renderer();
-        static GLuint Render(float width, float height, GameWorld gameWorld);
+        GLuint Render(float width, float height, GameWorld gameWorld);
 
+        float gViewWidth;
+        float gViewHeight;
     private:
-        static Camera m_Camera;
-
-        Application m_App;
+        Camera m_Camera;
+        Application* m_App;
         Window* m_Window;
         static unsigned int m_ShaderProgram;
         ShaderLoader m_shaderLoader;
+
+        
 
         void DrawGrid(float width, float height, float zoomLevel) {
             float zoomedWidth = width / zoomLevel;

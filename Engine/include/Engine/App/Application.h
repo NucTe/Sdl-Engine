@@ -4,7 +4,6 @@
 #define APPLICATION_H
 
 #include <string>
-#include "Engine/Rendering/Renderer.h"
 
 #include "Engine/EMS/EntityManager.h"
 
@@ -42,6 +41,7 @@ namespace NUCTE_NS {
         GameWorld* m_World;
         ImGuiHelper* m_IGH;
         UI* m_UI;
+        Renderer* m_Renderer;
 
         float m_ZoomLevel;
         int m_ScreenWidth;

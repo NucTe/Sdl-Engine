@@ -4,18 +4,22 @@
 #define GAMEWORLD_H
 
 #include <vector>
+#include <list>
+#include <glm/glm.hpp>
 
-#include "SdlEngine/draw.h"
 
+#include "Physics/2d/Physics.h"
 #include "Engine/EMS/EntityManager.h"
 #include "Engine/utils.h"
 
-class OpenGLRenderer;
-class PhysicsObject;
+
 
 namespace NUCTE_NS {
 
+    class Renderer;
+
     struct Rectangle {
+        int id;
         glm::vec2 position;
         float width;
         float height;
@@ -25,32 +29,43 @@ namespace NUCTE_NS {
 
     class GameWorld {
     public:
-        GameWorld(EntityManager& entityManager);
+        GameWorld();
+        GameWorld(EntityManager& entityManager, Renderer& renderer);
         ~GameWorld();
 
-        GameWorld(const GameWorld& other) : entityManager(other.entityManager) {
-            m_Entities = other.m_Entities;
+        GameWorld(const GameWorld& other)
+            : entityManager(other.entityManager),
+            m_Rend(other.m_Rend),
+            RectId(0) {
+
+            for (const auto& entity : other.m_Entities) {
+                m_Entities.push_back(new Entity(*entity));
+            }
+
+            for (const auto& rect : other.m_Rectangles) {
+                m_Rectangles.push_back(rect);
+            }
         }
+
 
         void Update(float dt);
         void Render();
 
         void AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject);
+        void RmRectangle(int id);
 
-        void test();
-
-        const std::vector<Rectangle>& GetRectangles() const;
+        const std::list<Rectangle>& GetRectangles() const;
 
         const std::vector<Entity*>& GetEntities() const;
 
     private:
-        OpenGLRenderer* m_OGL;
         EntityManager& entityManager;
+        Renderer& m_Rend;
 
-        std::vector<Rectangle> m_Rectangles;
+        int RectId;
+        std::list<Rectangle> m_Rectangles;
         std::vector<Entity*> m_Entities;
     };
 }
-
 
 #endif // GAMEWORLD_H

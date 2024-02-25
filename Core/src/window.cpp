@@ -1,4 +1,6 @@
 #include "SdlEngine/window.h"
+#include "SdlEngine/Renderer/OpenGLRenderer.h"
+
     Window::Window() {}
 
     void Window::CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop) {
