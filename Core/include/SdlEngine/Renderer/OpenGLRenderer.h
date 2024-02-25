@@ -21,7 +21,7 @@ public:
     static GLuint DrawTextureRect(GLuint vaoID, const glm::vec2& position, int width, int height);
     static GLuint DrawRectangle(GLuint vaoID, const glm::vec2& position, float width, float height, bool fill);
     static void DrawPoint(const glm::vec2& point, const glm::vec4& color);
-    static void DrawLine(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color);
+    static void DrawLine(const glm::vec2& start, const glm::vec2& end);
 
 private:
     

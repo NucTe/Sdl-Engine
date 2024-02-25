@@ -6,8 +6,8 @@ void Draw::Point(const glm::vec2& point, const glm::vec4& color) {
     OpenGLRenderer::DrawPoint(point, color);
 }
 
-void Draw::Line(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color) {
-    OpenGLRenderer::DrawLine(start, end, color);
+void Draw::Line(const glm::vec2& start, const glm::vec2& end) {
+    OpenGLRenderer::DrawLine(start, end);
 }
 
 void Draw::Rectangle(const glm::vec2& position, float width, float height, bool fill) {

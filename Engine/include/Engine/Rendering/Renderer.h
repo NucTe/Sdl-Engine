@@ -34,6 +34,7 @@ namespace NUCTE_NS {
         Window* m_Window;
         static unsigned int m_ShaderProgram;
         ShaderLoader m_shaderLoader;
+        GLint m_RectIndexLocation;
 
         
 
@@ -41,12 +42,14 @@ namespace NUCTE_NS {
             float zoomedWidth = width / zoomLevel;
             float zoomedHeight = height / zoomLevel;
 
+            glUniform1i(m_RectIndexLocation, -1);
+
             for (float y = 0; y <= zoomedHeight; y += 1.0f) {
-                Draw::Line(glm::vec2(0.0f, y), glm::vec2(zoomedWidth, y), { 239, 239, 240 , 1});
+                Draw::Line(glm::vec2(0.0f, y), glm::vec2(zoomedWidth, y));
             }
 
             for (float x = 0; x <= zoomedWidth; x += 1.0f) {
-                Draw::Line(glm::vec2(x, 0.0f), glm::vec2(x, zoomedHeight), { 239, 239, 240 , 1});
+                Draw::Line(glm::vec2(x, 0.0f), glm::vec2(x, zoomedHeight));
             }
         }
     };

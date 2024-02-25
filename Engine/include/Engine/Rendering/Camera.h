@@ -22,6 +22,22 @@ public:
         return m_Projection * glm::translate(glm::mat4(1.0f), glm::vec3(-m_Position.x, -m_Position.y, 0.0f));
     }
 
+    glm::vec2 Camera::ScreenToWorld(const glm::vec2& screenPos) const {
+        glm::mat4 inverseViewProjection = glm::inverse(GetViewProjectionMatrix());
+
+        glm::vec4 normalizedDevicePos;
+        normalizedDevicePos.x = (2.0f * screenPos.x) / m_Width - 1.0f;
+        normalizedDevicePos.y = 1.0f - (2.0f * screenPos.y) / m_Height;
+        normalizedDevicePos.z = 0.0f;
+        normalizedDevicePos.w = 1.0f;
+
+        glm::vec4 worldPos = inverseViewProjection * normalizedDevicePos;
+        worldPos /= worldPos.w;
+
+        return glm::vec2(worldPos);
+    }
+
+
 private:
     float m_Width;
     float m_Height;

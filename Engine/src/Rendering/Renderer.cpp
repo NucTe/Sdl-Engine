@@ -51,7 +51,7 @@ namespace NUCTE_NS {
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT);
-        
+
         // Camera setup
         float zoomLevel = m_App->GetZoomLevel();
         m_Camera.SetZoom(zoomLevel);
@@ -59,8 +59,19 @@ namespace NUCTE_NS {
         GLuint viewProjectionLocation = glGetUniformLocation(m_ShaderProgram, "viewProjection");
         glUniformMatrix4fv(viewProjectionLocation, 1, GL_FALSE, glm::value_ptr(m_Camera.GetViewProjectionMatrix()));
 
+        // Draw Grid
+        m_RectIndexLocation = glGetUniformLocation(m_ShaderProgram, "rectIndex");
+        DrawGrid(width, height, m_App->GetZoomLevel());
+
+        // Camera
+        int mouseX, mouseY;
+        SDL_GetMouseState(&mouseX, &mouseY);
+        glm::vec2 mousePos(static_cast<float>(mouseX), static_cast<float>(mouseY));
+        glm::vec2 worldMousePos = m_Camera.ScreenToWorld(mousePos);
+
         // render rectangles
         GLuint colorLocation = glGetUniformLocation(m_ShaderProgram, "rectColors");
+        std::cout << colorLocation << std::endl;
         for (const auto& rect : gameWorld.GetRectangles()) {
             glUniform4fv(colorLocation, 1, glm::value_ptr(rect.color));
             Draw::Rectangle(rect.position, rect.width, rect.height);
@@ -69,4 +80,5 @@ namespace NUCTE_NS {
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         return texture;
     }
+
 }

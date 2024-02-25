@@ -168,9 +168,8 @@ void OpenGLRenderer::DrawPoint(const glm::vec2& point, const glm::vec4& color) {
     glEnd();
 }
 
-void OpenGLRenderer::DrawLine(const glm::vec2& start, const glm::vec2& end, const glm::vec4& color) {
+void OpenGLRenderer::DrawLine(const glm::vec2& start, const glm::vec2& end) {
     glBegin(GL_LINES);
-    glColor4f(color.r, color.g, color.b, color.a);
     glVertex2f(start.x, start.y);
     glVertex2f(end.x, end.y);
     glEnd();
