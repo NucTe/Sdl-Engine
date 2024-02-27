@@ -14,7 +14,8 @@ namespace NUCTE_NS {
 
     Application::Application(const std::string& windowTitle, int screenWidth, int screenHeight)
         : m_Running(nullptr), m_Entitym(), m_World(nullptr)
-        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), m_UI(nullptr), m_ZoomLevel(1.0f) {
+        , m_Window(nullptr), m_GLContext(nullptr), m_IGH(nullptr), 
+        m_UI(nullptr), m_ZoomLevel(1.0f), m_InputManager(InputManager::getInstance()) {
 
         m_Window = new ::Window();
         m_Window->CreateWindow(windowTitle, screenWidth, screenHeight, false, nullptr);
@@ -51,6 +52,10 @@ namespace NUCTE_NS {
 
 
     void Application::Cleanup() {
+        if (m_InputManager) {
+            delete m_InputManager;
+            m_InputManager = nullptr;
+        }
         delete m_IGH;
         delete m_Window;
         delete m_UI;
@@ -70,10 +75,10 @@ namespace NUCTE_NS {
             case SDL_MOUSEWHEEL:
                 if (IsCtrlPressed()) {
                     if (event.wheel.y > 0) {
-                        m_ZoomLevel *= 1.1f;
+                        m_Renderer->GetCamera().SetZoom(m_Renderer->GetCamera().GetZoom() * 1.1f);
                     }
                     else if (event.wheel.y < 0) {
-                        m_ZoomLevel /= 1.1f;
+                        m_Renderer->GetCamera().SetZoom(m_Renderer->GetCamera().GetZoom() / 1.1f);
                     }
                 }
                 break;
@@ -82,6 +87,9 @@ namespace NUCTE_NS {
     }
 
     void Application::Update() {
+        float cx = m_Renderer->GetCamera().GetPosition().x;
+        float cy = m_Renderer->GetCamera().GetPosition().y;
+        m_InputManager->update(cx, cy);
         m_World->Update(GetDt());
     }
 

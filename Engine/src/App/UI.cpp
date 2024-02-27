@@ -2,6 +2,8 @@
 #include "Engine/App/Imgui/ImGuiHelper.h"
 #include "Engine/App/Application.h"
 
+#include <stdio.h>
+
 #include "Engine/Rendering/Renderer.h"
 
 #include "Engine/GameLogic/GameWorld.h"

@@ -26,6 +26,10 @@ namespace NUCTE_NS {
         ~Renderer();
         GLuint Render(float width, float height, GameWorld gameWorld);
 
+        Camera GetCamera() {
+            return m_Camera;
+        }
+
         float gViewWidth;
         float gViewHeight;
     private:
@@ -36,22 +40,38 @@ namespace NUCTE_NS {
         ShaderLoader m_shaderLoader;
         GLint m_RectIndexLocation;
 
+        GLuint m_Framebuffer;
+        GLuint m_Texture;
         
 
-        void DrawGrid(float width, float height, float zoomLevel) {
-            float zoomedWidth = width / zoomLevel;
-            float zoomedHeight = height / zoomLevel;
+        void DrawGrid(const Camera& camera, float gridSpacing) {
+            glm::vec2 screenTopLeft(0, 0);
+            glm::vec2 screenBottomRight(gViewWidth, gViewHeight);
 
-            glUniform1i(m_RectIndexLocation, -1);
+            glm::vec2 worldTopLeft = camera.ScreenToWorld(screenTopLeft);
+            glm::vec2 worldBottomRight = camera.ScreenToWorld(screenBottomRight);
 
-            for (float y = 0; y <= zoomedHeight; y += 1.0f) {
-                Draw::Line(glm::vec2(0.0f, y), glm::vec2(zoomedWidth, y));
+            int startX = static_cast<int>(std::floor(worldTopLeft.x / gridSpacing));
+            int startY = static_cast<int>(std::floor(worldTopLeft.y / gridSpacing));
+            int endX = static_cast<int>(std::ceil(worldBottomRight.x / gridSpacing));
+            int endY = static_cast<int>(std::ceil(worldBottomRight.y / gridSpacing));
+
+            for (int x = startX; x <= endX; ++x) {
+                glm::vec2 start(x * gridSpacing, worldTopLeft.y);
+                glm::vec2 end(x * gridSpacing, worldBottomRight.y);
+                Draw::Line(start, end);
             }
 
-            for (float x = 0; x <= zoomedWidth; x += 1.0f) {
-                Draw::Line(glm::vec2(x, 0.0f), glm::vec2(x, zoomedHeight));
+            for (int y = startY; y <= endY; ++y) {
+                glm::vec2 start(worldTopLeft.x, y * gridSpacing);
+                glm::vec2 end(worldBottomRight.x, y * gridSpacing);
+                Draw::Line(start, end);
             }
         }
+
+
+
+
     };
 }
 

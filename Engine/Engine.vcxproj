@@ -108,6 +108,7 @@
     <ClInclude Include="include\Engine\EMS\Entity.h" />
     <ClInclude Include="include\Engine\EMS\EntityManager.h" />
     <ClInclude Include="include\Engine\GameLogic\GameWorld.h" />
+    <ClInclude Include="include\Engine\Input\InputDefinitions.h" />
     <ClInclude Include="include\Engine\Input\InputManager.h" />
     <ClInclude Include="include\Engine\Rendering\Camera.h" />
     <ClInclude Include="include\Engine\Rendering\Renderer.h" />

@@ -10,6 +10,8 @@
 #include "Engine/App/Imgui/ImGuiHelper.h"
 #include "Engine/App/UI.h"
 
+#include "Engine/Input/InputManager.h"
+
 class Window;
 
 namespace NUCTE_NS {
@@ -31,9 +33,6 @@ namespace NUCTE_NS {
             return state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL];
         }
 
-        float GetZoomLevel() const {
-            return m_ZoomLevel;
-        }
     private:
         ::Window* m_Window;
         SDL_GLContext m_GLContext;
@@ -42,6 +41,7 @@ namespace NUCTE_NS {
         ImGuiHelper* m_IGH;
         UI* m_UI;
         Renderer* m_Renderer;
+
 
         float m_ZoomLevel;
         int m_ScreenWidth;

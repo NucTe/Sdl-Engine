@@ -13,10 +13,8 @@ namespace NUCTE_NS {
     unsigned int Renderer::m_ShaderProgram = 0;
 
     Renderer::Renderer(Window* window, Application* app) : m_Window(window), m_App(app), m_Camera(0, 0) {
-        
-
+      
         m_ShaderProgram = m_shaderLoader.CreateShaderProgram("./assets/shaders/test.vert", "./assets/shaders/test.frag");
-        std::cout << m_ShaderProgram << std::endl;
         glUseProgram(m_ShaderProgram);
     }
 
@@ -25,6 +23,8 @@ namespace NUCTE_NS {
     }
 
     GLuint Renderer::Render(float width, float height, GameWorld gameWorld) {
+
+        // Start Unchanged
         gViewWidth = width;
         gViewHeight = height;
 
@@ -51,34 +51,28 @@ namespace NUCTE_NS {
         glBindFramebuffer(GL_FRAMEBUFFER, framebuffer);
         glViewport(0, 0, width, height);
         glClear(GL_COLOR_BUFFER_BIT);
+        // End Unchanged
 
         // Camera setup
-        float zoomLevel = m_App->GetZoomLevel();
+        float zoomLevel = m_Camera.GetZoom();
+        std::cout << zoomLevel << std::endl;
         m_Camera.SetZoom(zoomLevel);
         m_Camera.SetPosition({ 0, 0 });
         GLuint viewProjectionLocation = glGetUniformLocation(m_ShaderProgram, "viewProjection");
         glUniformMatrix4fv(viewProjectionLocation, 1, GL_FALSE, glm::value_ptr(m_Camera.GetViewProjectionMatrix()));
 
         // Draw Grid
-        m_RectIndexLocation = glGetUniformLocation(m_ShaderProgram, "rectIndex");
-        DrawGrid(width, height, m_App->GetZoomLevel());
-
-        // Camera
-        int mouseX, mouseY;
-        SDL_GetMouseState(&mouseX, &mouseY);
-        glm::vec2 mousePos(static_cast<float>(mouseX), static_cast<float>(mouseY));
-        glm::vec2 worldMousePos = m_Camera.ScreenToWorld(mousePos);
+        DrawGrid(m_Camera, 1.0f);
 
         // render rectangles
         GLuint colorLocation = glGetUniformLocation(m_ShaderProgram, "rectColors");
-        std::cout << colorLocation << std::endl;
         for (const auto& rect : gameWorld.GetRectangles()) {
             glUniform4fv(colorLocation, 1, glm::value_ptr(rect.color));
             Draw::Rectangle(rect.position, rect.width, rect.height);
-            std::cout << "x: " << rect.position.x << "y: " << rect.position.y << std::endl;
         }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
         return texture;
     }
+
 
 }
