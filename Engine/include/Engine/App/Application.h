@@ -28,10 +28,6 @@ namespace NUCTE_NS {
         void Run();
         double GetDt() const;
 
-        bool IsCtrlPressed() const {
-            const Uint8* state = SDL_GetKeyboardState(NULL);
-            return state[SDL_SCANCODE_LCTRL] || state[SDL_SCANCODE_RCTRL];
-        }
 
     private:
         ::Window* m_Window;
@@ -41,6 +37,7 @@ namespace NUCTE_NS {
         ImGuiHelper* m_IGH;
         UI* m_UI;
         Renderer* m_Renderer;
+        InputManager* m_InputManager;
 
 
         float m_ZoomLevel;

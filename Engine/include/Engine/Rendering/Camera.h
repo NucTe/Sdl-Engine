@@ -4,7 +4,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <SDL2/SDL.h>
 #include <Engine/utils.h>
-
+#include <Engine/Input/InputManager.h>
 
 namespace NUCTE_NS {
 
@@ -78,6 +78,7 @@ namespace NUCTE_NS {
         glm::vec2 GetPosition() const { return m_Position; }
 
     private:
+        InputManager* m_InputManager;
         float m_Width;
         float m_Height;
         glm::vec2 m_Position;

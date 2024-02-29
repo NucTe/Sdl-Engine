@@ -71,22 +71,12 @@ namespace NUCTE_NS {
             if (event.type == SDL_WINDOWEVENT && event.window.event == SDL_WINDOWEVENT_CLOSE && event.window.windowID == SDL_GetWindowID(m_Window->GetSDLWindow()))
                 m_Running = false;
 
-            switch (event.type) {
-            case SDL_MOUSEWHEEL:
-                if (IsCtrlPressed()) {
-                    if (event.wheel.y > 0) {
-                        m_Renderer->GetCamera().SetZoom(m_Renderer->GetCamera().GetZoom() * 1.1f);
-                    }
-                    else if (event.wheel.y < 0) {
-                        m_Renderer->GetCamera().SetZoom(m_Renderer->GetCamera().GetZoom() / 1.1f);
-                    }
-                }
-                break;
-            }
         }
     }
 
     void Application::Update() {
+        m_Renderer->GetCamera().Update();
+
         float cx = m_Renderer->GetCamera().GetPosition().x;
         float cy = m_Renderer->GetCamera().GetPosition().y;
         m_InputManager->update(cx, cy);

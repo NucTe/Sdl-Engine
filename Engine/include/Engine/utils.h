@@ -8,8 +8,10 @@
 #define NE_ASSERT(_EXPR)            assert(_EXPR)
 #endif
 
-#include "Engine/Input/InputManager.h"
+
 
 namespace NUCTE_NS {
-    extern InputManager* m_InputManager;
+
 }
+
+
