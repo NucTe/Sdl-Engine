@@ -13,6 +13,9 @@
     <Filter Include="include\SdlEngine\utils">
       <UniqueIdentifier>{D1FD4CE1-3D35-9578-463F-F99BB2F5BB71}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\stb">
+      <UniqueIdentifier>{610AC131-CDBF-3927-56B4-33FEC268302B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
@@ -45,26 +48,66 @@
     <ClInclude Include="include\SdlEngine\window.h">
       <Filter>include\SdlEngine</Filter>
     </ClInclude>
-    <ClInclude Include="include\stb\stb_c_lexer.h" />
-    <ClInclude Include="include\stb\stb_connected_components.h" />
-    <ClInclude Include="include\stb\stb_divide.h" />
-    <ClInclude Include="include\stb\stb_ds.h" />
-    <ClInclude Include="include\stb\stb_dxt.h" />
-    <ClInclude Include="include\stb\stb_easy_font.h" />
-    <ClInclude Include="include\stb\stb_herringbone_wang_tile.h" />
-    <ClInclude Include="include\stb\stb_hexwave.h" />
-    <ClInclude Include="include\stb\stb_image.h" />
-    <ClInclude Include="include\stb\stb_image_resize2.h" />
-    <ClInclude Include="include\stb\stb_image_write.h" />
-    <ClInclude Include="include\stb\stb_include.h" />
-    <ClInclude Include="include\stb\stb_leakcheck.h" />
-    <ClInclude Include="include\stb\stb_perlin.h" />
-    <ClInclude Include="include\stb\stb_rect_pack.h" />
-    <ClInclude Include="include\stb\stb_sprintf.h" />
-    <ClInclude Include="include\stb\stb_textedit.h" />
-    <ClInclude Include="include\stb\stb_tilemap_editor.h" />
-    <ClInclude Include="include\stb\stb_truetype.h" />
-    <ClInclude Include="include\stb\stb_voxel_render.h" />
+    <ClInclude Include="include\stb\stb_c_lexer.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_connected_components.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_divide.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_ds.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_dxt.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_easy_font.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_herringbone_wang_tile.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_hexwave.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_image.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_image_resize2.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_image_write.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_include.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_leakcheck.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_perlin.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_rect_pack.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_sprintf.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_textedit.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_tilemap_editor.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_truetype.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
+    <ClInclude Include="include\stb\stb_voxel_render.h">
+      <Filter>include\stb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Renderer\OpenGLRenderer.cpp">
@@ -82,13 +125,17 @@
     <ClCompile Include="src\gameloop.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\stb.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb_vorbis.c">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\utils\JSON.cpp">
       <Filter>src\utils</Filter>
     </ClCompile>
     <ClCompile Include="src\window.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\stb_vorbis.c" />
-    <ClCompile Include="src\stb.cpp" />
   </ItemGroup>
 </Project>

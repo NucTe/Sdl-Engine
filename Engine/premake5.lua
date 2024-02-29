@@ -26,4 +26,12 @@ project "Engine"
     "Interface.lib",
   }
 
+  filter "configurations:Debug"
+      defines { "DEBUG" }
+      symbols "On"
+
+  filter "configurations:Release"
+      defines { "NDEBUG" }
+      optimize "On"
+
   dependson { "Core", "Interface", }

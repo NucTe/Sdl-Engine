@@ -15,7 +15,6 @@
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Core</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -41,13 +40,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>..\vendors</OutDir>
+    <OutDir>..\bin\Core\Debug\</OutDir>
     <IntDir>..\bin-int\Core\Debug\</IntDir>
     <TargetName>Core</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>..\vendors</OutDir>
+    <OutDir>..\bin\Core\Release\</OutDir>
     <IntDir>..\bin-int\Core\Release\</IntDir>
     <TargetName>Core</TargetName>
     <TargetExt>.lib</TargetExt>
@@ -64,7 +63,6 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
-      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -123,8 +121,8 @@ IF EXIST ..\bin\Core\Release\Core.lib\ (xcopy /Q /E /Y /I ..\bin\Core\Release\Co
     <ClInclude Include="include\SdlEngine\gameloop.h" />
     <ClInclude Include="include\SdlEngine\utils\JSON.h" />
     <ClInclude Include="include\SdlEngine\window.h" />
-    <ClInclude Include="include\stb\stb_connected_components.h" />
     <ClInclude Include="include\stb\stb_c_lexer.h" />
+    <ClInclude Include="include\stb\stb_connected_components.h" />
     <ClInclude Include="include\stb\stb_divide.h" />
     <ClInclude Include="include\stb\stb_ds.h" />
     <ClInclude Include="include\stb\stb_dxt.h" />

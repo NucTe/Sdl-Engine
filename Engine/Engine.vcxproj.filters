@@ -69,8 +69,14 @@
     <ClInclude Include="include\Engine\GameLogic\GameWorld.h">
       <Filter>include\Engine\GameLogic</Filter>
     </ClInclude>
+    <ClInclude Include="include\Engine\Input\InputDefinitions.h">
+      <Filter>include\Engine\Input</Filter>
+    </ClInclude>
     <ClInclude Include="include\Engine\Input\InputManager.h">
       <Filter>include\Engine\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Engine\Rendering\Camera.h">
+      <Filter>include\Engine\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine\Rendering\Renderer.h">
       <Filter>include\Engine\Rendering</Filter>
@@ -78,8 +84,6 @@
     <ClInclude Include="include\Engine\utils.h">
       <Filter>include\Engine</Filter>
     </ClInclude>
-    <ClInclude Include="include\Engine\Rendering\Camera.h" />
-    <ClInclude Include="include\Engine\Input\InputDefinitions.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">

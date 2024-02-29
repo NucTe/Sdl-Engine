@@ -26,8 +26,8 @@ project "Interface"
   }
 
   filter "configurations:Debug"
-        defines { "DEBUG" }
-        symbols "On"
+      defines { "DEBUG" }
+      symbols "On"
 
   filter "configurations:Release"
       defines { "NDEBUG" }
