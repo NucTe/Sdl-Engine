@@ -75,7 +75,7 @@
     <ClInclude Include="include\Engine\Input\InputManager.h">
       <Filter>include\Engine\Input</Filter>
     </ClInclude>
-    <ClInclude Include="include\Engine\Rendering\Camera.h">
+    <ClInclude Include="include\Engine\GameLogic\Camera.h">
       <Filter>include\Engine\Rendering</Filter>
     </ClInclude>
     <ClInclude Include="include\Engine\Rendering\Renderer.h">
@@ -84,6 +84,7 @@
     <ClInclude Include="include\Engine\utils.h">
       <Filter>include\Engine</Filter>
     </ClInclude>
+    <ClInclude Include="include\Engine\GameLogic\Grid.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp">
@@ -134,5 +135,6 @@
     <ClCompile Include="src\Rendering\Renderer.cpp">
       <Filter>src\Rendering</Filter>
     </ClCompile>
+    <ClCompile Include="src\GameLogic\Grid.cpp" />
   </ItemGroup>
 </Project>

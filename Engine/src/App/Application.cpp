@@ -75,10 +75,10 @@ namespace NUCTE_NS {
     }
 
     void Application::Update() {
-        m_Renderer->GetCamera().Update();
+        Camera cam = m_World->GetCamera();
 
-        float cx = m_Renderer->GetCamera().GetPosition().x;
-        float cy = m_Renderer->GetCamera().GetPosition().y;
+        float cx = cam.GetPosition().x;
+        float cy = cam.GetPosition().y;
         m_InputManager->update(cx, cy);
         m_World->Update(GetDt());
     }

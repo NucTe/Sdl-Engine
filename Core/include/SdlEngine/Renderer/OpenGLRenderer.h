@@ -24,8 +24,6 @@ public:
     static void DrawLine(const glm::vec2& start, const glm::vec2& end);
 
 private:
-    
-
     static GLuint shaderProgram;
 };
 

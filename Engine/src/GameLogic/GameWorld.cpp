@@ -7,14 +7,11 @@
 
 
 namespace NUCTE_NS {
-	GameWorld::GameWorld(EntityManager& entityManager, Renderer& renderer) : entityManager(entityManager), m_Rend(renderer){
+	GameWorld::GameWorld(EntityManager& entityManager, Renderer& renderer) : 
+		entityManager(entityManager), m_Rend(renderer), m_Grid(renderer.gViewWidth, renderer.gViewHeight, 10), m_Camera(renderer.gViewWidth, renderer.gViewHeight){
 	}
 
 	GameWorld::~GameWorld() {
-	}
-
-	const std::vector<Entity*>& GameWorld::GetEntities() const {
-		return entityManager.GetEntities();
 	}
 
 	void GameWorld::Update(float dt) {
@@ -35,11 +32,6 @@ namespace NUCTE_NS {
 		//
 		//	++it;
 		//}
-	}
-
-
-
-	void GameWorld::Render() {
 	}
 
 	// Start Rect

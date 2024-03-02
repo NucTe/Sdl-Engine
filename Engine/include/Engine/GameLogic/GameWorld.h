@@ -1,18 +1,14 @@
-#pragma once
-
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 
-#include <vector>
 #include <list>
 #include <glm/glm.hpp>
+#include <vector> // Added include for std::vector
 
-
-#include "Physics/2d/Physics.h"
 #include "Engine/EMS/EntityManager.h"
-#include "Engine/utils.h"
-
-
+#include "Engine/GameLogic/Grid.h"
+#include "Engine/GameLogic/Camera.h"
+#include "Physics/2d/Physics.h"
 
 namespace NUCTE_NS {
 
@@ -29,43 +25,35 @@ namespace NUCTE_NS {
 
     class GameWorld {
     public:
-        GameWorld();
         GameWorld(EntityManager& entityManager, Renderer& renderer);
         ~GameWorld();
 
-        GameWorld(const GameWorld& other)
-            : entityManager(other.entityManager),
-            m_Rend(other.m_Rend),
-            RectId(0) {
-
-            for (const auto& entity : other.m_Entities) {
-                m_Entities.push_back(new Entity(*entity));
-            }
-
-            for (const auto& rect : other.m_Rectangles) {
-                m_Rectangles.push_back(rect);
-            }
-        }
-
-
         void Update(float dt);
-        void Render();
 
         void AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject);
         void RmRectangle(int id);
 
         const std::list<Rectangle>& GetRectangles() const;
+        Grid& GetGrid();
 
-        const std::vector<Entity*>& GetEntities() const;
+        Camera GetCamera() {
+            return m_Camera;
+        }
+
+        const std::vector<Entity*>& GetEntities() const {
+            return m_Entities;
+        }
 
     private:
         EntityManager& entityManager;
         Renderer& m_Rend;
+        Grid m_Grid;
+        Camera m_Camera;
+        std::vector<Entity*> m_Entities;
 
         int RectId;
         std::list<Rectangle> m_Rectangles;
-        std::vector<Entity*> m_Entities;
     };
 }
 
-#endif // GAMEWORLD_H
+#endif

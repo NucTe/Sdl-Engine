@@ -77,6 +77,7 @@ namespace NUCTE_NS {
 
         glm::vec2 GetPosition() const { return m_Position; }
 
+
     private:
         InputManager* m_InputManager;
         float m_Width;
