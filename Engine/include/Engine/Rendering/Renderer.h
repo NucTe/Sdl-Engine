@@ -22,9 +22,11 @@ namespace NUCTE_NS {
 
     class Renderer {
     public:
-        Renderer(Window* m_Window, Application* m_App);
+        Renderer(Window* m_Window, Application* m_App, InputManager* inputManager);
         ~Renderer();
         GLuint Render(float width, float height, GameWorld gameWorld);
+
+        void DrawGrid(const Grid& grid);
 
         float gViewWidth;
         float gViewHeight;
@@ -34,6 +36,7 @@ namespace NUCTE_NS {
         static unsigned int m_ShaderProgram;
         ShaderLoader m_shaderLoader;
         GLint m_RectIndexLocation;
+        InputManager* m_InputManager;
 
         GLuint m_Framebuffer;
         GLuint m_Texture;

@@ -3,17 +3,27 @@
 #include <vector>
 #include <glm/glm.hpp>
 
-class Grid {
-public:
-    Grid(int width, int height, int squareSize);
+#include "Engine/utils.h"
 
-    void SetSize(int width, int height);
+namespace NUCTE_NS {
+    class Grid {
+    public:
+        Grid(int width, int height, int squareSize);
 
-    glm::ivec2 WorldToGrid(const glm::vec2& worldPos) const;
-    glm::vec2 GridToWorld(const glm::ivec2& gridPos) const;
+        void SetSize(int width, int height);
+        int GetHeight() const {
+            return m_Height;
+        }
+        int GetWidth() const {
+            return m_Width;
+        }
 
-private:
-    int m_Width;
-    int m_Height;
-    int m_SquareSize;
-};
+        glm::ivec2 WorldToGrid(const glm::vec2& worldPos) const;
+        glm::vec2 GridToWorld(const glm::ivec2& gridPos) const;
+
+    private:
+        int m_Width;
+        int m_Height;
+        int m_SquareSize;
+    };
+}

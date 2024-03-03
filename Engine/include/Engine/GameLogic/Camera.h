@@ -34,10 +34,12 @@ namespace NUCTE_NS {
                     if (m_InputManager->isKeyPressed(KeyboardKey::KEY_LEFT_CTRL)) {
                         if (event.wheel.y > 0) {
                             float newZoom = GetZoom() * 1.1f;
+                            std::cout << newZoom << std::endl;
                             SetZoom(newZoom);
                         }
                         else if (event.wheel.y < 0) {
                             float newZoom = GetZoom() / 1.1f;
+                            std::cout << newZoom << std::endl;
                             SetZoom(newZoom);
                         }
                     }
@@ -76,6 +78,10 @@ namespace NUCTE_NS {
         }
 
         glm::vec2 GetPosition() const { return m_Position; }
+
+        void SetInputManager(InputManager* inputManager) {
+            m_InputManager = inputManager;
+        }
 
 
     private:

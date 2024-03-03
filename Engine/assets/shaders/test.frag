@@ -1,7 +1,10 @@
 #version 330 core
-in vec2 fragTexCoord;
+
 out vec4 FragColor;
 
-void main() {
-    FragColor = vec4(1.0);
+uniform vec4 color;
+
+void main()
+{
+    FragColor = color;
 }

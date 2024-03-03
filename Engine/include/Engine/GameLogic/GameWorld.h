@@ -3,7 +3,7 @@
 
 #include <list>
 #include <glm/glm.hpp>
-#include <vector> // Added include for std::vector
+#include <vector>
 
 #include "Engine/EMS/EntityManager.h"
 #include "Engine/GameLogic/Grid.h"
@@ -35,14 +35,9 @@ namespace NUCTE_NS {
 
         const std::list<Rectangle>& GetRectangles() const;
         Grid& GetGrid();
+        Camera& GetCamera();
 
-        Camera GetCamera() {
-            return m_Camera;
-        }
-
-        const std::vector<Entity*>& GetEntities() const {
-            return m_Entities;
-        }
+        const std::vector<Entity*>& GetEntities() const;
 
     private:
         EntityManager& entityManager;

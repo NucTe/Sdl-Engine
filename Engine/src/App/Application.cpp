@@ -23,7 +23,7 @@ namespace NUCTE_NS {
         m_IGH = new ImGuiHelper();
         m_IGH->initialize(m_Window);
 
-        m_Renderer = new Renderer(m_Window, this);
+        m_Renderer = new Renderer(m_Window, this, m_InputManager);
 
         m_UI = new UI(m_IGH, m_Window, this, m_Renderer);
 
@@ -75,12 +75,13 @@ namespace NUCTE_NS {
     }
 
     void Application::Update() {
-        Camera cam = m_World->GetCamera();
+        Camera* cam = &m_World->GetCamera();
 
-        float cx = cam.GetPosition().x;
-        float cy = cam.GetPosition().y;
+        float cx = cam->GetPosition().x;
+        float cy = cam->GetPosition().y;
         m_InputManager->update(cx, cy);
         m_World->Update(GetDt());
+        cam->Update();
     }
 
     void Application::Render() {

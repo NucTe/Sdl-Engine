@@ -76,6 +76,19 @@ namespace NUCTE_NS {
 		return m_Rectangles;
 	}
 
+	const std::vector<Entity*>& GameWorld::GetEntities() const {
+		return m_Entities;
+	}
+
+	Grid& GameWorld::GetGrid() {
+		return m_Grid;
+	}
+
+	Camera& GameWorld::GetCamera() {
+		return m_Camera;
+	}
+
+
 
 	// End Rect
 }
