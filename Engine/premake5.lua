@@ -6,6 +6,12 @@ project "Engine"
   language "c++"
   cppdialect "c++17"
   
+  filter "configurations:Debug"
+        runtime "Debug"
+    
+  filter "configurations:Release"
+      runtime "Release"
+
   files {
     "imgui/**.cpp",
     "src/**.cpp",

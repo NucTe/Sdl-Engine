@@ -6,6 +6,12 @@ project "Interface"
   language "c++"
   cppdialect "c++17"
   
+  filter "configurations:Debug"
+        runtime "Debug"
+    
+  filter "configurations:Release"
+      runtime "Release"
+
   files {
     "src/**.cpp",
     "include/**.h"
