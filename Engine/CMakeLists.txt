@@ -23,3 +23,11 @@ target_link_libraries(Engine PRIVATE
 target_link_directories(Engine PRIVATE
     "${CMAKE_SOURCE_DIR}/vendors"
 )
+
+add_custom_command(TARGET Engine POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/vendors/DLLS
+        ${CMAKE_BINARY_DIR}/bin/Release
+    COMMENT "Copying DLLs to exe build directory"
+)
+

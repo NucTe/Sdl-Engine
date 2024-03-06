@@ -2,10 +2,10 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+
+
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mouse.h>
-#include <string>
-#include <iostream>
 #include <fstream>
 #include "nlohmann/json.hpp"
 #include <GL/glew.h>
@@ -20,7 +20,7 @@ public:
     Window();
     ~Window();
     void Run(std::string vertexShaderPath = "", std::string fragmentShaderPath = "");
-    void CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop = nullptr);
+    void SummonWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop = nullptr);
     void ToggleFullscreen();
     void SetWindowSize(int width, int height);
     int GetScreenWidth();

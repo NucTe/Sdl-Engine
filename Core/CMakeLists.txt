@@ -10,4 +10,10 @@ target_include_directories(Core PUBLIC "../Engine/include/")
 
 
 target_include_directories(Core PUBLIC ${DEPS_INCLUDE_DIRS})
-# Add any necessary library dependencies and compile options here
+
+add_custom_command(TARGET Core POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+        $<TARGET_FILE:Core>
+        ${CMAKE_SOURCE_DIR}/vendors/
+    COMMENT "Copying built lib files to vendors folder"
+)

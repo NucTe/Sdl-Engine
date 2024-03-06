@@ -8,4 +8,10 @@ add_library(Interface STATIC ${INTER_SOURCES})
 target_include_directories(Interface PUBLIC include)
 
 target_include_directories(Interface PUBLIC ${DEPS_INCLUDE_DIRS})
-# Add any necessary library dependencies and compile options here
+
+add_custom_command(TARGET Interface POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy
+        $<TARGET_FILE:Interface>
+        ${CMAKE_SOURCE_DIR}/vendors/
+    COMMENT "Copying built lib files to vendors folder"
+)

@@ -14,7 +14,6 @@ def move_include_files(sdl2_dir):
         if file != 'SDL2':
             shutil.move(os.path.join(sdl2_include_dir, file), os.path.join(sdl2_include_sdl2_dir, file))
 
-# Example usage
 move_include_files('./deps/SDL2')
 
 

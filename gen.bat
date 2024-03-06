@@ -1,5 +1,5 @@
 @echo off
 
-py build.py
+py gen.py
 
 pause

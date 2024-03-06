@@ -18,7 +18,7 @@ namespace NUCTE_NS {
         m_UI(nullptr), m_ZoomLevel(1.0f), m_InputManager(InputManager::getInstance()) {
 
         m_Window = new ::Window();
-        m_Window->CreateWindow(windowTitle, screenWidth, screenHeight, false, nullptr);
+        m_Window->SummonWindow(windowTitle, screenWidth, screenHeight, false, nullptr);
 
         m_IGH = new ImGuiHelper();
         m_IGH->initialize(m_Window);

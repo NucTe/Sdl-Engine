@@ -3,7 +3,7 @@
 
     Window::Window() {}
 
-    void Window::CreateWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop) {
+    void Window::SummonWindow(const std::string& title, int width, int height, bool fullscreen, GameLoop* gameLoop) {
         this->gameLoop = gameLoop;
         screenWidth = width;
         screenHeight = height;

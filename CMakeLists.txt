@@ -12,14 +12,22 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 
 set(DEPS_INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/deps
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/GL
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/glm
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/imgui
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/nlohmann
+    ${CMAKE_CURRENT_SOURCE_DIR}/deps/Physics
     ${CMAKE_CURRENT_SOURCE_DIR}/deps/SDL2/include
 )
 
-# Add the Core, Interface, and Engine subdirectories
+
+include_directories(${DEPS_INCLUDE_DIRS})
+
 add_subdirectory(Core)
 add_subdirectory(Interface)
 add_subdirectory(Engine)
+
+
+
 
 
