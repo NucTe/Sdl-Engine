@@ -4,10 +4,6 @@
 [submodule "deps/glm"]
 	path = deps/glm
 	url = https://github.com/g-truc/glm
-[submodule "deps/imgui"]
-	path = deps/imgui
-	url = https://github.com/ocornut/imgui
-	branch = docking
 [submodule "deps/SDL2"]
 	path = deps/SDL2
 	url = https://github.com/libsdl-org/SDL
@@ -15,3 +11,7 @@
 [submodule "deps/Physics"]
 	path = deps/Physics
 	url = https://github.com/NucTe/NucTe-Physics
+[submodule "Dear_Imgui"]
+	path = deps/imgui
+	url = https://github.com/ocornut/imgui
+	branch = docking

@@ -34,7 +34,7 @@ namespace NUCTE_NS {
 
     void ImGuiHelper::newFrame() {
         ImGui_ImplOpenGL3_NewFrame();
-        ImGui_ImplSDL2_NewFrame(m_win->GetSDLWindow());
+        ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
     }
 
