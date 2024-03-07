@@ -1,5 +1,7 @@
 @echo off
 
+SET "START_PROJ=Engine"
+
 REM Set the path to the Visual Studio generator
 SET "generator=Visual Studio 17 2022"
 
@@ -8,9 +10,7 @@ SET "build=./build"
 
 REM Check if the argument "clean" is provided
 IF "%1"=="clean" (
-    REM Remove the build directory
     rmdir /s /q "%build%"
-    REM Exit the batch file
     exit /b
 )
 
@@ -19,5 +19,11 @@ cmake -G "%generator%" -B "%build%"
 
 REM Build the solution using MSBuild
 cmake --build "%build%" --config Release
+
+REM Check if the argument "run" is provided
+IF "%1"=="run" (
+    REM Run the generated executable
+    "%build%/%START_PROJ%/Release/%START_PROJ%.exe"
+)
 
 Pause
