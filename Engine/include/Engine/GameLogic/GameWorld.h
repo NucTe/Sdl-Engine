@@ -17,8 +17,7 @@ namespace NUCTE_NS {
     struct Rectangle {
         int id;
         glm::vec2 position;
-        float width;
-        float height;
+        glm::vec2 size;
         glm::vec4 color;
         PhysicsObject* physicsObject;
     };
@@ -30,7 +29,7 @@ namespace NUCTE_NS {
 
         void Update(float dt);
 
-        void AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject);
+        void AddRectangle(const glm::vec2& position, glm::vec2& size, const glm::vec4& color, PhysicsObject& physicsObject);
         void RmRectangle(int id);
 
         const std::list<Rectangle>& GetRectangles() const;

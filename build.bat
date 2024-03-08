@@ -23,7 +23,7 @@ cmake --build "%build%" --config Release
 REM Check if the argument "run" is provided
 IF "%1"=="run" (
     REM Run the generated executable
-    "%build%/%START_PROJ%/Release/%START_PROJ%.exe"
+    "%build%/bin/Release/%START_PROJ%.exe"
 )
 
 Pause

@@ -35,15 +35,15 @@ namespace NUCTE_NS {
 	}
 
 	// Start Rect
-	void GameWorld::AddRectangle(const glm::vec2& position, float width, float height, const glm::vec4& color, PhysicsObject& physicsObject) {
+	void GameWorld::AddRectangle(const glm::vec2& position, glm::vec2& size, const glm::vec4& color, PhysicsObject& physicsObject) {
 		Body body;
 		body.position = Vector2d(position.x, position.y);
 		body.velocity = Vector2d(0.0, 0.0);
 		body.mass = 1.0;
 
 		physicsObject.position = Vector2d(position.x, position.y);
-		physicsObject.width = width;
-		physicsObject.height = height;
+		physicsObject.width = size.x;
+		physicsObject.height = size.y;
 		physicsObject.velocity = Vector2d(0.0, 0.0);
 		physicsObject.bounciness = 0.5;
 		physicsObject.isStatic = false;
@@ -55,8 +55,8 @@ namespace NUCTE_NS {
 		Rectangle rect;
 		rect.id = RectId++;
 		rect.position = position;
-		rect.width = width;
-		rect.height = height;
+		rect.size.x = size.x;
+		rect.size.y = size.y;
 		rect.color = color;
 		rect.physicsObject = &physicsObject;
 		m_Rectangles.push_back(rect);

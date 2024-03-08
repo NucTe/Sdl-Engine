@@ -92,7 +92,7 @@ namespace NUCTE_NS {
         GLuint colorLocation = glGetUniformLocation(m_ShaderProgram, "rectColors");
         for (const auto& rect : gameWorld.GetRectangles()) {
             glUniform4fv(colorLocation, 1, glm::value_ptr(rect.color));
-            Draw::Rectangle(rect.position, rect.width, rect.height);
+            Draw::Rectangle(rect.position, rect.size.x, rect.size.y);
         }
 
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
